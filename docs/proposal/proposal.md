@@ -35,7 +35,11 @@
 
 > Describe the general area covered by the project.
 
-The project that we have decided to do is based around three different areas; Web Development, Data Analytics, Predictive algorithms. We decided to go into these three areas as they are areas that we have the most interest in. Web design has always been one of the more fun but also challenging things that we could do. This being the case we chose to do it as it would allow us to do something that would test our ability as software engineers yet also give us a sense of accomplishment and satisfaction. We decided to add aspects such as Data analytics and Predictive algorithms as we fee that a simple web app would not be a good display of the knowledge that we have accumulated over the course of our degree at DCU.
+The project that we have decided to do is based around three different areas; Web Development, Data Analytics, Predictive algorithms. We decided to go into these three areas as they are areas that we have the most interest in.
+
+Web design has always been one of the more fun but also challenging things that we could do. This being the case we chose to do it as it would allow us to do something that would test our ability as software engineers yet also give us a sense of accomplishment and satisfaction.
+
+We decided to add aspects such as Data analytics and Predictive algorithms as we fee that a simple web app would not be a good display of the knowledge that we have accumulated over the course of our degree at DCU.
 
 
 ### Outline
