@@ -46,6 +46,22 @@ We decided to add aspects such as Data analytics and Predictive algorithms as we
 
 > Outline the proposed project.
 
+The project is a WebApp called __________ . We are developing a web app based around the NBA that would display different stats for players and teams alike in the NBA. The web app would also feature a data dashboard in which users would be able to see data such as what side of the court a player has been taking better shots from. Below we go a little more in depth on what each aspect of the web app may entail.
+
+- Web Development:
+
+The web  development aspect of the project is very important. The other components such as the data dashboard and the 
+
+
+- Data Analytics
+
+The data analytics portion of the project falls under the kinds of data that we will be displaying with the data dashboard. Certain statistics such as number of shots made when a  players team was winning as opposed to shots made when a players team was losing are not generally shown. Analysing the data, we have at hand to get this kind of statistic could help to ow how some players may perform under pressure.
+
+- Predictive Algorithms 
+
+Predictive algorithms tie into our Data Analytics. We will be using data that we have collected from the NBA to try and piece together trends in certain scenarios such as factors that add to a team winning the NBA playoffs or factors that lad t a player winning the MVP award.
+
+
 ### Background
 
 > Where did the ideas come from?
