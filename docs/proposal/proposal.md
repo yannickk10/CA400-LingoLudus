@@ -13,7 +13,7 @@
 |Student 1 Name:      | Fawwaz Kekere-ekun|
 |Student 1 ID:        | 18408814          |
 |Student 2 Name:      | Yann Ndjatang     |
-|Student 2 ID:        | xxxxxx            |
+|Student 2 ID:        | 18337813          |
 |Project Supervisor:  | Monica Ward       |
 
 ## SECTION B
@@ -44,7 +44,7 @@ The data analytics portion of the project falls under the kinds of data that we 
 
 - Predictive Algorithms 
 
-Predictive algorithms tie into our Data Analytics. We will be using data that we have collected from the NBA to try and piece together trends in certain scenarios such as factors that add to a team winning the NBA playoffs or factors that lad t a player winning the MVP award.
+Predictive algorithms tie into our Data Analytics. We will be using data that we have collected from the NBA to try and piece together trends in certain scenarios such as factors that add to a team winning the NBA playoffs or factors that lead a player winning the MVP award.
 
 
 ### Background
