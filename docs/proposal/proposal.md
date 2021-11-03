@@ -9,7 +9,7 @@
 
 |                     |                   |
 |---------------------|-------------------|
-|Project Title:       | NBA Datum         |
+|Project Title:       | xxxxxxxxxx        |
 |Student 1 Name:      | Fawwaz Kekere-ekun|
 |Student 1 ID:        | 18408814          |
 |Student 2 Name:      | Yann Ndjatang     |
@@ -22,74 +22,57 @@
 ### Introduction
 
 
-The project that we have decided to do is based around three different areas; Web Development, Data Analytics and Visualisation, Predictive learning Analytics. We decided to go into these three areas as they are areas that we have the most interest in.
 
-Web design has always been one of the more fun but also challenging things that we could do. This being the case we chose to do it as it would allow us to do something that would test our ability as software engineers yet also give us a sense of accomplishment and satisfaction.
+The project that we have decided to do is based around mainly two areas; Gamification and Computer assisted language learning. We decided to go into this area as we have a love for games which led us to want to create a project in that area. We also decided to have a CALL element because we speak different languages and thought that it would be helpful to help people learn languages in a fun way.
 
-We decided to add aspects such as Data Visualisation and Predictive algorithms as we feel that a simple web app would not be a good display of the knowledge that we have accumulated over the course of our degree at DCU.
+To explain Briefly, Gamification is a strategic attempt to enhance systems services and organisations by giving motivation in learning or achieving tasks by having them in a game format. In this case we wish to enhance the learning experience of languages using gamification.
 
 
 ### Outline
 
 
-The project is a WebApp called NBA Datum. We are developing a web app based around the NBA that would display different stats for players and teams alike in the NBA. The web app would also feature a data dashboard in which users would be able to see data such as what side of the court a player has been taking better shots from. Below we go a little more in depth on what each aspect of the web app may entail.
+Outline the proposed project.
+The project will be a game called _______. We will be developing a game with a purpose that goes beyond enjoyment. We wish to enable people to learn languages with the aid of games to enhance motivation for said users. This will be created using a language independent framework so that our code can be adapted for other languages. 
 
-- Web Development:
+- Languages Proposed:
 
-The web  development aspect of the project is very important. The other components such as the data dashboard and the predictive learning analytics will be hosted on the WebApp. This makes the WebAp responsible for being a central hub for all the componenets that will be introduced in our project.
+We initially plan to use French as our initial language that we will be teaching in the game. We will attempt to split the learning of the language into different categories such as alphabet, vocabulary and tenses. 
+- Gamification:
 
-- Data Analytics and Visualisation
-
-The data analytics portion of the project falls under the kinds of data that we will be displaying with the data dashboard. Certain statistics such as number of shots made when a  players team was winning as opposed to shots made when a players team was losing are not generally shown. Analysing the data, we have at hand to get this kind of statistic could help to ow how some players may perform under pressure.
-
-- Predictive Learning Analytics 
-
-Predictive Learning Analytics tie into our Data Analytics and Visualisation. We will be using data that we have collected from the NBA to try and piece together trends in certain scenarios such as factors that add to a team winning the NBA playoffs or factors that lead a player winning the MVP award.
+We plan on gamifying the learning of our proposed language by incorporating it into an RPG game. An example of how it would work is that for example if the playable character was in a battle, they may have to answer questions on what certain vocabulary means. If three questions were asked and they were all answered correctly then your character would attack with 100% power whereas if only two questions were answered correctly then 66% power would be used against the enemy. This would give users incentive to answer questions correctly as it would have an immediate effect and help them to progress in the game. 
 
 
 ### Background
 
-The Ideas for our Project cam from both our passion for sport our love for web design and our experience from intra in 3rd year. Both of us are very interested in the sport of Basketball and thought that this would be a good way to get fans even more engaged in discussion surrounding the NBA as well as giving more professional figures such as scouts an informative and easy to read platform to view statistics on the league.
+This Idea came from the fact that we have a love for gaming and we both speak different languages apart from just English. We thought it would be good for people to be able to learn languages without having to do it in the usual mundane fashion that is implemented in schools or reading books.
 
 ### Achievements
 
-The Project will aim to provide many different features such as live match updates and league fixtures, NBA team and player statistics, a data dashboard to easily view stats in an informative way and predictive learning analytics statistics for the NBA’s foreseeable future.
-
-The users in question will be the general populous of people interested in the NBA as well as team scouts for teams in the league. 
-
+This would create a fun interactive way for people of practically any age and background to learn a new language.
 
 ### Justification
 
-The project will be useful as people interested in the league will be able to get key information on all the teams and players that they love. It can also be used by said people to collect accurate information in which they can use while discussing Basketball with their friends or colleagues on a day-to-day basis.
+It will be useful for people who just want to play a fun game, who are currently studying a new language or even people who possibly find themselves in a country where they are not familiar with the native language and want to have fun while learning how to speak that tongue.
 
 ### Programming language(s)
 
-Python3, PyDash, Heroku, Django, HTML, CSS, JavaScript
+Python3, PyGame, XML
 
 ### Programming tools / Tech stack
 
-Git, Pyunit for testing , JEST for front end testing, Gitlab Projects, NBA_API(undecided)
-
+Git, Pyunit for testing, Gitlab Projects
 ### Hardware
 
 N/A
 
 ### Learning Challenges
 
-Full stack development, data modelling, data visualisation, data prediction.
+Gamification, Computer Assisted Language Learning, Independent framework design, Research Informed Project
 
 ### Breakdown of work
 
-It must be clear from the explanation of this breakdown of work both that each student is responsible for separate, clearly defined tasks, and that those responsibilities substantially cover all of the work required for the project.
-
 Documentation for the project will be split evenly between both students to give a fair portion of work and experience to each of them. 
 
-Data analytics will be manned by Yann as he has good experience with this thanks to his internship. Although Fawwaz will still handle some of the analysis and learn how to go about doing so from Yann. Working like this will allow both students to learn as one will gain a better understanding of Data Analytics and Visualisation by teaching it whilst the other will be able to learn about it from somebody who has experienced it in the working industry.
+The Game Design aspect will be split more or less evenly between the two students. The creation of different sprites and movemen of different characters and AI will be handled by both students. The level design will also be a co-op effort to make sure that both students are able to get some good experience in all areas of the project.
 
-The web design aspect will be split more or less evenly between the two students, having a few pages given to each student to be created along with the css styling for said pages.
-
-The PyDash Dashboards will be split between each student evenly to give both a fair chance to learn the new software and add to their library of knowledge.
-
-Predictive learning analytics for the statistics will also be split evenly in work to give a fair chance to both students to learn such a new concept. This will be especially beneficial because it will help both students learn to think in different ways as well as learn different algorithms that go into predictive learning analytics.
-
-
+The Implementaion of the language learning mechanics will be researched by both students but seeing as Yann speaks French fluently he will be a big part of consulting in how the languag should be learnt. We beleive that since he speaks the language fluently that he will be able to give input on what is and isnt important in the initial stages of learning a language. Despite this being the case we will both still do extensive research on different techniques whe it comes to the teaching of a language.  
