@@ -9,7 +9,7 @@
 
 |                     |                   |
 |---------------------|-------------------|
-|Project Title:       | xxxxxxxxxx        |
+|Project Title:       | LingoLudus        |
 |Student 1 Name:      | Fawwaz Kekere-ekun|
 |Student 1 ID:        | 18408814          |
 |Student 2 Name:      | Yann Ndjatang     |
@@ -22,21 +22,18 @@
 ### Introduction
 
 
-
-The project that we have decided to do is based around mainly two areas; Gamification and Computer assisted language learning. We decided to go into this area as we have a love for games which led us to want to create a project in that area. We also decided to have a CALL element because we speak different languages and thought that it would be helpful to help people learn languages in a fun way.
-
-To explain Briefly, Gamification is a strategic attempt to enhance systems services and organisations by giving motivation in learning or achieving tasks by having them in a game format. In this case we wish to enhance the learning experience of languages using gamification.
+Our project idea is gamifying the learning of a new language such as French by using the CALL (Computer Assisted Language Learning) approach. The current philosophy of CALL puts a strong emphasis on student centred materials that allow learners to work on their own. Such materials may be structured or unstructured, but they normally embody two important features: interactive learning and individualised learning. We aim to create a game with a purpose, to facilitate the language learning process of a particular language such as french via a side scrolling game or a 2D RPG which are two very popular genres in the gaming community.
 
 
 ### Outline
 
 
-Outline the proposed project.
-The project will be a game called _______. We will be developing a game with a purpose that goes beyond enjoyment. We wish to enable people to learn languages with the aid of games to enhance motivation for said users. This will be created using a language independent framework so that our code can be adapted for other languages. 
+A research informed project called LingoLudus. We will be developing a game with a purpose that goes beyond enjoyment. A learning sidescrolling/RPG game that will incorporate characters, different visuals and sounds to enhance the language learning process of a language such as french. It will be device independent, made for pc using either unity or pygame(undecided). This will be created using a language independent framework with the use of modular design so our code can be adapted to other languages down the line.
 
 - Languages Proposed:
 
-We initially plan to use French as our initial language that we will be teaching in the game. We will attempt to split the learning of the language into different categories such as alphabet, vocabulary and tenses. 
+We initially plan to use French as our initial language that we will be teaching in the game. And select a particular topic such as the alphabet, vocabulary, tenses, etc.  
+
 - Gamification:
 
 We plan on gamifying the learning of our proposed language by incorporating it into an RPG game. An example of how it would work is that for example if the playable character was in a battle, they may have to answer questions on what certain vocabulary means. If three questions were asked and they were all answered correctly then your character would attack with 100% power whereas if only two questions were answered correctly then 66% power would be used against the enemy. This would give users incentive to answer questions correctly as it would have an immediate effect and help them to progress in the game. 
@@ -44,35 +41,38 @@ We plan on gamifying the learning of our proposed language by incorporating it i
 
 ### Background
 
-This Idea came from the fact that we have a love for gaming and we both speak different languages apart from just English. We thought it would be good for people to be able to learn languages without having to do it in the usual mundane fashion that is implemented in schools or reading books.
+The idea was proposed by our supervisor Monica, we decided to go with the idea because we have a strong interest in gaming and we’re both bilingual. With this combined we came to a conclusion that this would be a fun and challenging project to tackle as our final year project. 
 
 ### Achievements
 
-This would create a fun interactive way for people of practically any age and background to learn a new language.
+This would create a fun interactive way for people of any age and background to learn a new language.
 
 ### Justification
 
-It will be useful for people who just want to play a fun game, who are currently studying a new language or even people who possibly find themselves in a country where they are not familiar with the native language and want to have fun while learning how to speak that tongue.
+It will be useful for people with an interest in different languages who want to play a fun game while learning a new language. 
 
 ### Programming language(s)
 
-Python3, PyGame, XML
+Python3, PyGame, C# for Unity 
 
 ### Programming tools / Tech stack
 
-Git, Pyunit for testing, Gitlab Projects
+Git, Pyunit for testing, Gitlab Projects, Photoshop
+
 ### Hardware
 
 N/A
 
 ### Learning Challenges
 
-Gamification, Computer Assisted Language Learning, Independent framework design, Research Informed Project
+Gamification, Computer Assisted Language Learning, Independent framework design, Research Informed Project, C#, Unity gaming, Photoshop (character design), PyGame
+
 
 ### Breakdown of work
 
-Documentation for the project will be split evenly between both students to give a fair portion of work and experience to each of them. 
+Documentation for the project will be split evenly between both students to give a fair portion of work and experience to each of them.
 
-The Game Design aspect will be split more or less evenly between the two students. The creation of different sprites and movemen of different characters and AI will be handled by both students. The level design will also be a co-op effort to make sure that both students are able to get some good experience in all areas of the project.
+The Game Design aspect will be split more or less evenly between the two students. The creation of different sprites and movement of different characters and AI will be handled by both students. The level design will also be a co-op effort to make sure that both students are able to get some good experience in all areas of the project.
 
-The Implementaion of the language learning mechanics will be researched by both students but seeing as Yann speaks French fluently he will be a big part of consulting in how the languag should be learnt. We beleive that since he speaks the language fluently that he will be able to give input on what is and isnt important in the initial stages of learning a language. Despite this being the case we will both still do extensive research on different techniques whe it comes to the teaching of a language.  
+The Implementation of the language learning mechanics will be researched by both students but seeing as Yann speaks French fluently he will be a big part of consulting in how the language should be learnt. We believe that since he speaks the language fluently that he will be able to give input on what is and isn't important in the initial stages of learning a language. Despite this being the case we will both still do extensive research on different techniques when it comes to the teaching of a language.
+
