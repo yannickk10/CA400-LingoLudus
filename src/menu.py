@@ -37,8 +37,6 @@ height = screen.get_height()
 
 pressed_keys = pygame.key.get_pressed()
 
-background_image = pygame.image.load("Sprites/menu_background.jpg").convert()
-
 # defining a font
 smallfont = pygame.font.SysFont('Corbel',35)
 
@@ -69,7 +67,7 @@ while True:
 				pygame.quit()
 				
 	# fills the screen with a color
-	screen.blit(background_image, [0,0])
+	screen.fill(white)
 	
 	# stores the (x,y) coordinates into
 	# the variable as a tuple
