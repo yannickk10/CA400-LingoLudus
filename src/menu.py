@@ -1,12 +1,12 @@
 import pygame
 import sys
 
-def draw_button(button_colour, screen, width, height, mouse_pos):
-	if width/2-150 <= mouse[0] <= width/2+150 and height <= mouse[1] <= height+40:
-		pygame.draw.rect(screen,grey,[width/2-150,height,300,40])
+def draw_button(button_colour, screen, width, height, mouse_pos, alt):
+	if width/2-540 <= mouse[0] <= width/2+540 and height <= mouse[1] <= height+40:
+		pygame.draw.rect(screen,grey,[width/2-150,height,alt,40])
 		
 	else:
-		pygame.draw.rect(screen,black,[width/2-150,height,300,40])
+		pygame.draw.rect(screen,black,[width/2-150,height,alt,40])
 
 
 # initializing the constructor
@@ -36,6 +36,8 @@ width = screen.get_width()
 height = screen.get_height()
 
 pressed_keys = pygame.key.get_pressed()
+
+background_image = pygame.image.load("src/images/LiLu_Logo.png").convert()
 
 # defining a font
 smallfont = pygame.font.SysFont('Corbel',35)
@@ -67,7 +69,7 @@ while True:
 				pygame.quit()
 				
 	# fills the screen with a color
-	screen.fill(white)
+	screen.blit(background_image, [0,0])
 	
 	# stores the (x,y) coordinates into
 	# the variable as a tuple
@@ -77,16 +79,18 @@ while True:
 	# changes to lighter shade
 
 	# Draw Buttons
-	button_height = 40
+	button_height = 280
 	i = 0
-	while i <= 7:
-		draw_button(grey, screen, width, button_height, mouse)
-		button_height += 120
+	while i <= 4:
+		if (i % 2) == 0:
+			draw_button(grey, screen, width, button_height, mouse,540)
+			button_height += 120
+		else:
+			draw_button(grey, screen, width-480 , button_height, mouse,540)
+			button_height += 120
 		i += 1
 	
 	# superimposing the text onto our button
-	screen.blit(sel_lang , (width/2-150,45))
-	screen.blit(new_game , (width/2-150,165))
 	screen.blit(load_game , (width/2-150,285))
 	screen.blit(view_stats , (width/2-150,405))
 	screen.blit(sel_lang , (width/2-150,525))
