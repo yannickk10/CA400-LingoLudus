@@ -132,7 +132,7 @@ def space_invaders():
 			screen.blit(item.surf, item.rect)
 
 		if pygame.sprite.spritecollideany(player, enemies):
-			screen.blit((0,0,0,), [0,0])
+			screen.fill((0, 0, 0))
 			player.kill()
 			gameLoop = False
 		
