@@ -1,4 +1,5 @@
 import pygame
+import test as gt
 import sys
 
 def draw_button(button_colour, screen, width, height, mouse_pos, alt):
@@ -37,7 +38,7 @@ height = screen.get_height()
 
 pressed_keys = pygame.key.get_pressed()
 
-background_image = pygame.image.load("src/images/LiLu_Logo.png").convert()
+background_image = pygame.image.load("images/LiLu_Logo.png").convert()
 
 # defining a font
 smallfont = pygame.font.SysFont('Corbel',35)
@@ -49,8 +50,7 @@ sel_lang = smallfont.render('Select Language' , True , white)
 new_game = smallfont.render('New Game' , True , white)
 load_game = smallfont.render('Load Game' , True , white)
 view_stats = smallfont.render('Select Language' , True , white)
-sel_lang = smallfont.render('Select Language' , True , white)
-sel_lang = smallfont.render('Select Language' , True , white)
+quit_game = smallfont.render('Quit Game' , True , white)
 
 
 while True:
@@ -65,8 +65,13 @@ while True:
 			
 			#if the mouse is clicked on the
 			# button the game is terminated
-			if width/2 <= mouse[0] <= width/2+120 and height/2 <= mouse[1] <= height/2+40:
+
+			if 0 <= mouse[0] <= width/2+150 and 645 <= mouse[1] <= 645+40:
 				pygame.quit()
+
+			else:
+				if 0 <= mouse[0] <= width/2+150 and 285 <= mouse[1] <= 285+40:
+					gt.space_invaders()
 				
 	# fills the screen with a color
 	screen.blit(background_image, [0,0])
@@ -92,9 +97,9 @@ while True:
 	
 	# superimposing the text onto our button
 	screen.blit(load_game , (width/2-150,285))
-	screen.blit(view_stats , (width/2-150,405))
+	screen.blit(new_game , (width/2-150,405))
 	screen.blit(sel_lang , (width/2-150,525))
-	screen.blit(sel_lang , (width/2-150,645))
+	screen.blit(quit_game , (width/2-150,645))
 
 	
 	# updates the frames of the game
