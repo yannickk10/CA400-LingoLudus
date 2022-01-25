@@ -41,15 +41,17 @@ pressed_keys = pygame.key.get_pressed()
 background_image = pygame.image.load("images/LiLu_Logo.png").convert()
 
 # defining a font
-smallfont = pygame.font.SysFont('Corbel',35)
+smallfont = pygame.font.SysFont('curlz',30)
+print(pygame.font.get_fonts())
 
 # rendering a text written in
 # this font
 
 sel_lang = smallfont.render('Select Language' , True , white)
+Game_sel = smallfont.render('Game Selection' , True , white)
 new_game = smallfont.render('New Game' , True , white)
 load_game = smallfont.render('Load Game' , True , white)
-view_stats = smallfont.render('Select Language' , True , white)
+view_stats = smallfont.render('View Stats' , True , white)
 quit_game = smallfont.render('Quit Game' , True , white)
 
 
@@ -66,7 +68,7 @@ while True:
 			#if the mouse is clicked on the
 			# button the game is terminated
 
-			if 0 <= mouse[0] <= width/2+150 and 645 <= mouse[1] <= 645+40:
+			if 0 <= mouse[0] <= width/2+150 and 645 <= mouse[1] <= 605+40:
 				pygame.quit()
 
 			else:
@@ -89,17 +91,16 @@ while True:
 	while i <= 4:
 		if (i % 2) == 0:
 			draw_button(grey, screen, width, button_height, mouse,540)
-			button_height += 120
+			button_height += 160
 		else:
 			draw_button(grey, screen, width-480 , button_height, mouse,540)
-			button_height += 120
+			button_height += 160
 		i += 1
 	
 	# superimposing the text onto our button
-	screen.blit(load_game , (width/2-150,285))
-	screen.blit(new_game , (width/2-150,405))
-	screen.blit(sel_lang , (width/2-150,525))
-	screen.blit(quit_game , (width/2-150,645))
+	screen.blit(new_game , (width/2-150,285))
+	screen.blit(sel_lang , (width/2-150,445))
+	screen.blit(quit_game , (width/2-150,605))
 
 	
 	# updates the frames of the game
