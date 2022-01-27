@@ -22,6 +22,8 @@ screen = pygame.display.set_mode(res)
 # white color
 white = (255,255,255)
 
+red = (255,0,0)
+
 # light shade of the button
 grey = (170,170,170)
 
@@ -41,12 +43,13 @@ pressed_keys = pygame.key.get_pressed()
 background_image = pygame.image.load("images/LiLu_Logo.png").convert()
 
 # defining a font
-smallfont = pygame.font.SysFont('curlz',30)
+smallfont = pygame.font.SysFont('twcencondensedextra',30)
+bigfont = pygame.font.SysFont('lucidafax',40)
 print(pygame.font.get_fonts())
 
 # rendering a text written in
 # this font
-
+main_menu = bigfont.render('Main menu' , True , red)
 sel_lang = smallfont.render('Select Language' , True , white)
 Game_sel = smallfont.render('Game Selection' , True , white)
 new_game = smallfont.render('New Game' , True , white)
@@ -68,11 +71,11 @@ while True:
 			#if the mouse is clicked on the
 			# button the game is terminated
 
-			if 0 <= mouse[0] <= width/2+150 and 645 <= mouse[1] <= 605+40:
+			if width/2+150 <= mouse[0] <=0 and 645 <= mouse[1] <= 640+40:
 				pygame.quit()
 
 			else:
-				if 0 <= mouse[0] <= width/2+150 and 285 <= mouse[1] <= 285+40:
+				if width/2+150 <= mouse[0] <= 0 and 285 <= mouse[1] <= 320+40:
 					gt.space_invaders()
 				
 	# fills the screen with a color
@@ -86,7 +89,7 @@ while True:
 	# changes to lighter shade
 
 	# Draw Buttons
-	button_height = 280
+	button_height = 320
 	i = 0
 	while i <= 4:
 		if (i % 2) == 0:
@@ -98,9 +101,10 @@ while True:
 		i += 1
 	
 	# superimposing the text onto our button
-	screen.blit(new_game , (width/2-150,285))
-	screen.blit(sel_lang , (width/2-150,445))
-	screen.blit(quit_game , (width/2-150,605))
+	screen.blit(main_menu , (width/2-110,250))
+	screen.blit(new_game , (width/2-75,320))
+	screen.blit(sel_lang , (width/2-105,480))
+	screen.blit(quit_game , (width/2-75,640))
 
 	
 	# updates the frames of the game
