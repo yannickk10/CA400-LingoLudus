@@ -45,7 +45,6 @@ background_image = pygame.image.load("images/LiLu_Logo.png").convert()
 # defining a font
 smallfont = pygame.font.SysFont('twcencondensedextra',30)
 bigfont = pygame.font.SysFont('lucidafax',40)
-print(pygame.font.get_fonts())
 
 # rendering a text written in
 # this font
@@ -71,11 +70,11 @@ while True:
 			#if the mouse is clicked on the
 			# button the game is terminated
 
-			if width/2+150 <= mouse[0] <=0 and 645 <= mouse[1] <= 640+40:
+			if width/2+150 <= mouse[0] <= 0 and 640 <= mouse[1] <= 640+40:
 				pygame.quit()
 
 			else:
-				if width/2+150 <= mouse[0] <= 0 and 285 <= mouse[1] <= 320+40:
+				if width/2+150 <= mouse[0] <= 0 and 320 <= mouse[1] <= 320+40:
 					gt.space_invaders()
 				
 	# fills the screen with a color
