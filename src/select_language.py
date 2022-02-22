@@ -14,7 +14,7 @@ def language_select():
 
 			self.bottom_rectangle = pygame.Rect(pos, (width,elevation))
 			self.bottom_rectangle_color = '#354B5E'
-			
+
 			self.orig_elevation = elevation
 			self.elevation_copy = elevation
 			self.original_y_position = pos[1]
@@ -24,7 +24,7 @@ def language_select():
 		def draw(self):
 			self.top_rectangle.y = self.original_y_position - self.elevation_copy
 			self.text_rect.center = self.top_rectangle.center
-			
+
 			self.bottom_rectangle.midtop = self.top_rectangle.midtop
 			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
@@ -55,7 +55,7 @@ def language_select():
 		def draw(self):
 			self.top_rectangle.y = self.original_y_position - self.elevation_copy
 			self.text_rect.center = self.top_rectangle.center
-			
+
 			self.bottom_rectangle.midtop = self.top_rectangle.midtop
 			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
@@ -87,7 +87,7 @@ def language_select():
 		def draw(self):
 			self.top_rectangle.y = self.original_y_position - self.elevation_copy
 			self.text_rect.center = self.top_rectangle.center
-			
+
 			self.bottom_rectangle.midtop = self.top_rectangle.midtop
 			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
@@ -97,7 +97,7 @@ def language_select():
 			screen.blit(self.text_surf, self.text_rect)
 			if self.if_pressed() == True:
 				return False
-		
+
 		def if_pressed(self):
 			mouse_position = pygame.mouse.get_pos()
 			if self.top_rectangle.collidepoint(mouse_position):
@@ -110,7 +110,7 @@ def language_select():
 						self.pressed = False
 						self.elevation_copy = self.orig_elevation
 						return True
-					
+
 			else:
 				self.top_rectangle_color = '#475F77'
 				self.elevation_copy = self.orig_elevation
@@ -120,7 +120,7 @@ def language_select():
 		def draw(self):
 			self.top_rectangle.y = self.original_y_position - self.elevation_copy
 			self.text_rect.center = self.top_rectangle.center
-			
+
 			self.bottom_rectangle.midtop = self.top_rectangle.midtop
 			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
@@ -190,12 +190,12 @@ def language_select():
 
 	# Main loop
 	while gameLoop:
-		
+
 		for ev in pygame.event.get():
-			
+
 			if ev.type == pygame.QUIT:
 				pygame.quit()
-					
+
 		# fills the screen with a color
 		screen.fill('#F8F0E3')
 		screen.blit(background_image, [0,0])
@@ -204,11 +204,11 @@ def language_select():
 			game_sel_menu.game_hub("Spansih")
 		if select_spanish_button.draw() == False:
 			game_sel_menu.game_hub("French")
-		
+
 		if go_back_button.draw() == False:
 			gameLoop = False
 
 
-		
+
 		# updates the frames of the game
 		pygame.display.update()

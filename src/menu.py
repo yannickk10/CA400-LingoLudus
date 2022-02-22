@@ -113,7 +113,7 @@ def main_menu():
 
 	pressed_keys = pygame.key.get_pressed()
 
-	background_image = pygame.image.load("images/lingoludus.png").convert()
+	background_image = pygame.image.load("images/LiLu_Logo.png").convert()
 
 	# defining a font
 	gui_font = pygame.font.Font(None, 30)
