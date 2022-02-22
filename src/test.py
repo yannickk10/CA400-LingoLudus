@@ -103,12 +103,15 @@ def space_invaders():
 			if event.type == KEYDOWN:
 				# If the Esc key is pressed, then exit the main loop
 				if event.key == K_ESCAPE:
-					screen.blit((0,0,0,), [0,0])
+					screen.fill((0,0,0))
 					gameLoop = False
+					break
+
 			# Check for QUIT event. If QUIT, then set gameLoop to false.
 			elif event.type == QUIT:
-				screen.blit((0,0,0,), [0,0])
+				screen.fill((0,0,0))
 				gameLoop = False
+				break
 
 			elif event.type == AddEnemy:
 				new_enemy = Enemy()
@@ -132,7 +135,6 @@ def space_invaders():
 			screen.blit(item.surf, item.rect)
 
 		if pygame.sprite.spritecollideany(player, enemies):
-			screen.fill((0, 0, 0))
 			player.kill()
 			gameLoop = False
 		
