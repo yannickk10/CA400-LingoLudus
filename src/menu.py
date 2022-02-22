@@ -15,7 +15,7 @@ def main_menu():
 
 			self.bottom_rectangle = pygame.Rect(pos, (width,elevation))
 			self.bottom_rectangle_color = '#354B5E'
-			
+
 			self.orig_elevation = elevation
 			self.elevation_copy = elevation
 			self.original_y_position = pos[1]
@@ -25,7 +25,7 @@ def main_menu():
 		def draw(self):
 			self.top_rectangle.y = self.original_y_position - self.elevation_copy
 			self.text_rect.center = self.top_rectangle.center
-			
+
 			self.bottom_rectangle.midtop = self.top_rectangle.midtop
 			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
@@ -51,7 +51,7 @@ def main_menu():
 				self.elevation_copy = self.orig_elevation
 
 	class StartGameButton(Button):
-		
+
 		def if_pressed(self):
 			mouse_position = pygame.mouse.get_pos()
 			if self.top_rectangle.collidepoint(mouse_position):
@@ -113,7 +113,7 @@ def main_menu():
 
 	pressed_keys = pygame.key.get_pressed()
 
-	background_image = pygame.image.load("images/LiLu_Logo.png").convert()
+	background_image = pygame.image.load("images/lingoludus.png").convert()
 
 	# defining a font
 	gui_font = pygame.font.Font(None, 30)
@@ -125,19 +125,19 @@ def main_menu():
 
 	# Main loop
 	while gameLoop:
-		
+
 		for ev in pygame.event.get():
-			
+
 			if ev.type == pygame.QUIT:
 				pygame.quit()
-					
+
 		# fills the screen with a color
 		screen.fill('#F8F0E3')
 		screen.blit(background_image, [0,0])
 
 		start_game_button.draw()
 		quit_game_button.draw()
-		
+
 		# updates the frames of the game
 		pygame.display.update()
 
