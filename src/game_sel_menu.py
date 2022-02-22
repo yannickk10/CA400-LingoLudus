@@ -2,105 +2,161 @@ import pygame
 import test as gt
 import sys
 
-def draw_button(button_colour, screen, width, height, mouse_pos, alt):
-	if width/2-540 <= mouse[0] <= width/2+540 and height <= mouse[1] <= height+40:
-		pygame.draw.rect(screen,grey,[width/2-150,height,alt,40])
-		
-	else:
-		pygame.draw.rect(screen,black,[width/2-150,height,alt,40])
+import pygame, sys
 
 
-# initializing the constructor
-pygame.init()
+def game_hub(language):
 
-# screen resolution
-res = (720,720)
+	class Button:
+		def __init__(self, text, width, height, pos,elevation):
+			self.top_rectangle = pygame.Rect(pos, (width,height))
+			self.top_rectangle_color = '#475F77'
 
-# opens up a window
-screen = pygame.display.set_mode(res)
+			self.text_surf = gui_font.render(text,True,'#FFFFFF')
+			self.text_rect = self.text_surf.get_rect(center = self.top_rectangle.center)
 
-# white color
-white = (255,255,255)
-
-# light shade of the button
-grey = (170,170,170)
-
-# dark shade of the button
-black = (100,100,100)
-
-# stores the width of the
-# screen into a variable
-width = screen.get_width()
-
-# stores the height of the
-# screen into a variable
-height = screen.get_height()
-
-pressed_keys = pygame.key.get_pressed()
-
-background_image = pygame.image.load("images/LiLu_Logo.png").convert()
-
-# defining a font
-smallfont = pygame.font.SysFont('Corbel',35)
-
-# rendering a text written in
-# this font
-
-sel_lang = smallfont.render('Select Language' , True , white)
-new_game = smallfont.render('New Game' , True , white)
-load_game = smallfont.render('Load Game' , True , white)
-view_stats = smallfont.render('Select Language' , True , white)
-quit_game = smallfont.render('Quit Game' , True , white)
-
-
-while True:
-	
-	for ev in pygame.event.get():
-		
-		if ev.type == pygame.QUIT:
-			pygame.quit()
+			self.bottom_rectangle = pygame.Rect(pos, (width,elevation))
+			self.bottom_rectangle_color = '#354B5E'
 			
-		#checks if a mouse is clicked
-		if ev.type == pygame.MOUSEBUTTONDOWN:
+			self.orig_elevation = elevation
+			self.elevation_copy = elevation
+			self.original_y_position = pos[1]
+
+			self.pressed = False
+
+		def draw(self):
+			self.top_rectangle.y = self.original_y_position - self.elevation_copy
+			self.text_rect.center = self.top_rectangle.center
 			
-			#if the mouse is clicked on the
-			# button the game is terminated
+			self.bottom_rectangle.midtop = self.top_rectangle.midtop
+			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
-			if 0 <= mouse[0] <= width/2+150 and 645 <= mouse[1] <= 645+40:
-				pygame.quit()
+			pygame.draw.rect(screen,self.bottom_rectangle_color, self.bottom_rectangle, border_radius=12)
 
+			pygame.draw.rect(screen,self.top_rectangle_color, self.top_rectangle, border_radius=12)
+			screen.blit(self.text_surf, self.text_rect)
+			self.if_pressed()
+
+		def if_pressed(self):
+			mouse_position = pygame.mouse.get_pos()
+			if self.top_rectangle.collidepoint(mouse_position):
+				self.top_rectangle_color = '#D74B4B'
+				if pygame.mouse.get_pressed()[0]:
+					self.elevation_copy = 0
+					self.pressed = True
+				else:
+					if self.pressed == True:
+						print('click')
+					self.pressed = False
+					self.elevation_copy = self.orig_elevation
 			else:
-				if 0 <= mouse[0] <= width/2+150 and 285 <= mouse[1] <= 285+40:
-					gt.space_invaders()
-				
-	# fills the screen with a color
-	screen.blit(background_image, [0,0])
-	
-	# stores the (x,y) coordinates into
-	# the variable as a tuple
-	mouse = pygame.mouse.get_pos()
-	
-	# if mouse is hovered on a button it
-	# changes to lighter shade
+				self.top_rectangle_color = '#475F77'
+				self.elevation_copy = self.orig_elevation
 
-	# Draw Buttons
-	button_height = 280
-	i = 0
-	while i <= 4:
-		if (i % 2) == 0:
-			draw_button(grey, screen, width, button_height, mouse,540)
-			button_height += 120
-		else:
-			draw_button(grey, screen, width-480 , button_height, mouse,540)
-			button_height += 120
-		i += 1
-	
-	# superimposing the text onto our button
-	screen.blit(load_game , (width/2-150,285))
-	screen.blit(new_game , (width/2-150,405))
-	screen.blit(sel_lang , (width/2-150,525))
-	screen.blit(quit_game , (width/2-150,645))
+	class WordInvadersButton(Button):
+		
+		def if_pressed(self):
+			mouse_position = pygame.mouse.get_pos()
+			if self.top_rectangle.collidepoint(mouse_position):
+				self.top_rectangle_color = '#D74B4B'
+				if pygame.mouse.get_pressed()[0]:
+					self.elevation_copy = 0
+					self.pressed = True
+				else:
+					if self.pressed == True:
+						gt.space_invaders()
+					self.pressed = False
+					self.elevation_copy = self.orig_elevation
+			else:
+				self.top_rectangle_color = '#475F77'
+				self.elevation_copy = self.orig_elevation
 
+	class GoBackButton (Button):
+
+		def draw(self):
+			self.top_rectangle.y = self.original_y_position - self.elevation_copy
+			self.text_rect.center = self.top_rectangle.center
+			
+			self.bottom_rectangle.midtop = self.top_rectangle.midtop
+			self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
+
+			pygame.draw.rect(screen,self.bottom_rectangle_color, self.bottom_rectangle, border_radius=12)
+
+			pygame.draw.rect(screen,self.top_rectangle_color, self.top_rectangle, border_bottom_left_radius=12, border_top_left_radius=12)
+			screen.blit(self.text_surf, self.text_rect)
+			if self.if_pressed() == True:
+				return False
+
+		def if_pressed(self):
+			mouse_position = pygame.mouse.get_pos()
+			if self.top_rectangle.collidepoint(mouse_position):
+				self.top_rectangle_color = '#D74B4B'
+				if pygame.mouse.get_pressed()[0]:
+					self.elevation_copy = 0
+					self.pressed = True
+				else:
+					if self.pressed == True:
+						self.pressed = False
+						self.elevation_copy = self.orig_elevation
+						return True
+			else:
+				self.top_rectangle_color = '#475F77'
+				self.elevation_copy = self.orig_elevation
+
+	# initializing the constructor
+	pygame.init()
+
+	# screen resolution
+	res = (720,720)
+
+	# opens up a window
+	screen = pygame.display.set_mode(res)
+
+	# white color
+	white = (255,255,255)
+
+	# light shade of the button
+	grey = (170,170,170)
+
+	# dark shade of the button
+	black = (100,100,100)
+
+	# stores the width of the
+	# screen into a variable
+	width = screen.get_width()
+
+	# stores the height of the
+	# screen into a variable
+	height = screen.get_height()
+
+	pressed_keys = pygame.key.get_pressed()
+
+	background_image = pygame.image.load("images/LiLu_Logo.png").convert()
+
+	# defining a font
+	gui_font = pygame.font.Font(None, 30)
+
+
+	word_invaders_button = WordInvadersButton('Play Word Invaders', 200, 40, (width/2-100,300), 6)
+	go_back_button = GoBackButton('Back', 80, 40, (10,670), 6)
 	
-	# updates the frames of the game
-	pygame.display.update()
+	gameLoop = True
+
+	# Main loop
+	while gameLoop:
+		
+		for ev in pygame.event.get():
+			
+			if ev.type == pygame.QUIT:
+				pygame.quit()
+					
+		# fills the screen with a color
+		screen.fill('#F8F0E3')
+		screen.blit(background_image, [0,0])
+
+		word_invaders_button.draw()
+		if go_back_button.draw() == False:
+			gameLoop = False
+		
+		# updates the frames of the game
+		pygame.display.update()
