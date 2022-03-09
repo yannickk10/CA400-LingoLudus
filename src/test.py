@@ -37,8 +37,8 @@ def space_invaders():
 	while gameLoop:
 		# for loop through the event queue
 
-		AddEnemy = pygame.USEREVENT + 1
-		pygame.time.set_timer(AddEnemy, 3500)
+		# Get all the keys currently pressed
+		pressed_keys = pygame.key.get_pressed()
 
 		for event in pygame.event.get():
 			# Check for KEYDOWN event
@@ -61,10 +61,6 @@ def space_invaders():
 					enemies.add(vehicles)
 					all_sprites.add(vehicles)
 					print(spanish_vehicles)
-
-
-		# Get all the keys currently pressed
-		pressed_keys = pygame.key.get_pressed()
 
 		# Update the player sprite based on user keypresses
 		player.update(pressed_keys)
