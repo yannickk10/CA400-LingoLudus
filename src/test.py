@@ -86,6 +86,7 @@ def space_invaders():
         player.bullets.draw(screen)
         enemy_spawner.enemy_group.draw(screen)
         enemy_spawner.enemy_imposter.draw(screen)
+		player.hud_stats.draw(screen)
 
 
 
