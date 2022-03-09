@@ -33,6 +33,9 @@ class EnemySpawner:
             new_enemy_imposter = Enemy(imposter_sprite[0], imposter_sprite[1])
             self.enemy_imposter.add(new_enemy_imposter)
 
+            #Get imposter name
+            self.enemy_imposter_name_pos = spanish_vehicles_list.index(imposter_sprite)
+            self.enemy_imposter_name = (spanish_vehicles_key_list[self.enemy_imposter_name_pos])
 
             spanish_vehicles_list = list(shuffled_spanish_vehicles.values())
             spanish_vehicles_key_list = list(shuffled_spanish_vehicles.keys())
