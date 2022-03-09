@@ -17,10 +17,6 @@ from pygame.locals import (
 
 def space_invaders():
 
-	# Define constants for the screen width and height
-	SCREEN_WIDTH = 720
-	SCREEN_HEIGHT = 720
-
 	# Define a player object by extending pygame.sprite.Sprite
 	# The surface drawn on the screen is now an attribute of 'player'
 
