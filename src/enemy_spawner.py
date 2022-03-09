@@ -30,7 +30,7 @@ class EnemySpawner:
 
             #Create new enemies
             i = 0
-            while i < 2:
+            while i < 4:
                 enemy_sprite = spanish_vehicles_list[random.randint(0,len(spanish_vehicles_list)-2)]
                 new_enemy = Enemy(enemy_sprite[0], enemy_sprite[1])
 
