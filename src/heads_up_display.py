@@ -15,4 +15,4 @@ class HUD (pygame.sprite.Sprite):
         self.player_score.add(self.score_object)
 
     def update(self):
-        pass
+        self.player_score.update()
