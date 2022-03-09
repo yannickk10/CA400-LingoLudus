@@ -63,7 +63,6 @@ class Player(pygame.sprite.Sprite):
         self.bullets.add(new_bullet)
 
     def get_hit(self):
-        print(self.health)
         self.health  -= 1
         if self.health < 0:
             self.kill()
