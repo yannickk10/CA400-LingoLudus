@@ -21,9 +21,6 @@ def space_invaders():
 	SCREEN_WIDTH = 720
 	SCREEN_HEIGHT = 720
 
-	# Define a player object by extending pygame.sprite.Sprite
-	# The surface drawn on the screen is now an attribute of 'player'
-
 	# Move the sprite based on user keypresses
 	class Player(pygame.sprite.Sprite):
 		def __init__(self):
@@ -55,7 +52,7 @@ def space_invaders():
 				self.rect.top = 0
 			if self.rect.bottom >= 620:
 				self.rect.bottom = 620
-			
+
 			if self.player_health == 0:
 				self.kill()
 
@@ -102,7 +99,7 @@ def space_invaders():
 			self.heart_bg.set_colorkey((255, 255, 255), RLEACCEL)
 			self.heart.set_colorkey((255, 255, 255), RLEACCEL)
 			self.rect = self.heart_border.get_rect(center=(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50))
-		
+
 		def draw_heart(self, pos):
 			screen.blit(self.heart_border, pos)
 			screen.blit(self.heart_bg, pos)
@@ -124,7 +121,7 @@ def space_invaders():
 	# Instantiate player. Right now, this is just a rectangle.
 	player = Player()
 	health = Health()
-	enemy_spawner = EnemySpawner() 
+	enemy_spawner = EnemySpawner()
 	all_sprites = pygame.sprite.Group()
 	all_sprites.add(player)
 
@@ -169,7 +166,7 @@ def space_invaders():
 					enemies.add(vehicles)
 					all_sprites.add(vehicles)
 					print(spanish_vehicles)
-		
+
 
 		# Get all the keys currently pressed
 		pressed_keys = pygame.key.get_pressed()
