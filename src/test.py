@@ -75,6 +75,10 @@ def space_invaders():
         for player, enemy in player_enemy_collision.items():
             player.get_hit()
             enemy[0].get_hit()
+            if player.health <= 0:
+                player.kill()
+                gameLoop = False
+                break
 
 
         # Draw the player on the screen
