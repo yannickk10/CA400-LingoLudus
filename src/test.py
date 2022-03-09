@@ -66,6 +66,11 @@ def space_invaders():
             player.hud.score_object.update_score(enemy[0].enemy_score)
             enemy[0].get_hit()
 
+        #bullet and imposter
+        bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
+        for bullet, enemy in bullet_imposter_collision .items():
+            enemy[0].get_hit()
+
 
         # Draw the player on the screen
         all_sprites.draw(screen)
