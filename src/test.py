@@ -1,6 +1,8 @@
 # Import the pygame module
 import pygame
 import random
+from ship import Player
+from settings import *
 
 # Import pygame.locals for easier access to key coordinates
 # Updated to conform to flake8 and black standards
@@ -16,10 +18,6 @@ from pygame.locals import (
 )
 
 def space_invaders():
-
-	# Define constants for the screen width and height
-	SCREEN_WIDTH = 720
-	SCREEN_HEIGHT = 720
 
 	class Enemy(pygame.sprite.Sprite):
 		def __init__(self, sprite, backing_colour):
