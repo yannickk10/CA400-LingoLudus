@@ -20,3 +20,8 @@ class Enemy(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.move_ip(-self.speed, 0)
+
+    def get_hit(self):
+        self.health -= 1
+        if self.health <= 0:
+            self.kill()
