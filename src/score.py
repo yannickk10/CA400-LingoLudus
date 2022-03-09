@@ -13,7 +13,7 @@ class Score(pygame.sprite.Sprite):
 
     
 
-    def update_score(self):
+    def update_score(self, score):
         self.score += score
         self.font = pygame.font.Font('freesansbold.ttf', 32)
         self.image = self.font.render("Score:" + str(self.score), False, (255,255,255))
