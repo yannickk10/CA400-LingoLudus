@@ -28,6 +28,9 @@ class EnemySpawner:
             random.shuffle(spanish_vehicles_lis)
             shuffled_spanish_vehicles = dict(spanish_vehicles_lis)
 
+            spanish_vehicles_list = list(shuffled_spanish_vehicles.values())
+            spanish_vehicles_key_list = list(shuffled_spanish_vehicles.keys())
+        
             #create imposter
             imposter_sprite = spanish_vehicles_list[len(spanish_vehicles_list)-1]
             new_enemy_imposter = Enemy(imposter_sprite[0], imposter_sprite[1])
