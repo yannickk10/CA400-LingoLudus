@@ -14,3 +14,15 @@ class Player(pygame.sprite.Sprite):
         #creating the bullet group for the ships bullets
         self.bullets = pygame.sprite.Group()
         self.shoot_cooldown = 0
+
+    def update(self, pressed_keys):
+        #update the players movements based on inputs
+
+        if pressed_keys[pygame.K_UP]:
+            self.rect.move_ip(0, -10)
+        if pressed_keys[pygame.K_DOWN]:
+            self.rect.move_ip(0, 10)
+        if pressed_keys[pygame.K_LEFT]:
+            self.rect.move_ip(-10, 0)
+        if pressed_keys[pygame.K_RIGHT]:
+            self.rect.move_ip(10, 0)
