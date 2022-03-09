@@ -32,6 +32,10 @@ def space_invaders():
 			self.surf.set_colorkey((255,255,255), RLEACCEL)
 			self.rect = self.surf.get_rect()
 
+		#Player Health:
+
+			self.player_health = 3
+
 		def update(self, pressed_keys):
 			if pressed_keys[K_UP]:
 				self.rect.move_ip(0, -10)
@@ -49,26 +53,64 @@ def space_invaders():
 				self.rect.right = SCREEN_WIDTH
 			if self.rect.top <= 0:
 				self.rect.top = 0
-			if self.rect.bottom >= SCREEN_HEIGHT:
-				self.rect.bottom = SCREEN_HEIGHT
+			if self.rect.bottom >= 620:
+				self.rect.bottom = 620
+			
+			if self.player_health == 0:
+				self.kill()
 
 	class Enemy(pygame.sprite.Sprite):
-		def __init__(self):
+		def __init__(self, sprite, backing_colour):
 			super(Enemy, self).__init__()
-			self.surf = pygame.image.load("Sprites/projectile.gif")
-			self.surf.set_colorkey((0,0,0), RLEACCEL)
+			self.surf = pygame.image.load(sprite).convert_alpha()
+			#self.surf.set_colorkey(backing_colour, RLEACCEL)
 			self.rect = self.surf.get_rect(center=(
 					random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 100),
-					random.randint(0, SCREEN_HEIGHT),))
+					random.randint(0, SCREEN_HEIGHT- 120),))
 
-			self.speed = random.randint(5, 20)
+			self.speed = random.randint(5,6)
 
 
 		def update(self):
 			self.rect.move_ip(-self.speed, 0)
 			if self.rect.right <= 0:
 				self.kill()
-			
+
+
+	class EnemySpawner:
+		def __init__(self):
+			self.enemy_group = pygame.sprite.Group()
+			self.spawntimer  = random.randrange(30,120)
+
+		def update(self):
+			self.enemy_group.update()
+			if self.spawn_timer == 0:
+				self.spawn_enemy()
+				self.spawntimer = random.randrange(30, 120)
+
+		def spawn_enemy(self):
+			new_enemy = Enemy()
+			self.enemy_group.add(new_enemy)
+
+
+	class Health(pygame.sprite.Sprite):
+		def __init__(self):
+			self.heart_border = pygame.image.load("Sprites/heart_border.png").convert()
+			self.heart_bg = pygame.image.load("Sprites/heart_bg.png").convert()
+			self.heart = pygame.image.load("Sprites/heart.png").convert()
+			self.heart_border.set_colorkey((255, 255, 255), RLEACCEL)
+			self.heart_bg.set_colorkey((255, 255, 255), RLEACCEL)
+			self.heart.set_colorkey((255, 255, 255), RLEACCEL)
+			self.rect = self.heart_border.get_rect(center=(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50))
+		
+		def draw_heart(self, pos):
+			screen.blit(self.heart_border, pos)
+			screen.blit(self.heart_bg, pos)
+			screen.blit(self.heart, pos)
+
+		def display_health(self):
+			self.draw_heart(self.rect)
+
 
 	# Initialize pygame
 	pygame.init()
@@ -79,18 +121,22 @@ def space_invaders():
 	# The size is determined by the constant SCREEN_WIDTH and SCREEN_HEIGHT
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-	AddEnemy = pygame.USEREVENT + 1
-	pygame.time.set_timer(AddEnemy, 250)
-
 	# Instantiate player. Right now, this is just a rectangle.
 	player = Player()
-	enemies = pygame.sprite.Group()
+	health = Health()
+	enemy_spawner = EnemySpawner() 
 	all_sprites = pygame.sprite.Group()
 	all_sprites.add(player)
 
+	spanish_vehicles ={
+    "projectile":  Enemy("Sprites/projectile.gif", (0,0,0)),
+    "cars": Enemy("Sprites/Car.png", (0,0,0)),
+    "train": Enemy("Sprites/Train.png", (255,255,255))
+	}
+
 	# Setup the clock for a decent framerate
 	clock = pygame.time.Clock()
-	background_image = pygame.image.load("Sprites/nightcity.jpg").convert()
+	background_image = pygame.image.load("Sprites/cloud_sky_bg.png").convert()
 
 	# Variable to keep the main loop gameLoop
 	gameLoop = True
@@ -98,6 +144,10 @@ def space_invaders():
 	# Main loop
 	while gameLoop:
 		# for loop through the event queue
+
+		AddEnemy = pygame.USEREVENT + 1
+		pygame.time.set_timer(AddEnemy, 3500)
+
 		for event in pygame.event.get():
 			# Check for KEYDOWN event
 			if event.type == KEYDOWN:
@@ -113,10 +163,13 @@ def space_invaders():
 				gameLoop = False
 				break
 
+
 			elif event.type == AddEnemy:
-				new_enemy = Enemy()
-				enemies.add(new_enemy)
-				all_sprites.add(new_enemy)
+				for vehicles in spanish_vehicles.values():
+					enemies.add(vehicles)
+					all_sprites.add(vehicles)
+					print(spanish_vehicles)
+		
 
 		# Get all the keys currently pressed
 		pressed_keys = pygame.key.get_pressed()
@@ -133,11 +186,10 @@ def space_invaders():
 		# Draw the player on the screen
 		for item in all_sprites:
 			screen.blit(item.surf, item.rect)
+		health.display_health()
+		print(enemies)
 
-		if pygame.sprite.spritecollideany(player, enemies):
-			player.kill()
-			gameLoop = False
-		
+
 
 		# Update the display
 		pygame.display.update()
