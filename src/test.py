@@ -65,8 +65,10 @@ def space_invaders():
         all_sprites.draw(screen)
         player.bullets.draw(screen)
         enemy_spawner.enemy_group.draw(screen)
+        enemy_spawner.enemy_imposter.draw(screen)
 
-        
+
+
         # Update the display
         pygame.display.update()
 
