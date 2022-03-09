@@ -6,7 +6,7 @@ class Enemy(pygame.sprite.Sprite):
     def __init__(self, sprite, backing_colour):
         super(Enemy, self).__init__()
         self.image = pygame.image.load(sprite).convert_alpha()
-        self.image.set_colorkey(backing_colour, pygame.RLEACCEL)
+        self.image.set_colorkey(backing_colour)
         self.rect = self.image.get_rect(center=(
                 random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 100),
                 random.randint(10, SCREEN_HEIGHT- 120),))
