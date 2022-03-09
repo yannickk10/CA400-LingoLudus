@@ -8,5 +8,10 @@ class HUD (pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.y = SCREEN_HEIGHT - self.rect.height
 
+        #Add Score to health Bar
+        self.score_object = Score()
+        self.player_score = pygame.sprite.Group()
+        self.player_score.add(self.score_object)
+
     def update(self):
         pass
