@@ -42,15 +42,15 @@ def space_invaders():
 
 		for event in pygame.event.get():
 			# Check for KEYDOWN event
-			if event.type == KEYDOWN:
+			if event.type == pygame.KEYDOWN:
 				# If the Esc key is pressed, then exit the main loop
-				if event.key == K_ESCAPE:
+				if event.key == pygame.K_ESCAPE:
 					screen.fill((0,0,0))
 					gameLoop = False
 					break
 
 			# Check for QUIT event. If QUIT, then set gameLoop to false.
-			elif event.type == QUIT:
+			elif event.type == pygame.QUIT:
 				screen.fill((0,0,0))
 				gameLoop = False
 				break
