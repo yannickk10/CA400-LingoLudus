@@ -8,6 +8,7 @@ import random
 class EnemySpawner:
         def __init__(self):
             self.enemy_group = pygame.sprite.Group()
+            self.enemy_imposter = pygame.sprite.Group()
             self.spawn_timer  = 120
 
         def update(self):
