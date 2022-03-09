@@ -1,5 +1,6 @@
 import pygame
 from settings import *
+from score import Score
 
 class HUD (pygame.sprite.Sprite):
     def __init__(self):
