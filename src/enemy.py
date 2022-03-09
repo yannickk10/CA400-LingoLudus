@@ -12,6 +12,11 @@ class Enemy(pygame.sprite.Sprite):
                 random.randint(10, SCREEN_HEIGHT- 120),))
 
         self.speed = random.randint(5,6)
-    
+
+        #Enenmy status
+        self.health = 1
+        self.enemy_score = 50
+        self.speed = random.randint(5,6)
+
     def update(self):
         self.rect.move_ip(-self.speed, 0)
