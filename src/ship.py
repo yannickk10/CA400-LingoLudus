@@ -11,6 +11,10 @@ class Player(pygame.sprite.Sprite):
         self.image.set_colorkey((255,255,255), pygame.RLEACCEL)
         self.rect = self.image.get_rect()
 
+        #Player stats displayed in HUD
+        self.hud = HUD()
+        self.hud_stats = pygame.sprite.Group()
+        self.hud_stats.add(self.hud)
         #creating the bullet group for the ships bullets
         self.bullets = pygame.sprite.Group()
         self.shoot_cooldown = 0
