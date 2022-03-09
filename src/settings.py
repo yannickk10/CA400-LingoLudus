@@ -1,2 +1,2 @@
-screen_width = 1280
-screen_height = 720
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 720
