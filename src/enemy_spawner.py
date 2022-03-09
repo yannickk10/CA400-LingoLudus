@@ -27,3 +27,12 @@ class EnemySpawner:
 
             spanish_vehicles_list = list(shuffled_spanish_vehicles.values())
             spanish_vehicles_key_list = list(shuffled_spanish_vehicles.keys())
+
+            #Create new enemies
+            i = 0
+            while i < 2:
+                enemy_sprite = spanish_vehicles_list[random.randint(0,len(spanish_vehicles_list)-2)]
+                new_enemy = Enemy(enemy_sprite[0], enemy_sprite[1])
+
+                self.enemy_group.add(new_enemy)
+                i += 1
