@@ -1,6 +1,7 @@
 import pygame
 from settings import *
 from bullet import Bullet
+from heads_up_display import HUD
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
