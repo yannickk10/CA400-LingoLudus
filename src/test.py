@@ -87,8 +87,7 @@ def space_invaders():
         enemy_spawner.enemy_group.draw(screen)
         enemy_spawner.enemy_imposter.draw(screen)
         player.hud_stats.draw(screen)
-
-
+        player.hud.player_score.draw(screen)
 
         # Update the display
         pygame.display.update()
