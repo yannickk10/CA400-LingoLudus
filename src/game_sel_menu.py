@@ -1,7 +1,7 @@
 import pygame
 import test as gt
 import sys
-
+from settings import *
 import pygame, sys
 
 
@@ -107,7 +107,7 @@ def game_hub(language):
 	pygame.init()
 
 	# screen resolution
-	res = (720,720)
+	res = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
 	# opens up a window
 	screen = pygame.display.set_mode(res)

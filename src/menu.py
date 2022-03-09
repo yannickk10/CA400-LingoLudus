@@ -1,5 +1,5 @@
 import pygame, select_language
-
+from settings import *
 import sys
 
 
@@ -89,7 +89,7 @@ def main_menu():
 	pygame.init()
 
 	# screen resolution
-	res = (720,720)
+	res = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
 	# opens up a window
 	screen = pygame.display.set_mode(res)

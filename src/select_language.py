@@ -1,6 +1,7 @@
 import pygame
 import game_sel_menu
 import button as Button
+from settings import *
 
 def language_select():
 
@@ -115,7 +116,7 @@ def language_select():
 				self.top_rectangle_color = '#475F77'
 				self.elevation_copy = self.orig_elevation
 
-	class GoBackButton (Button):
+	class GoBackButton(Button):
 
 		def draw(self):
 			self.top_rectangle.y = self.original_y_position - self.elevation_copy
@@ -151,7 +152,7 @@ def language_select():
 	pygame.init()
 
 	# screen resolution
-	res = (720,720)
+	res = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
 	# opens up a window
 	screen = pygame.display.set_mode(res)
