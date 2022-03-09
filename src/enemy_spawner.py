@@ -24,3 +24,6 @@ class EnemySpawner:
             spanish_vehicles_lis = list(spanish_vehicles.items())
             random.shuffle(spanish_vehicles_lis)
             shuffled_spanish_vehicles = dict(spanish_vehicles_lis)
+
+            spanish_vehicles_list = list(shuffled_spanish_vehicles.values())
+            spanish_vehicles_key_list = list(shuffled_spanish_vehicles.keys())
