@@ -50,3 +50,10 @@ class Player(pygame.sprite.Sprite):
             self.shoot_cooldown -= 1
         #Update player externals
         self.bullets.update()
+
+    def shoot_bullets(self):
+        #self.bullet_sound.play()
+        new_bullet = Bullet()
+        new_bullet.rect.x = self.rect.x + (self.rect.width)
+        new_bullet.rect.y = self.rect.y + 13
+        self.bullets.add(new_bullet)
