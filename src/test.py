@@ -17,49 +17,9 @@ from pygame.locals import (
 
 def space_invaders():
 
-<<<<<<< HEAD
 	# Define constants for the screen width and height
 	SCREEN_WIDTH = 720
 	SCREEN_HEIGHT = 720
-=======
-	# Define a player object by extending pygame.sprite.Sprite
-	# The surface drawn on the screen is now an attribute of 'player'
-
-	# Move the sprite based on user keypresses
-	class Player(pygame.sprite.Sprite):
-		def __init__(self):
-			super(Player, self).__init__()
-			self.surf = pygame.image.load("Sprites/jet.png").convert()
-			self.surf.set_colorkey((255,255,255), RLEACCEL)
-			self.rect = self.surf.get_rect()
-
-		#Player Health:
-
-			self.player_health = 3
-
-		def update(self, pressed_keys):
-			if pressed_keys[K_UP]:
-				self.rect.move_ip(0, -10)
-			if pressed_keys[K_DOWN]:
-				self.rect.move_ip(0, 10)
-			if pressed_keys[K_LEFT]:
-				self.rect.move_ip(-10, 0)
-			if pressed_keys[K_RIGHT]:
-				self.rect.move_ip(10, 0)
-
-			# Keep player on the screen
-			if self.rect.left < 0:
-				self.rect.left = 0
-			if self.rect.right > SCREEN_WIDTH:
-				self.rect.right = SCREEN_WIDTH
-			if self.rect.top <= 0:
-				self.rect.top = 0
-			if self.rect.bottom >= 620:
-				self.rect.bottom = 620
-			
-			if self.player_health == 0:
-				self.kill()
->>>>>>> 327bb537948d3de2b89d99a074c2dbe5fcf24091
 
 	class Enemy(pygame.sprite.Sprite):
 		def __init__(self, sprite, backing_colour):

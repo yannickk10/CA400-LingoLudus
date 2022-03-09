@@ -18,3 +18,7 @@ class Bullet(pygame.sprite.Sprite):
         #define its positioninig and velocity
         self.velx = 7
         self.vely = 0
+
+    def update(self):
+        self.rect.x +=  self.velx
+        self.rect.y +=  self.vely
