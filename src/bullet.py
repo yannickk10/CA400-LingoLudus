@@ -14,3 +14,7 @@ class Bullet(pygame.sprite.Sprite):
         self.colour = (139, 0, 0)
         self.image.fill(self.colour)
         self.rect = self.image.get_rect()
+
+        #define its positioninig and velocity
+        self.velx = 7
+        self.vely = 0
