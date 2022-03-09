@@ -2,75 +2,14 @@
 import pygame
 import random
 from ship import Player
+from enemy_spawner import EnemySpawner
 from settings import *
+
 
 # Import pygame.locals for easier access to key coordinates
 # Updated to conform to flake8 and black standards
-from pygame.locals import (
-	RLEACCEL,
-	K_UP,
-	K_DOWN,
-	K_LEFT,
-	K_RIGHT,
-	K_ESCAPE,
-	KEYDOWN,
-	QUIT,
-)
 
 def space_invaders():
-
-	class Enemy(pygame.sprite.Sprite):
-		def __init__(self, sprite, backing_colour):
-			super(Enemy, self).__init__()
-			self.surf = pygame.image.load(sprite).convert_alpha()
-			#self.surf.set_colorkey(backing_colour, RLEACCEL)
-			self.rect = self.surf.get_rect(center=(
-					random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 100),
-					random.randint(0, SCREEN_HEIGHT- 120),))
-
-			self.speed = random.randint(5,6)
-
-
-		def update(self):
-			self.rect.move_ip(-self.speed, 0)
-			if self.rect.right <= 0:
-				self.kill()
-
-
-	class EnemySpawner:
-		def __init__(self):
-			self.enemy_group = pygame.sprite.Group()
-			self.spawntimer  = random.randrange(30,120)
-
-		def update(self):
-			self.enemy_group.update()
-			if self.spawn_timer == 0:
-				self.spawn_enemy()
-				self.spawntimer = random.randrange(30, 120)
-
-		def spawn_enemy(self):
-			new_enemy = Enemy()
-			self.enemy_group.add(new_enemy)
-
-
-	class Health(pygame.sprite.Sprite):
-		def __init__(self):
-			self.heart_border = pygame.image.load("Sprites/heart_border.png").convert()
-			self.heart_bg = pygame.image.load("Sprites/heart_bg.png").convert()
-			self.heart = pygame.image.load("Sprites/heart.png").convert()
-			self.heart_border.set_colorkey((255, 255, 255), RLEACCEL)
-			self.heart_bg.set_colorkey((255, 255, 255), RLEACCEL)
-			self.heart.set_colorkey((255, 255, 255), RLEACCEL)
-			self.rect = self.heart_border.get_rect(center=(SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50))
-
-		def draw_heart(self, pos):
-			screen.blit(self.heart_border, pos)
-			screen.blit(self.heart_bg, pos)
-			screen.blit(self.heart, pos)
-
-		def display_health(self):
-			self.draw_heart(self.rect)
-
 
 	# Initialize pygame
 	pygame.init()
@@ -83,16 +22,9 @@ def space_invaders():
 
 	# Instantiate player. Right now, this is just a rectangle.
 	player = Player()
-	health = Health()
-	enemy_spawner = EnemySpawner()
 	all_sprites = pygame.sprite.Group()
 	all_sprites.add(player)
-
-	spanish_vehicles ={
-    "projectile":  Enemy("Sprites/projectile.gif", (0,0,0)),
-    "cars": Enemy("Sprites/Car.png", (0,0,0)),
-    "train": Enemy("Sprites/Train.png", (255,255,255))
-	}
+	enemy_spawner = EnemySpawner()
 
 	# Setup the clock for a decent framerate
 	clock = pygame.time.Clock()
