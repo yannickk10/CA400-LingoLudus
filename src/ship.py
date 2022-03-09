@@ -46,5 +46,7 @@ class Player(pygame.sprite.Sprite):
             if bullet.rect.x >= SCREEN_WIDTH:
                 self.bullets.remove(bullet)
 
+        if self.shoot_cooldown > 0:
+            self.shoot_cooldown -= 1
         #Update player externals
         self.bullets.update()
