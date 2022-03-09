@@ -36,3 +36,15 @@ class Player(pygame.sprite.Sprite):
             self.rect.top = 0
         if self.rect.bottom >= SCREEN_HEIGHT - 100:
             self.rect.bottom = SCREEN_HEIGHT - 100
+
+        if pressed_keys[pygame.K_SPACE]:
+            if self.shoot_cooldown == 0:
+                self.shoot_bullets()
+                self.shoot_cooldown = 13
+
+        for bullet in self.bullets:
+            if bullet.rect.x >= SCREEN_WIDTH:
+                self.bullets.remove(bullet)
+
+        #Update player externals
+        self.bullets.update()
