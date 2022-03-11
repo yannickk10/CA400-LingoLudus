@@ -9,15 +9,15 @@ class EnemySpawner:
         def __init__(self):
             self.enemy_group = pygame.sprite.Group()
             self.enemy_imposter = pygame.sprite.Group()
-            self.spawn_timer  = 120
+            self.spawn_timer  = 50
 
         def update(self):
             self.enemy_group.update()
             self.enemy_imposter.update()
-            self.enemy_imposter_name = ""
+            self.enemy_imposter_name = None
             if self.spawn_timer == 0:
                 self.spawn_enemy()
-                self.spawn_timer = 120
+                self.spawn_timer = 200
             else:
                 self.spawn_timer -= 1
 
