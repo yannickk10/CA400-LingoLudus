@@ -11,7 +11,8 @@ class Score(pygame.sprite.Sprite):
         self.rect.x = SCREEN_WIDTH - self.rect.width - 30
         self.rect.y = SCREEN_HEIGHT - self.rect.height - 30
 
-    
+    def update(self):
+        pass
 
     def update_score(self, score):
         self.score += score
