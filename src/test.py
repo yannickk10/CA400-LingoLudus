@@ -55,11 +55,8 @@ def space_invaders():
                 gameLoop = False
                 break
 
-        # Update all objects
-        all_sprites.update(pressed_keys)
-        enemy_spawner.update()
+        #collision detection
 
-        # collision detection
         #bullet and enemy
         bullet_enemy_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_group, True, False)
         for bullet, enemy in bullet_enemy_collision.items():
@@ -68,7 +65,8 @@ def space_invaders():
 
         #bullet and imposter
         bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
-        for bullet, enemy in bullet_imposter_collision .items():
+        for bullet, enemy in bullet_imposter_collision.items():
+            player.hud.score_object.update_score(enemy[0].imposter_score)
             enemy[0].get_hit()
 
         #bullet and enemy
@@ -81,7 +79,6 @@ def space_invaders():
                 gameLoop = False
                 break
 
-
         # Draw the player on the screen
         all_sprites.draw(screen)
         player.bullets.draw(screen)
@@ -89,6 +86,15 @@ def space_invaders():
         enemy_spawner.enemy_imposter.draw(screen)
         player.hud_stats.draw(screen)
         player.hud.player_score.draw(screen)
+        player.hud.target_name.draw(screen)
+
+
+        # Update all objects
+        all_sprites.update(pressed_keys)
+        enemy_spawner.update()
+        player.hud.target_name.update(enemy_spawner.enemy_imposter_name)
+        print(enemy_spawner.enemy_imposter_name)
+
 
         # Update the display
         pygame.display.update()
