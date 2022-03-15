@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from score import Score
 from display_target import Target
+from health import Health
 
 class HUD (pygame.sprite.Sprite):
     def __init__(self):
@@ -19,6 +20,11 @@ class HUD (pygame.sprite.Sprite):
         self.target = Target()
         self.target_name = pygame.sprite.Group()
         self.target_name.add(self.target)
+
+        # Add target name to hud
+        self.health = Health()
+        self.health_bar = pygame.sprite.Group()
+        self.health_bar.add(self.health)
 
 
     def update(self):
