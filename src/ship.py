@@ -20,9 +20,8 @@ class Player(pygame.sprite.Sprite):
         self.bullets = pygame.sprite.Group()
         self.shoot_cooldown = 0
 
-
         #player health
-        self.health = 5
+        self.health = 4
 
     def update(self, pressed_keys):
         #update the players movements based on inputs
@@ -55,8 +54,10 @@ class Player(pygame.sprite.Sprite):
             if bullet.rect.x >= SCREEN_WIDTH:
                 self.bullets.remove(bullet)
 
+        #update timers
         if self.shoot_cooldown > 0:
             self.shoot_cooldown -= 1
+
         #Update player externals
         self.bullets.update()
 
