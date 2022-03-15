@@ -5,7 +5,7 @@ from settings import *
 import pygame, sys
 
 
-def game_hub(language):
+def game_hub():
 
 	class Button:
 		def __init__(self, text, width, height, pos,elevation):
