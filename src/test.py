@@ -10,7 +10,6 @@ from settings import *
 # Updated to conform to flake8 and black standards
 
 def space_invaders():
-
     # Initialize pygame
     pygame.init()
 
@@ -87,13 +86,15 @@ def space_invaders():
         player.hud_stats.draw(screen)
         player.hud.player_score.draw(screen)
         player.hud.target_name.draw(screen)
+        player.hud.health_bar.draw(screen)
+
 
 
         # Update all objects
         all_sprites.update(pressed_keys)
         enemy_spawner.update()
         player.hud.target_name.update(enemy_spawner.enemy_imposter_name)
-        print(enemy_spawner.enemy_imposter_name)
+        player.hud.health_bar.update(player.health)
 
 
         # Update the display
