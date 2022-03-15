@@ -56,7 +56,7 @@ class EnemySpawner:
                     self.enemy_group.add(new_enemy)
                     i += 1
                     
-            if language  == "french":
+            elif language  == "french":
                 french_vehicles_lis = list(sv.french_vehicles.items())
                 random.shuffle(french_vehicles_lis)
                 shuffled_french_vehicles = dict(french_vehicles_lis)
