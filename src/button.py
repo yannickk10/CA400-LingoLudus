@@ -1,11 +1,12 @@
 import pygame, sys
 
 class Button:
-    def __init__(self, text, width, height, pos,elevation):
+    def __init__(self, text, font, width, height, pos, elevation, screen):
         self.top_rectangle = pygame.Rect(pos, (width,height))
         self.top_rectangle_color = '#475F77'
 
-        self.text_surf = gui_font.render(text,True,'#FFFFFF')
+        self.gui_font = font
+        self.text_surf = self.gui_font.render(text,True,'white')
         self.text_rect = self.text_surf.get_rect(center = self.top_rectangle.center)
 
         self.bottom_rectangle = pygame.Rect(pos, (width,elevation))
@@ -14,6 +15,8 @@ class Button:
         self.orig_elevation = elevation
         self.elevation_copy = elevation
         self.original_y_position = pos[1]
+        
+        self.screen = screen
 
         self.pressed = False
 
@@ -24,10 +27,10 @@ class Button:
         self.bottom_rectangle.midtop = self.top_rectangle.midtop
         self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
 
-        pygame.draw.rect(screen,self.bottom_rectangle_color, self.bottom_rectangle, border_radius=12)
+        pygame.draw.rect(self.screen,self.bottom_rectangle_color, self.bottom_rectangle, border_radius=12)
 
-        pygame.draw.rect(screen,self.top_rectangle_color, self.top_rectangle, border_radius=12)
-        screen.blit(self.text_surf, self.text_rect)
+        pygame.draw.rect(self.screen,self.top_rectangle_color, self.top_rectangle, border_radius=12)
+        self.screen.blit(self.text_surf, self.text_rect)
         self.if_pressed()
 
     def if_pressed(self):
@@ -39,9 +42,10 @@ class Button:
                 self.pressed = True
             else:
                 if self.pressed == True:
-                    print('click')
+                    pass
                 self.pressed = False
                 self.elevation_copy = self.orig_elevation
         else:
             self.top_rectangle_color = '#475F77'
             self.elevation_copy = self.orig_elevation
+
