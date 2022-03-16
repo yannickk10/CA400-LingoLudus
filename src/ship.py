@@ -11,6 +11,7 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load("Sprites/jet.png").convert()
         self.image.set_colorkey((255,255,255), pygame.RLEACCEL)
         self.rect = self.image.get_rect()
+        self.rect.y = SCREEN_HEIGHT // 2 - self.rect.height
 
         #Player stats displayed in HUD
         self.hud = HUD()
