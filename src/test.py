@@ -1,15 +1,45 @@
 # Import the pygame module
 import pygame
-import random
+from pause_menu import pause_menu
 from ship import Player
 from enemy_spawner import EnemySpawner
+from button import *
 from settings import *
 
-
-# Import pygame.locals for easier access to key coordinates
-# Updated to conform to flake8 and black standards
-
 def space_invaders():
+
+    class PauseButton(Button):
+
+        def draw(self):
+            self.top_rectangle.y = self.original_y_position - self.elevation_copy
+            self.text_rect.center = self.top_rectangle.center
+            
+            self.bottom_rectangle.midtop = self.top_rectangle.midtop
+            self.bottom_rectangle.height = self.top_rectangle.height + self.elevation_copy
+
+            pygame.draw.rect(screen,self.bottom_rectangle_color, self.bottom_rectangle, border_radius=12)
+
+            pygame.draw.rect(screen,self.top_rectangle_color, self.top_rectangle, border_bottom_right_radius=12, border_top_left_radius=12)
+            screen.blit(self.text_surf, self.text_rect)
+            if self.if_pressed() == True:
+                return False
+
+        def if_pressed(self):
+            mouse_position = pygame.mouse.get_pos()
+            if self.top_rectangle.collidepoint(mouse_position):
+                self.top_rectangle_color = '#D74B4B'
+                if pygame.mouse.get_pressed()[0]:
+                    self.elevation_copy = 0
+                    self.pressed = True
+                else:
+                    if self.pressed == True:
+                        self.pressed = False
+                        self.elevation_copy = self.orig_elevation
+                        return True
+            else:
+                self.top_rectangle_color = '#475F77'
+                self.elevation_copy = self.orig_elevation
+
     # Initialize pygame
     pygame.init()
 
@@ -24,6 +54,10 @@ def space_invaders():
     all_sprites = pygame.sprite.Group()
     all_sprites.add(player)
     enemy_spawner = EnemySpawner()
+
+    #Create Pause Game Button
+    pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
+
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
@@ -53,6 +87,10 @@ def space_invaders():
                 screen.fill((0,0,0))
                 gameLoop = False
                 break
+
+        #Pause Game
+        if pause_button.draw() == False:
+            pause_menu()
 
         #collision detection
 
@@ -88,20 +126,17 @@ def space_invaders():
         player.hud.target_name.draw(screen)
         player.hud.health_bar.draw(screen)
 
-
-
         # Update all objects
         all_sprites.update(pressed_keys)
         enemy_spawner.update()
         player.hud.target_name.update(enemy_spawner.enemy_imposter_name)
         player.hud.health_bar.update(player.health)
 
-
         # Update the display
         pygame.display.update()
 
         # Fill the screen with black for when game ends
         screen.blit(background_image, [0, 0])
-
+            
         # Ensure program maintains a rate of 30 frames per second
         clock.tick(30)
