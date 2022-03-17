@@ -13,3 +13,7 @@ SCREEN = pygame.display.set_mode(res)
 
 def get_font(size): # Returns Press-Start-2P in the desired size
 	return pygame.font.Font("assets/font.ttf", size)
+
+def main_menu():
+    while True:
+        SCREEN.blit(BG, (0, 0))
