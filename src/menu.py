@@ -49,6 +49,7 @@ def main_menu():
 
 	# opens up a window
 	screen = pygame.display.set_mode(res)
+	screen_rect = screen.get_rect()
 
 	# white color
 	white = (255,255,255)
@@ -69,7 +70,9 @@ def main_menu():
 
 	pressed_keys = pygame.key.get_pressed()
 
-	background_image = pygame.image.load("images/LiLu_Logo.png").convert()
+	logo = pygame.image.load("images/lingoludus_logo.png").convert_alpha()
+	lingo_logo = pygame.transform.scale(logo, (550,190))
+
 
 	# defining a font
 
@@ -88,7 +91,7 @@ def main_menu():
 
 		# fills the screen with a color
 		screen.fill('#F8F0E3')
-		screen.blit(background_image, [0,0])
+		screen.blit(lingo_logo, lingo_logo.get_rect(midtop=screen_rect.midtop))
 
 		start_game_button.draw()
 		quit_game_button.draw()
