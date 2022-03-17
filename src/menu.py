@@ -27,6 +27,29 @@ def main_menu():
         play_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
                             text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="Orange")
         lang_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
-                            text_input="LANGUAGE", font=get_font(75), base_color="#d7fcd4", hovering_color="Orange")
+                            text_input="LANGUAGE", font=get_font(60), base_color="#d7fcd4", hovering_color="Orange")
         quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 550), 
                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="Orange")
+
+        SCREEN.blit(menu_text, menu_rect)
+
+        for button in [play_button, lang_button, quit_button]:
+            button.changeColor(mouse_pos)
+            button.update(SCREEN)
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if play_button.checkForInput(mouse_pos):
+                    select_language.language_select()
+                if lang_button.checkForInput(mouse_pos):
+                    select_language.language_select()
+                if quit_button.checkForInput(mouse_pos):
+                    pygame.quit()
+                    sys.exit()
+
+        pygame.display.update()
+
+main_menu()
