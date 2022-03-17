@@ -10,3 +10,6 @@ pygame.display.set_caption("Lingo Ludus")
 BG = pygame.image.load("images/purp_background.png")
 # opens up a window
 SCREEN = pygame.display.set_mode(res)
+
+def get_font(size): # Returns Press-Start-2P in the desired size
+	return pygame.font.Font("assets/font.ttf", size)
