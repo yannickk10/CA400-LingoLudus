@@ -46,3 +46,40 @@ class ResumeGame(GoBackButton):
             self.top_rectangle_color = '#475F77'
             self.elevation_copy = self.orig_elevation
 
+def pause_menu():
+    
+    pygame.init()
+
+    clock = pygame.time.Clock()
+
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    # Create resume game button
+    resume_game_button = ResumeGame('Resume game', pygame.font.Font(None, 30), 150, 60, (SCREEN_WIDTH // 2 - (150 // 2), SCREEN_HEIGHT // 2 - 80), 6, screen)
+        
+    #Create Pause Screen Object 
+    pause_game = Pause_game()
+    pause_screen = pygame.sprite.Group()
+    pause_screen.add(pause_game)
+
+    gameLoop = True
+
+    while gameLoop:
+            
+        screen.fill("#F8F0E3")
+        
+        for ev in pygame.event.get():
+            
+            if ev.type == pygame.QUIT:
+                pygame.quit()
+                    
+        # fills the screen with a color
+
+        pause_screen.draw(screen)
+        if resume_game_button.draw() == False:
+            gameLoop = False
+
+        # updates the frames of the game
+        pygame.display.update()
+
+        clock.tick(60)
