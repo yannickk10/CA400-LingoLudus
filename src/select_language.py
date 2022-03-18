@@ -1,5 +1,5 @@
 import pygame, sys
-import game_sel_menu
+import test as game
 from button2 import Button
 from settings import *
 
@@ -52,7 +52,7 @@ def language_select():
                     with open(r"vocab.py", 'w') as f:
                         for number, line in enumerate(data):
                             f.write(line)
-                    game_sel_menu.game_hub()
+                    game.space_invaders()
 
                 if spanish_button.checkForInput(mouse_pos):
                     with open(r"vocab.py", 'r') as f:
@@ -61,7 +61,7 @@ def language_select():
                     with open(r"vocab.py", 'w') as f:
                         for number, line in enumerate(data):
                             f.write(line)
-                    game_sel_menu.game_hub()
+                    game.space_invaders()
 
                 if back_button.checkForInput(mouse_pos):
                     gameLoop = False
