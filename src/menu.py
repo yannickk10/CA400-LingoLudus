@@ -1,99 +1,57 @@
 import pygame, select_language
 from settings import *
-from button import Button
+from button2 import Button
 import sys
 
+pygame.init()
+# screen resolution
+res = (1280, 720)
+pygame.display.set_caption("Lingo Ludus")
+
+BG = pygame.image.load("images/background.png")
+# opens up a window
+SCREEN = pygame.display.set_mode(res)
+screen_rect = SCREEN.get_rect()
+
+def get_font(size): # Returns Press-Start-2P in the desired size
+	return pygame.font.Font("assets/font.ttf", size)
 
 def main_menu():
+	while True:
+		SCREEN.blit(BG, (0, 0))
 
-	class StartGameButton(Button):
+		mouse_pos = pygame.mouse.get_pos()
 
-		def if_pressed(self):
-			mouse_position = pygame.mouse.get_pos()
-			if self.top_rectangle.collidepoint(mouse_position):
-				self.top_rectangle_color = '#D74B4B'
-				if pygame.mouse.get_pressed()[0]:
-					self.elevation_copy = 0
-					self.pressed = True
-				else:
-					if self.pressed == True:
-						select_language.language_select()
-					self.pressed = False
-					self.elevation_copy = self.orig_elevation
-			else:
-				self.top_rectangle_color = '#475F77'
-				self.elevation_copy = self.orig_elevation
+		logo = pygame.image.load("images/lingoludus_logo.png").convert_alpha()
+		lingo_logo = pygame.transform.scale(logo, (630,270))
+		menu_rect = lingo_logo.get_rect(center=(640, 100))
 
-	class QuitGameButton (Button):
-		def if_pressed(self):
-			mouse_position = pygame.mouse.get_pos()
-			if self.top_rectangle.collidepoint(mouse_position):
-				self.top_rectangle_color = '#D74B4B'
-				if pygame.mouse.get_pressed()[0]:
-					self.elevation_copy = 0
-					self.pressed = True
-				else:
-					if self.pressed == True:
-						pygame.quit()
-					self.pressed = False
-					self.elevation_copy = self.orig_elevation
-			else:
-				self.top_rectangle_color = '#475F77'
-				self.elevation_copy = self.orig_elevation
+		play_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
+							text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
+		lang_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
+							text_input="LANGUAGE", font=get_font(60), base_color="White", hovering_color="Orange")
+		quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 550), 
+							text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Orange")
 
-	# initializing the constructor
-	pygame.init()
+		SCREEN.blit(lingo_logo, menu_rect)
 
-	# screen resolution
-	res = (SCREEN_WIDTH, SCREEN_HEIGHT)
+		for button in [play_button, lang_button, quit_button]:
+			button.changeColor(mouse_pos)
+			button.update(SCREEN)
 
-	# opens up a window
-	screen = pygame.display.set_mode(res)
-
-	# white color
-	white = (255,255,255)
-
-	# light shade of the button
-	grey = (170,170,170)
-
-	# dark shade of the button
-	black = (100,100,100)
-
-	# stores the width of the
-	# screen into a variable
-	width = screen.get_width()
-
-	# stores the height of the
-	# screen into a variable
-	height = screen.get_height()
-
-	pressed_keys = pygame.key.get_pressed()
-
-	background_image = pygame.image.load("images/LiLu_Logo.png").convert()
-
-	# defining a font
-
-	start_game_button = StartGameButton('Start Game', pygame.font.Font(None, 30), 200, 40, (width/2-100,300), 6, screen)
-	quit_game_button = QuitGameButton('Quit Game', pygame.font.Font(None, 30),  200, 40, (width/2-100,420), 6, screen)
-
-	gameLoop = True
-
-	# Main loop
-	while gameLoop:
-
-		for ev in pygame.event.get():
-
-			if ev.type == pygame.QUIT:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
 				pygame.quit()
+				sys.exit()
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				if play_button.checkForInput(mouse_pos):
+					select_language.language_select()
+				if lang_button.checkForInput(mouse_pos):
+					select_language.language_select()
+				if quit_button.checkForInput(mouse_pos):
+					pygame.quit()
+					sys.exit()
 
-		# fills the screen with a color
-		screen.fill('#F8F0E3')
-		screen.blit(background_image, [0,0])
-
-		start_game_button.draw()
-		quit_game_button.draw()
-
-		# updates the frames of the game
 		pygame.display.update()
 
 main_menu()
