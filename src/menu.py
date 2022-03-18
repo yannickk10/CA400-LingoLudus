@@ -8,7 +8,7 @@ pygame.init()
 res = (1280, 720)
 pygame.display.set_caption("Lingo Ludus")
 
-BG = pygame.image.load("images/purp_background.png")
+BG = pygame.image.load("images/background.png")
 # opens up a window
 SCREEN = pygame.display.set_mode(res)
 screen_rect = SCREEN.get_rect()
@@ -27,11 +27,11 @@ def main_menu():
 		menu_rect = lingo_logo.get_rect(center=(640, 100))
 
 		play_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
-							text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="Orange")
+							text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
 		lang_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
-							text_input="LANGUAGE", font=get_font(60), base_color="#d7fcd4", hovering_color="Orange")
+							text_input="LANGUAGE", font=get_font(60), base_color="White", hovering_color="Orange")
 		quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 550), 
-							text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="Orange")
+							text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Orange")
 
 		SCREEN.blit(lingo_logo, menu_rect)
 
