@@ -23,14 +23,14 @@ def language_select():
 
         mouse_pos = pygame.mouse.get_pos()
 
-        menu_text = get_font(45).render("SELECT A LANGUAGE TO LEARN", True, "#b68f40")
+        menu_text = get_font(45).render("SELECT A LANGUAGE TO LEARN", True, "Orange")
         menu_rect = menu_text.get_rect(center=(640, 100))
 
         french_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
                                 text_input="FRENCH", font=get_font(60), base_color="White", hovering_color="Orange")
         spanish_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
                                 text_input="SPANISH", font=get_font(60), base_color="White", hovering_color="Orange")
-        back_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 550), 
+        back_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 550), 
                             text_input="GO BACK", font=get_font(60), base_color="White", hovering_color="Red")
 
         SCREEN.blit(menu_text, menu_rect)
