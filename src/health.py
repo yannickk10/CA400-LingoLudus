@@ -28,3 +28,8 @@ class Health(pygame.sprite.Sprite):
             self.rect = self.image.get_rect()
             self.rect.x = 20
             self.rect.y = SCREEN_HEIGHT - self.rect.height * 2
+        elif player_health == 0:
+            self.image = pygame.image.load("Sprites/no_health.png").convert()
+            self.rect = self.image.get_rect()
+            self.rect.x = 20
+            self.rect.y = SCREEN_HEIGHT - self.rect.height * 2
