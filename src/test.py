@@ -3,8 +3,10 @@ import pygame
 from pause_menu import pause_menu
 from ship import Player
 from enemy_spawner import EnemySpawner
+from alert_box import AlertBox
 from button import *
 from settings import *
+
 
 def space_invaders():
 
@@ -40,6 +42,10 @@ def space_invaders():
                 self.top_rectangle_color = '#475F77'
                 self.elevation_copy = self.orig_elevation
 
+    def game_over_alert(group):
+        game_over_message = AlertBox("Game Over")
+        group.add(game_over_message)
+
     # Initialize pygame
     pygame.init()
 
@@ -54,10 +60,10 @@ def space_invaders():
     all_sprites = pygame.sprite.Group()
     all_sprites.add(player)
     enemy_spawner = EnemySpawner()
+    alert_box_group = pygame.sprite.Group()
 
     #Create Pause Game Button
     pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
-
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
@@ -113,7 +119,6 @@ def space_invaders():
             enemy[0].get_hit()
             if player.health <= 0:
                 player.kill()
-                gameLoop = False
                 break
 
         # Draw the player on the screen
@@ -125,12 +130,17 @@ def space_invaders():
         player.hud.player_score.draw(screen)
         player.hud.target_name.draw(screen)
         player.hud.health_bar.draw(screen)
+        alert_box_group.draw(screen)
 
         # Update all objects
         all_sprites.update(pressed_keys)
         enemy_spawner.update()
         player.hud.target_name.update(enemy_spawner.enemy_imposter_name)
         player.hud.health_bar.update(player.health)
+        alert_box_group.update()
+        if player.health == 0:
+            game_over_alert(alert_box_group)
+
 
         # Update the display
         pygame.display.update()
