@@ -6,7 +6,7 @@ from enemy_spawner import EnemySpawner
 from alert_box import AlertBox
 from button import *
 from settings import *
-
+from stats import highscores_dict
 
 def space_invaders():
 
@@ -45,6 +45,18 @@ def space_invaders():
     def game_over_alert(group):
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
+        
+        # update stats file with new player records
+        with open(r"stats.py", 'w') as f:
+            last_item = (list(temp_highscore_dict.keys())[-1])
+            
+            f.write("highscores_dict = {")
+            
+            for key in (list(temp_highscore_dict.keys())[:-1]):
+                f.write("'" + key + "'" + " : " + "'" + str(temp_highscore_dict[key]) + "'" + ",\n")
+            
+            f.write("'" + last_item + "'"  + " : " + "'" + str(temp_highscore_dict[last_item]) + "'")
+            f.write("\n}")
 
     # Initialize pygame
     pygame.init()
@@ -64,6 +76,10 @@ def space_invaders():
 
     #Create Pause Game Button
     pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
+
+
+    #Crete duplicate dict
+    temp_highscore_dict = highscores_dict
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
@@ -110,6 +126,14 @@ def space_invaders():
         bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
         for bullet, enemy in bullet_imposter_collision.items():
             player.hud.score_object.update_score(enemy[0].imposter_score)
+            if enemy_spawner.enemy_imposter_name not in temp_highscore_dict:
+                temp_highscore_dict[enemy_spawner.enemy_imposter_name] = 1
+                print(temp_highscore_dict)
+            else:
+                for key, value in temp_highscore_dict.items():
+                    if key == enemy_spawner.enemy_imposter_name:
+                        temp_highscore_dict[key] = (int(value) + 1)
+                print(temp_highscore_dict)
             enemy[0].get_hit()
 
         #bullet and enemy
