@@ -45,18 +45,22 @@ def space_invaders():
     def game_over_alert(group):
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
-        
-        # update stats file with new player records
-        with open(r"stats.py", 'w') as f:
-            last_item = (list(temp_highscore_dict.keys())[-1])
+
+        if not temp_highscore_dict:
+            pass
+        else:
+            # update stats file with new player records
+            with open(r"stats.py", 'w') as f:
+                last_item = (list(temp_highscore_dict.keys())[-1])
+                
+                f.write("highscores_dict = {")
+                
+                for key in (list(temp_highscore_dict.keys())[:-1]):
+                    f.write("'" + key + "'" + " : " + "'" + str(temp_highscore_dict[key]) + "'" + ",\n")
+                
+                f.write("'" + last_item + "'"  + " : " + "'" + str(temp_highscore_dict[last_item]) + "'")
+                f.write("\n}")
             
-            f.write("highscores_dict = {")
-            
-            for key in (list(temp_highscore_dict.keys())[:-1]):
-                f.write("'" + key + "'" + " : " + "'" + str(temp_highscore_dict[key]) + "'" + ",\n")
-            
-            f.write("'" + last_item + "'"  + " : " + "'" + str(temp_highscore_dict[last_item]) + "'")
-            f.write("\n}")
 
     # Initialize pygame
     pygame.init()
