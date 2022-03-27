@@ -2,18 +2,6 @@ import pygame
 from settings import *
 from button import *
 
-class Pause_game(pygame.sprite.Sprite):
-    def __init__(self):
-        super(Pause_game, self).__init__()
-        self.image = pygame.image.load("Sprites/pause_screen.png").convert()
-        self.image.set_colorkey((10, 10, 10))
-        self.rect = self.image.get_rect()
-        self.rect.x = P_SCREEN_WIDTH // 2 
-        self.rect.y = P_SCREEN_HEIGHT - self.rect.height + 20
-
-    def update(self):
-        pass
-
 class ResumeGame(GoBackButton):
 
     def draw(self):
@@ -55,27 +43,21 @@ def pause_menu():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # Create resume game button
-    resume_game_button = ResumeGame('Resume game', pygame.font.Font(None, 30), 150, 60, (SCREEN_WIDTH // 2 - (150 // 2), SCREEN_HEIGHT // 2 - 80), 6, screen)
-        
-    #Create Pause Screen Object 
-    pause_game = Pause_game()
-    pause_screen = pygame.sprite.Group()
-    pause_screen.add(pause_game)
+    resume_game_button = ResumeGame('Resume game', pygame.font.Font("assets/font.ttf", 13), 150, 60, (SCREEN_WIDTH // 2 - (150 // 2), SCREEN_HEIGHT // 2 - 80), 6, screen)
 
     gameLoop = True
 
     while gameLoop:
             
+    # fills the screen with a color
         screen.fill("#F8F0E3")
         
         for ev in pygame.event.get():
             
             if ev.type == pygame.QUIT:
                 pygame.quit()
-                    
-        # fills the screen with a color
 
-        pause_screen.draw(screen)
+        # Draw pause_menu buttons
         if resume_game_button.draw() == False:
             gameLoop = False
 
