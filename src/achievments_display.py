@@ -1,5 +1,5 @@
 import pygame
-from stats import highscores_dict
+from stats import *
 from settings import *
 
 def get_max(lis):
@@ -10,35 +10,60 @@ def get_max(lis):
             highest = int(item)
     return highest
 
-def calc_top_three_words(dict):
+def calc_best_three_words(dict):
     highest = "None 0"
     scnd_highest = "None 0"
     third_highest = "None 0"
     a = []
     
-    for name, score in zip(list(highscores_dict.keys()), list(highscores_dict.values())):
+    for name, score in zip(list(word_stats.keys()), list(word_stats.values())):
         a.append(name + " " + score)
     
     #Get first
     for item in a:
-        if int(item[-1]) > int(highest[-1]):
+        if int(item.split()[-1]) > int(highest.split()[-1]):
             highest = item
             
     for item in a:
-        if int(highest[-1]) >= int(item[-1]) >= int(scnd_highest[-1]) and item[:-1] != highest[:-1]:
+        if int(highest.split()[-1]) >= int(item.split()[-1]) >= int(scnd_highest.split()[-1]) and item.split()[:-1] != highest.split()[:-1]:
             scnd_highest = item
             
     for item in a:
-        if (int(scnd_highest[-1]) >= int(item[-1]) >= int(third_highest[-1])) and (item[:-1] != scnd_highest[:-1]) and (item[:-1] !=highest[:-1]):
+        if (int(scnd_highest.split()[-1]) >= int(item.split()[-1]) >= int(third_highest.split()[-1])) and (item.split()[:-1] != scnd_highest.split()[:-1]) and (item.split()[:-1] !=highest.split()[:-1]):
             third_highest = item
 
     return highest, scnd_highest, third_highest
 
+def calc_worst_three_words(dict):
+    lowest = "None 1000000"
+    scnd_lowest = "None 1000000"
+    third_lowest = "None 1000000"
+    a = []
+    
+    for name, score in zip(list(word_stats.keys()), list(word_stats.values())):
+        a.append(name + " " + score)
+    
+    #Get first
+    for item in a:
+        if int(item.split()[-1]) < int(lowest.split()[-1]):
+            lowest = item
+            
+    for item in a:
+        if int(lowest.split()[-1]) <= int(item[-1]) <= int(scnd_lowest.split()[-1]) and item[:-1] != lowest.split()[-1]:
+            scnd_lowest = item
+            
+    for item in a:
+        if (int(scnd_lowest.split()[-1]) <= int(item.split()[-1]) <= int(third_lowest.split()[-1])) and (item.split()[:-1] != scnd_lowest.split()[:-1]) and (item.split()[:-1] != lowest.split()[:-1]):
+            third_lowest = item
+
+    return lowest, scnd_lowest, third_lowest
 
 
-top, second, third = calc_top_three_words(highscores_dict)
+
+best_word, second_best_word, third_best_word = calc_best_three_words(word_stats)
 
 
+worst_word, second_worst_word, third_worst_word = calc_worst_three_words(word_stats)
 
 
 pygame.init()
@@ -49,7 +74,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 #Define fonts
 title_font = pygame.font.Font("assets/font.ttf", 42)
 header_font = pygame.font.Font("assets/font.ttf", 30)
-body_font = pygame.font.Font("assets/font.ttf", 16)
+body_font = pygame.font.Font("assets/font.ttf", 20)
 
 
 #title text
@@ -72,16 +97,29 @@ best_words_box = best_words_sub_heading.get_rect()
 worst_words_sub_heading = header_font.render("Worst Words:", False, (255,255,255))
 worst_words_box = worst_words_sub_heading.get_rect()
 
-#Best Word_ text
-best_word = body_font.render(top, False, (255,255,255))
+#Best Word text
+best_word = body_font.render(best_word, False, (255,255,255))
 best_word_box = best_word.get_rect()
 
-scnd_best_word = body_font.render(second, False, (255,255,255))
+scnd_best_word = body_font.render(second_best_word, False, (255,255,255))
 scnd_best_word_box = scnd_best_word.get_rect()
 
-third_best_word = body_font.render(third, False, (255,255,255))
+third_best_word = body_font.render(third_best_word, False, (255,255,255))
 third_best_word_box = third_best_word.get_rect()
 
+#Worst Word text
+worst_word = body_font.render(worst_word, False, (255,255,255))
+worst_word_box = worst_word.get_rect()
+
+scnd_worst_word = body_font.render(second_worst_word, False, (255,255,255))
+scnd_worst_word_box = scnd_worst_word.get_rect()
+
+third_worst_word = body_font.render(third_worst_word, False, (255,255,255))
+third_worst_word_box = third_worst_word.get_rect()
+
+#HighScore Text
+highest_score = body_font.render(highscore, False, (255,255,255))
+highest_score_box = highest_score.get_rect()
 
 background = pygame.image.load("images/background.png")
 
@@ -104,19 +142,25 @@ while gameLoop:
 
     #Draw sub headings
     screen.blit(high_score_sub_heading, (((SCREEN_WIDTH // 5 * 1) - high_score_box.width / 2), SCREEN_HEIGHT / 2))
-   
     screen.blit(best_words_sub_heading, (((SCREEN_WIDTH // 5 * 1) - best_words_box.width / 2), (SCREEN_HEIGHT / 8) * 6))
 
     screen.blit(highest_streak_sub_heading, (((SCREEN_WIDTH // 5 * 4) - highest_streak_box.width / 2), SCREEN_HEIGHT / 2))
   
     screen.blit(worst_words_sub_heading, (((SCREEN_WIDTH // 5 * 4) - worst_words_box.width / 2), (SCREEN_HEIGHT / 8) * 6))
 
+    #Draw highscore text
+
+    screen.blit(highest_score, (((SCREEN_WIDTH // 5 * 1) - highest_score_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
+
     #Draw best words text
     screen.blit(best_word, (((SCREEN_WIDTH // 5 * 1) - best_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 55)))
     screen.blit(scnd_best_word, (((SCREEN_WIDTH // 5 * 1) - scnd_best_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 105)))
     screen.blit(third_best_word, (((SCREEN_WIDTH // 5 * 1) - third_best_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155)))
 
-    
+    #Draw worst words text
+    screen.blit(worst_word, (((SCREEN_WIDTH // 5 * 4) - worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 55)))
+    screen.blit(scnd_worst_word, (((SCREEN_WIDTH // 5 * 4) - scnd_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 105)))
+    screen.blit(third_worst_word, (((SCREEN_WIDTH // 5 * 4) - third_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155)))  
     
     
     pygame.display.update()
