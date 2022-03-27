@@ -1,4 +1,4 @@
-import pygame, select_language
+import pygame, select_language, achievments_display
 from settings import *
 from button2 import Button
 import sys
@@ -23,19 +23,23 @@ def main_menu():
 		mouse_pos = pygame.mouse.get_pos()
 
 		logo = pygame.image.load("images/lingoludus_logo.png").convert_alpha()
-		lingo_logo = pygame.transform.scale(logo, (630,270))
+		lingo_logo = pygame.transform.scale(logo, (630,250))
 		menu_rect = lingo_logo.get_rect(center=(640, 100))
 
-		play_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
+		play_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 230), 
 							text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
-		lang_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
+		lang_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 360), 
 							text_input="LANGUAGE", font=get_font(60), base_color="White", hovering_color="Orange")
-		quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 550), 
-							text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Orange")
+		
+		achievments_button = Button(image=pygame.image.load("images/achievments_rect.png"), pos=(640, 490), 
+							text_input="ACHIEVMENTS", font=get_font(60), base_color="White", hovering_color="Orange")
+		
+		quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 630), 
+							text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Red")
 
 		SCREEN.blit(lingo_logo, menu_rect)
 
-		for button in [play_button, lang_button, quit_button]:
+		for button in [play_button, lang_button, achievments_button, quit_button]:
 			button.changeColor(mouse_pos)
 			button.update(SCREEN)
 
@@ -48,6 +52,8 @@ def main_menu():
 					select_language.language_select()
 				if lang_button.checkForInput(mouse_pos):
 					select_language.language_select()
+				if achievments_button.checkForInput(mouse_pos):
+					achievments_display.achievments_display()
 				if quit_button.checkForInput(mouse_pos):
 					pygame.quit()
 					sys.exit()
