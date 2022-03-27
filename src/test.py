@@ -6,7 +6,7 @@ from enemy_spawner import EnemySpawner
 from alert_box import AlertBox
 from button import *
 from settings import *
-from stats import highscores_dict
+from stats import *
 
 def space_invaders():
 
@@ -53,14 +53,19 @@ def space_invaders():
             with open(r"stats.py", 'w') as f:
                 last_item = (list(temp_highscore_dict.keys())[-1])
                 
-                f.write("highscores_dict = {")
+                f.write("word_stats = {")
                 
                 for key in (list(temp_highscore_dict.keys())[:-1]):
                     f.write("'" + key + "'" + " : " + "'" + str(temp_highscore_dict[key]) + "'" + ",\n")
                 
                 f.write("'" + last_item + "'"  + " : " + "'" + str(temp_highscore_dict[last_item]) + "'")
+                
                 f.write("\n}")
-            
+                if temp_highscore > highscore:
+                    f.write("\n\n" + str(player.hud.score_object.score))
+                else:
+                    f.write(("\n\n" + "highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
+                    
 
     # Initialize pygame
     pygame.init()
@@ -82,8 +87,12 @@ def space_invaders():
     pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
 
 
-    #Crete duplicate dict
-    temp_highscore_dict = highscores_dict
+    #Create duplicate best words
+    temp_highscore_dict = word_stats
+
+    #Create duplicate best words
+    temp_highscore = highscore
+
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
