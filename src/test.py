@@ -46,6 +46,8 @@ def space_invaders():
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
 
+
+
         if not temp_highscore_dict:
             pass
         else:
@@ -103,7 +105,7 @@ def space_invaders():
 
     # Main loop
     while gameLoop:
-        # for loop through the event queue
+        option = ""
 
         # Get all the keys currently pressed
         pressed_keys = pygame.key.get_pressed()
@@ -125,7 +127,12 @@ def space_invaders():
 
         #Pause Game
         if pause_button.draw() == False:
-            pause_menu()
+            option = pause_menu()
+        
+        if option == "End Game":
+            gameLoop = False
+        else:
+            pass
 
         #collision detection
 
@@ -168,6 +175,7 @@ def space_invaders():
         player.hud.target_name.draw(screen)
         player.hud.health_bar.draw(screen)
         alert_box_group.draw(screen)
+        
 
         # Update all objects
         all_sprites.update(pressed_keys)
@@ -175,6 +183,8 @@ def space_invaders():
         player.hud.target_name.update(enemy_spawner.enemy_imposter_name)
         player.hud.health_bar.update(player.health)
         alert_box_group.update()
+        
+        #check for gae over
         if player.health == 0:
             game_over_alert(alert_box_group)
 
