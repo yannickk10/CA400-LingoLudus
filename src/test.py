@@ -6,7 +6,9 @@ from enemy_spawner import EnemySpawner
 from alert_box import AlertBox
 from button import *
 from settings import *
-from stats import *
+from french_stats import *
+from spanish_stats import *
+from vocab import *
 
 def space_invaders():
 
@@ -46,17 +48,22 @@ def space_invaders():
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
 
-
-
         if not temp_highscore_dict:
             pass
         else:
-            # update stats file with new player records
-            with open(r"stats.py", 'w') as f:
+            if language == "french":
+                filename = "french_stats.py"
+            else:
+                filename = "spanish_stats.py"
+                # update stats file with new player records
+            with open(filename, 'w') as f:
                 last_item = (list(temp_highscore_dict.keys())[-1])
                 
-                f.write("word_stats = {")
-                
+                if language == "french":
+                    f.write("word_stats_french = {")
+                else:
+                    f.write("word_stats_spanish = {")
+
                 for key in (list(temp_highscore_dict.keys())[:-1]):
                     f.write("'" + key + "'" + " : " + "'" + str(temp_highscore_dict[key]) + "'" + ",\n")
                 
@@ -88,9 +95,15 @@ def space_invaders():
     #Create Pause Game Button
     pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
 
+    #Create Back to main menu Button
+    back_to_main_menu_button = Button('Back to Main Menu',pygame.font.Font("assets/font.ttf", 30), 600, 40, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + 40), 6, screen)
 
-    #Create duplicate best words
-    temp_highscore_dict = word_stats
+    #Create duplicate word stats dict
+    if language == "french":
+        temp_highscore_dict = word_stats_french
+    else:
+        temp_highscore_dict = word_stats_spanish
+
 
     #Create duplicate best words
     temp_highscore = highscore
@@ -187,6 +200,8 @@ def space_invaders():
         #check for gae over
         if player.health == 0:
             game_over_alert(alert_box_group)
+            if back_to_main_menu_button.draw() == False:
+                gameLoop = False
 
 
         # Update the display

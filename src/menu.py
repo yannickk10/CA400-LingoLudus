@@ -53,7 +53,7 @@ def main_menu():
 				if lang_button.checkForInput(mouse_pos):
 					select_language.language_select()
 				if achievments_button.checkForInput(mouse_pos):
-					achievments_display.achievments_display()
+					achievments_display.achievments_display_french()
 				if quit_button.checkForInput(mouse_pos):
 					pygame.quit()
 					sys.exit()
