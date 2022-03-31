@@ -48,7 +48,7 @@ def space_invaders():
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
 
-        if not temp_highscore_dict:
+        if not temp_word_stats_dict:
             pass
         else:
             if language == "french":
@@ -57,23 +57,29 @@ def space_invaders():
                 filename = "spanish_stats.py"
                 # update stats file with new player records
             with open(filename, 'w') as f:
-                last_item = (list(temp_highscore_dict.keys())[-1])
+                last_item = (list(temp_word_stats_dict.keys())[-1])
                 
                 if language == "french":
                     f.write("word_stats_french = {")
                 else:
                     f.write("word_stats_spanish = {")
 
-                for key in (list(temp_highscore_dict.keys())[:-1]):
-                    f.write("'" + key + "'" + " : " + "'" + str(temp_highscore_dict[key]) + "'" + ",\n")
+                for key in (list(temp_word_stats_dict.keys())[:-1]):
+                    f.write("'" + key + "'" + " : " + "'" + str(temp_word_stats_dict[key]) + "'" + ",\n")
                 
-                f.write("'" + last_item + "'"  + " : " + "'" + str(temp_highscore_dict[last_item]) + "'")
+                f.write("'" + last_item + "'"  + " : " + "'" + str(temp_word_stats_dict[last_item]) + "'")
                 
                 f.write("\n}")
-                if temp_highscore > highscore:
-                    f.write("\n\n" + str(player.hud.score_object.score))
+                if language == "french":
+                    if temp_highscore > french_highscore:
+                        f.write("\n\n" + str(player.hud.score_object.score))
+                    else:
+                        f.write(("\n\n" + "french_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
                 else:
-                    f.write(("\n\n" + "highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
+                    if temp_highscore > spanish_highscore:
+                        f.write("\n\n" + str(player.hud.score_object.score))
+                    else:
+                        f.write(("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
                     
 
     # Initialize pygame
@@ -100,13 +106,14 @@ def space_invaders():
 
     #Create duplicate word stats dict
     if language == "french":
-        temp_highscore_dict = word_stats_french
+        temp_word_stats_dict = word_stats_french
+        temp_highscore = french_highscore
     else:
-        temp_highscore_dict = word_stats_spanish
+        temp_word_stats_dict = word_stats_spanish
+        temp_highscore = spanish_highscore
 
 
-    #Create duplicate best words
-    temp_highscore = highscore
+    #Create duplicate best w
 
 
     # Setup the clock for a decent framerate
@@ -159,14 +166,14 @@ def space_invaders():
         bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
         for bullet, enemy in bullet_imposter_collision.items():
             player.hud.score_object.update_score(enemy[0].imposter_score)
-            if enemy_spawner.enemy_imposter_name not in temp_highscore_dict:
-                temp_highscore_dict[enemy_spawner.enemy_imposter_name] = 1
-                print(temp_highscore_dict)
+            if enemy_spawner.enemy_imposter_name not in temp_word_stats_dict:
+                temp_word_stats_dict[enemy_spawner.enemy_imposter_name] = 1
+                print(temp_word_stats_dict)
             else:
-                for key, value in temp_highscore_dict.items():
+                for key, value in temp_word_stats_dict.items():
                     if key == enemy_spawner.enemy_imposter_name:
-                        temp_highscore_dict[key] = (int(value) + 1)
-                print(temp_highscore_dict)
+                        temp_word_stats_dict[key] = (int(value) + 1)
+                print(temp_word_stats_dict)
             enemy[0].get_hit()
 
         #bullet and enemy

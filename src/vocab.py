@@ -1,4 +1,4 @@
-language = 'french'
+language = 'spanish'
 spanish_vehicles ={
     "projectile":  ("Sprites/projectile.gif", (0,0,0)),
     "el coche": ("Sprites/Car.png", (0,0,0)),

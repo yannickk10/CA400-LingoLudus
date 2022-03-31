@@ -11,7 +11,7 @@ def calc_best_three_words(dict):
     a = []
     
     for name, score in zip(list(dict.keys()), list(dict.values())):
-        a.append(name + " " + score)
+        a.append(str(name) + " " + str(score))
     
     #Get first
     for item in a:
@@ -35,7 +35,7 @@ def calc_worst_three_words(dict):
     a = []
     
     for name, score in zip(list(dict.keys()), list(dict.values())):
-        a.append(name + " " + score)
+        a.append(str(name) + " " + str(score))
     
     #Get first
     for item in a:
@@ -120,7 +120,7 @@ def achievments_display_french():
     third_worst_word_box = third_worst_word.get_rect()
 
     #HighScore Text
-    highest_score = body_font.render(highscore, False, (255,255,255))
+    highest_score = body_font.render(french_highscore, False, (255,255,255))
     highest_score_box = highest_score.get_rect()
 
     background = pygame.image.load("images/background.png")
@@ -235,7 +235,7 @@ def achievments_display_spanish():
     third_worst_word_box = third_worst_word.get_rect()
 
     #HighScore Text
-    highest_score = body_font.render(highscore, False, (255,255,255))
+    highest_score = body_font.render(spanish_highscore, False, (255,255,255))
     highest_score_box = highest_score.get_rect()
 
     background = pygame.image.load("images/background.png")

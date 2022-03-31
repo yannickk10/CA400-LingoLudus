@@ -1,4 +1,8 @@
-word_stats_spanish = {
+word_stats_spanish = {'entrenar' : '2',
+'la manzana' : '2',
+'el coche' : '1',
+'uva' : '3',
+'projectile' : '1'
 }
 
-highscore = '0'
+spanish_highscore = '900'
