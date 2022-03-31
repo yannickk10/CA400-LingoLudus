@@ -1,5 +1,5 @@
 import pygame
-from button import GoBackButton
+from button import *
 from french_stats import *
 from spanish_stats import *
 from settings import *
@@ -57,16 +57,19 @@ def calc_worst_three_words(dict):
 
     return lowest, scnd_lowest, third_lowest
 
+
 def achievments_display_french():
 
     best_word, second_best_word, third_best_word = calc_best_three_words(word_stats_french)
 
     worst_word, second_worst_word, third_worst_word = calc_worst_three_words(word_stats_french)
-    
+
     pygame.init()
     clock = pygame.time.Clock()
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    go_right_button = Button('->', pygame.font.Font("assets/font.ttf", 13), 60, 40, (SCREEN_WIDTH - 75, (SCREEN_HEIGHT // 2) - 75), 6, screen)
 
     go_back_button = GoBackButton('X',pygame.font.Font("assets/font.ttf", 30), 60, 40, (15, 15), 6, screen)
 
@@ -77,7 +80,7 @@ def achievments_display_french():
 
 
     #title text
-    title_heading = title_font.render("Achievements", False, (255,255,255))
+    title_heading = title_font.render("French Achievements", False, (255,255,255))
     title_box = title_heading.get_rect()
 
     #High Score Text
@@ -160,6 +163,9 @@ def achievments_display_french():
         screen.blit(worst_word, (((SCREEN_WIDTH // 5 * 4) - worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 55)))
         screen.blit(scnd_worst_word, (((SCREEN_WIDTH // 5 * 4) - scnd_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 105)))
         screen.blit(third_worst_word, (((SCREEN_WIDTH // 5 * 4) - third_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155)))  
+        
+        if go_right_button.draw() == False:
+            achievments_display_spanish()
         
         if go_back_button.draw() == False:
             gameLoop = False
@@ -180,6 +186,8 @@ def achievments_display_spanish():
 
     go_back_button = GoBackButton('X',pygame.font.Font("assets/font.ttf", 30), 60, 40, (15, 15), 6, screen)
 
+    go_left_button = Button('<-', pygame.font.Font("assets/font.ttf", 13), 60, 40, (15, (SCREEN_HEIGHT // 2) - 75), 6, screen)
+
     #Define fonts
     title_font = pygame.font.Font("assets/font.ttf", 42)
     header_font = pygame.font.Font("assets/font.ttf", 30)
@@ -187,7 +195,7 @@ def achievments_display_spanish():
 
 
     #title text
-    title_heading = title_font.render("Achievements", False, (255,255,255))
+    title_heading = title_font.render("Spanish Achievements", False, (255,255,255))
     title_box = title_heading.get_rect()
 
     #High Score Text
@@ -269,7 +277,10 @@ def achievments_display_spanish():
         #Draw worst words text
         screen.blit(worst_word, (((SCREEN_WIDTH // 5 * 4) - worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 55)))
         screen.blit(scnd_worst_word, (((SCREEN_WIDTH // 5 * 4) - scnd_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 105)))
-        screen.blit(third_worst_word, (((SCREEN_WIDTH // 5 * 4) - third_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155)))  
+        screen.blit(third_worst_word, (((SCREEN_WIDTH // 5 * 4) - third_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155)))
+
+        if go_left_button.draw() == False:
+            gameLoop = False
         
         if go_back_button.draw() == False:
             gameLoop = False
