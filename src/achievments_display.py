@@ -121,7 +121,11 @@ def achievments_display_french():
 
     #HighScore Text
     highest_score = body_font.render(french_highscore, False, (255,255,255))
-    highest_score_box = highest_score.get_rect()
+    highest_score_text_box = highest_score.get_rect()
+
+    #HighScore Text
+    highest_streak_text = body_font.render(french_highest_streak, False, (255,255,255))
+    streak_box = highest_streak_text.get_rect()
 
     background = pygame.image.load("images/background.png")
 
@@ -152,7 +156,7 @@ def achievments_display_french():
 
         #Draw highscore text
 
-        screen.blit(highest_score, (((SCREEN_WIDTH // 5 * 1) - highest_score_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
+        screen.blit(highest_score, (((SCREEN_WIDTH // 5 * 1) - highest_score_text_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
 
         #Draw best words text
         screen.blit(best_word, (((SCREEN_WIDTH // 5 * 1) - best_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 55)))
@@ -162,8 +166,11 @@ def achievments_display_french():
         #Draw worst words text
         screen.blit(worst_word, (((SCREEN_WIDTH // 5 * 4) - worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 55)))
         screen.blit(scnd_worst_word, (((SCREEN_WIDTH // 5 * 4) - scnd_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 105)))
-        screen.blit(third_worst_word, (((SCREEN_WIDTH // 5 * 4) - third_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155)))  
-        
+        screen.blit(third_worst_word, (((SCREEN_WIDTH // 5 * 4) - third_worst_word_box.width / 2), ((SCREEN_HEIGHT / 8) * 6 + 155))) 
+
+        #Draw highest streak
+        screen.blit(highest_streak_text, (((SCREEN_WIDTH // 5 * 4) - streak_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
+
         if go_right_button.draw() == False:
             achievments_display_spanish()
         
