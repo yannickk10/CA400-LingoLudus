@@ -47,6 +47,7 @@ def space_invaders():
     def game_over_alert(group):
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
+        max_streak += 1
 
         if not temp_word_stats_dict:
             pass
@@ -59,6 +60,8 @@ def space_invaders():
             with open(filename, 'w') as f:
                 last_item = (list(temp_word_stats_dict.keys())[-1])
                 
+
+                # Update the word stats dictionary 
                 if language == "french":
                     f.write("word_stats_french = {")
                 else:
@@ -69,6 +72,8 @@ def space_invaders():
                 
                 f.write("'" + last_item + "'"  + " : " + "'" + str(temp_word_stats_dict[last_item]) + "'")
                 
+
+                # Update the highscore
                 f.write("\n}")
                 if language == "french":
                     if temp_highscore > french_highscore:
@@ -80,8 +85,21 @@ def space_invaders():
                         f.write("\n\n" + str(player.hud.score_object.score))
                     else:
                         f.write(("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
-                    
+                
 
+                # Update the highest streak
+                if language == "french":
+                    if int(max_streak) > int(french_highest_streak):
+                        f.write(("\n\n" + "french_highest_streak = "+ "'" + str(max_streak) + "'"))
+                    else:
+                        f.write(("\n\n" + "french_highest_streak = "+ "'" + str(french_highest_streak) + "'"))
+                else:
+                    if max_streak > spanish_highest_streak:
+                        f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(max_streak) + "'"))
+                    else:
+                        f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(spanish_highest_streak) + "'"))
+                    
+    max_streak = 0
     # Initialize pygame
     pygame.init()
 
@@ -160,20 +178,25 @@ def space_invaders():
         bullet_enemy_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_group, True, False)
         for bullet, enemy in bullet_enemy_collision.items():
             player.hud.score_object.update_score(enemy[0].enemy_score)
+            if player.hud.streak_object.streak > max_streak:
+                max_streak = player.hud.streak_object.streak
+                if player.health <= 0:
+                    pass
+                else:
+                    player.hud.streak_object.reset_streak()
             enemy[0].get_hit()
 
         #bullet and imposter
         bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
         for bullet, enemy in bullet_imposter_collision.items():
             player.hud.score_object.update_score(enemy[0].imposter_score)
+            player.hud.streak_object.update_streak()
             if enemy_spawner.enemy_imposter_name not in temp_word_stats_dict:
                 temp_word_stats_dict[enemy_spawner.enemy_imposter_name] = 1
-                print(temp_word_stats_dict)
             else:
                 for key, value in temp_word_stats_dict.items():
                     if key == enemy_spawner.enemy_imposter_name:
                         temp_word_stats_dict[key] = (int(value) + 1)
-                print(temp_word_stats_dict)
             enemy[0].get_hit()
 
         #bullet and enemy
@@ -192,6 +215,7 @@ def space_invaders():
         enemy_spawner.enemy_imposter.draw(screen)
         player.hud_stats.draw(screen)
         player.hud.player_score.draw(screen)
+        player.hud.player_streak.draw(screen)
         player.hud.target_name.draw(screen)
         player.hud.health_bar.draw(screen)
         alert_box_group.draw(screen)
@@ -204,7 +228,7 @@ def space_invaders():
         player.hud.health_bar.update(player.health)
         alert_box_group.update()
         
-        #check for gae over
+        #check for game over
         if player.health == 0:
             game_over_alert(alert_box_group)
             if back_to_main_menu_button.draw() == False:
