@@ -1,6 +1,7 @@
 import pygame
 from settings import *
 from score import Score
+from streak import Streak
 from display_target import Target
 from health import Health
 
@@ -11,10 +12,15 @@ class HUD (pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.y = SCREEN_HEIGHT - self.rect.height
 
-        #Add Score to hud
+        # Add Score to hud
         self.score_object = Score()
         self.player_score = pygame.sprite.Group()
         self.player_score.add(self.score_object)
+
+        # Add Streak to hud
+        self.streak_object = Streak()
+        self.player_streak = pygame.sprite.Group()
+        self.player_streak.add(self.streak_object)
 
         # Add target name to hud
         self.target = Target()
