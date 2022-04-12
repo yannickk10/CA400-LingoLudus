@@ -44,7 +44,7 @@ def space_invaders():
                 self.top_rectangle_color = '#475F77'
                 self.elevation_copy = self.orig_elevation
 
-    def game_over_alert(group):
+    def game_over_alert(group, max_streak):
         game_over_message = AlertBox("Game Over")
         group.add(game_over_message)
         max_streak += 1
@@ -94,7 +94,7 @@ def space_invaders():
                     else:
                         f.write(("\n\n" + "french_highest_streak = "+ "'" + str(french_highest_streak) + "'"))
                 else:
-                    if max_streak > spanish_highest_streak:
+                    if int(max_streak) > int(spanish_highest_streak):
                         f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(max_streak) + "'"))
                     else:
                         f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(spanish_highest_streak) + "'"))
@@ -230,7 +230,7 @@ def space_invaders():
         
         #check for game over
         if player.health == 0:
-            game_over_alert(alert_box_group)
+            game_over_alert(alert_box_group, max_streak)
             if back_to_main_menu_button.draw() == False:
                 gameLoop = False
 
