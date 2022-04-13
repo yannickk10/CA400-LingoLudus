@@ -15,7 +15,7 @@ class Enemy(pygame.sprite.Sprite):
 
         #Enenmy status
         self.health = 1
-        self.enemy_score = 0
+        self.enemy_score = -50
         self.imposter_score = 100
         self.speed = random.randint(5,6)
 
