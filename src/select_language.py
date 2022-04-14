@@ -1,5 +1,5 @@
 import pygame, sys
-import test as game
+import main_game as game
 from button2 import Button
 from settings import *
 

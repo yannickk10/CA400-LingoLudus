@@ -1,5 +1,5 @@
 import pygame
-import test as gt
+import main_game as gt
 import sys
 from settings import *
 from button import *
