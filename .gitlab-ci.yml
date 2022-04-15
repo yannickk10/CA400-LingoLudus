@@ -33,5 +33,3 @@ test pygame setup:
   script:
     - python3 -m pip install -U pygame
     - cd src 
-    - pip install tox flake8  # you can also use tox
-    - tox -e py36,flake8
