@@ -29,10 +29,9 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
 
-test:
+test pygame setup:
   script:
     - python3 -m pip install -U pygame
     - cd src 
-    - python menu.py
     - pip install tox flake8  # you can also use tox
     - tox -e py36,flake8
