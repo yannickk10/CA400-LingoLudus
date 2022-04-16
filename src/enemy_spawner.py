@@ -6,7 +6,8 @@ import random
 
 
 class EnemySpawner:
-        def __init__(self):
+        def __init__(self, level):
+            self.level = level
             self.enemy_group = pygame.sprite.Group()
             self.enemy_imposter = pygame.sprite.Group()
             self.spawn_timer  = 50
@@ -28,7 +29,12 @@ class EnemySpawner:
             language = sv.language
 
             if language == "spanish":
-                spanish_vehicles_lis = list(sv.spanish_vehicles.items())
+                if self.level == "numbers":
+                    spanish_vehicles_lis = list(sv.spanish_numbers.items())
+                elif self.level == "vehicles":
+                    spanish_vehicles_lis = list(sv.spanish_vehicles.items())
+                elif self.level == "fruits":
+                    spanish_vehicles_lis = list(sv.spanish_fruits.items())
                 random.shuffle(spanish_vehicles_lis)
                 shuffled_spanish_vehicles = dict(spanish_vehicles_lis)
 
@@ -57,7 +63,12 @@ class EnemySpawner:
                     i += 1
                     
             elif language  == "french":
-                french_vehicles_lis = list(sv.french_vehicles.items())
+                if self.level == "numbers":
+                    french_vehicles_lis = list(sv.french_numbers.items())
+                elif self.level == "vehicles":
+                    french_vehicles_lis = list(sv.french_vehicles.items())
+                elif self.level == "fruits":
+                    french_vehicles_lis = list(sv.french_fruits.items())
                 random.shuffle(french_vehicles_lis)
                 shuffled_french_vehicles = dict(french_vehicles_lis)
 
