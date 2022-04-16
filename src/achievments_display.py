@@ -1,9 +1,12 @@
 import pygame
 from pygame import mixer
-from button import *
+from button2 import Button
 from french_stats import *
 from spanish_stats import *
 from settings import *
+
+def get_font(size):
+	return pygame.font.Font("assets/font.ttf", size)
 
 def calc_best_three_words(dict):
     highest = "None 0"
@@ -70,9 +73,10 @@ def achievments_display_french():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    go_right_button = Button('->', pygame.font.Font("assets/font.ttf", 13), 60, 40, (SCREEN_WIDTH - 75, (SCREEN_HEIGHT // 2) - 75), 6, screen)
-
-    go_back_button = GoBackButton('X',pygame.font.Font("assets/font.ttf", 30), 60, 40, (15, 15), 6, screen)
+    go_right_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(SCREEN_WIDTH - 75, (SCREEN_HEIGHT // 2) - 75), 
+                            text_input="->", font=get_font(45), base_color="White", hovering_color="Red")
+    go_back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+                            text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
     #Define fonts
     title_font = pygame.font.Font("assets/font.ttf", 42)
@@ -81,8 +85,8 @@ def achievments_display_french():
 
 
     #title text
-    title_heading = title_font.render("French Achievements", False, (255,255,255))
-    title_box = title_heading.get_rect()
+    title_heading = get_font(45).render("FRENCH ACHIEVEMENTS", True, "Orange")
+    title_rec = title_heading.get_rect(center=(640, 100))
 
     #High Score Text
     high_score_sub_heading = header_font.render("High Score:", False, (255,255,255))
@@ -149,7 +153,7 @@ def achievments_display_french():
         screen.blit(background, (0,0))
         
         #Draw Titles card
-        screen.blit(title_heading, ((SCREEN_WIDTH / 2 - title_box.width / 2), 20))
+        screen.blit(title_heading, title_rec)
 
         #Draw sub headings
         screen.blit(high_score_sub_heading, (((SCREEN_WIDTH // 5 * 1) - high_score_box.width / 2), SCREEN_HEIGHT / 2))
@@ -176,16 +180,27 @@ def achievments_display_french():
         #Draw highest streak
         screen.blit(highest_streak_text, (((SCREEN_WIDTH // 5 * 4) - streak_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
 
-        if go_right_button.draw() == False:
-            forward_sound.play()
-            achievments_display_spanish()
-        
-        if go_back_button.draw() == False:
-            back_sound.play()
-            gameLoop = False
-        
-        pygame.display.update()
+        mouse_pos = pygame.mouse.get_pos()
+        screen.blit(title_heading, title_rec)
 
+        for button in [go_right_button, go_back_button]:
+            button.changeColor(mouse_pos)
+            button.update(screen)
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            #Check button input
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if go_right_button.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    achievments_display_spanish()
+                if go_back_button.checkForInput(mouse_pos):
+                    back_sound.play()
+                    gameLoop = False
+    
+        # updates the frames of the game
+        pygame.display.update()
 
 def achievments_display_spanish():
 
@@ -198,9 +213,11 @@ def achievments_display_spanish():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    go_back_button = GoBackButton('X',pygame.font.Font("assets/font.ttf", 30), 60, 40, (15, 15), 6, screen)
+    go_back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+                            text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
-    go_left_button = Button('<-', pygame.font.Font("assets/font.ttf", 13), 60, 40, (15, (SCREEN_HEIGHT // 2) - 75), 6, screen)
+    go_left_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, (SCREEN_HEIGHT // 2) - 75), 
+                            text_input="<-", font=get_font(45), base_color="White", hovering_color="Red")
 
     #Define fonts
     title_font = pygame.font.Font("assets/font.ttf", 42)
@@ -209,8 +226,8 @@ def achievments_display_spanish():
 
 
     #title text
-    title_heading = title_font.render("Spanish Achievements", False, (255,255,255))
-    title_box = title_heading.get_rect()
+    title_heading = get_font(45).render("SPANISH ACHIEVEMENTS", True, "Orange")
+    title_rec = title_heading.get_rect(center=(640, 100))
 
     #High Score Text
     high_score_sub_heading = header_font.render("High Score:", False, (255,255,255))
@@ -277,7 +294,7 @@ def achievments_display_spanish():
         screen.blit(background, (0,0))
         
         #Draw Titles card
-        screen.blit(title_heading, ((SCREEN_WIDTH / 2 - title_box.width / 2), 20))
+        screen.blit(title_heading, title_rec)
 
         #Draw sub headings
         screen.blit(high_score_sub_heading, (((SCREEN_WIDTH // 5 * 1) - high_score_box.width / 2), SCREEN_HEIGHT / 2))
@@ -303,14 +320,24 @@ def achievments_display_spanish():
 
         #Draw highest streak
         screen.blit(highest_streak_text, (((SCREEN_WIDTH // 5 * 4) - streak_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
-        
 
-        if go_left_button.draw() == False:
-            forward_sound.play()
-            gameLoop = False
+        mouse_pos = pygame.mouse.get_pos()
+        screen.blit(title_heading, title_rec)
+
+        for button in [go_left_button, go_back_button]:
+            button.changeColor(mouse_pos)
+            button.update(screen)
         
-        if go_back_button.draw() == False:
-            back_sound.play()
-            gameLoop = False
-        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            #Check button input
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if go_left_button.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    gameLoop = False
+                if go_back_button.checkForInput(mouse_pos):
+                    back_sound.play()
+                    gameLoop = False
+        # updates the frames of the game
         pygame.display.update()
