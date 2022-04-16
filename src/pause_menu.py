@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 from settings import *
 from button import *
 
@@ -30,9 +31,13 @@ def pause_menu():
 
         # Draw pause_menu buttons
         if resume_game_button.draw() == False:
+            pause_sound = mixer.Sound("music/unpause.wav")
+            pause_sound.play()
+            pygame.mixer.music.unpause()
             gameLoop = False
         
         if  exit_game_button.draw() == False:
+            pygame.mixer.music.stop()
             return "End Game"
 
         # updates the frames of the game
