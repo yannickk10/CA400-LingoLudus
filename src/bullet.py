@@ -7,12 +7,7 @@ class Bullet(pygame.sprite.Sprite):
 
         #create the bullet image
         super(Bullet, self).__init__()
-        self.width = 4
-        self.height = self.width
-        self.size = (self.width, self.height)
-        self.image = pygame.Surface(self.size)
-        self.colour = (139, 0, 0)
-        self.image.fill(self.colour)
+        self.image = pygame.image.load("Sprites/pixel_laser.png").convert_alpha()
         self.rect = self.image.get_rect()
 
         #define its positioninig and velocity
