@@ -1,4 +1,5 @@
-import pygame, sys
+import pygame
+from pygame import mixer
 
 class Button:
     def __init__(self, text, font, width, height, pos, elevation, screen):
@@ -45,6 +46,8 @@ class Button:
                 if self.pressed == True:
                     self.pressed = False
                     self.elevation_copy = self.orig_elevation
+                    forward_sound = mixer.Sound("music/forward_click.wav")
+                    forward_sound.play()
                     return True
         else:
             self.top_rectangle_color = '#475F77'
