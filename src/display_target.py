@@ -5,7 +5,7 @@ class Target(pygame.sprite.Sprite):
     def __init__(self):
         super(Target, self).__init__()
         self.target = ""
-        self.font = font = pygame.font.Font('freesansbold.ttf', 32)
+        self.font = pygame.font.Font('freesansbold.ttf', 32)
         self.image = self.font.render("Target:" + self.target, False, (255,255,255))
         self.rect = self.image.get_rect()
         self.rect.x = SCREEN_WIDTH / 2 - self.rect.width + 20

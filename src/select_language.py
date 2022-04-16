@@ -1,6 +1,7 @@
 import pygame, sys
-import main_game as game
+from pygame import mixer
 from button2 import Button
+import game_sel_menu
 from settings import *
 
 pygame.init()
@@ -9,14 +10,19 @@ res = (1280, 720)
 pygame.display.set_caption("Lingo Ludus")
 
 BG = pygame.image.load("images/background.png")
+
 # opens up a window
 SCREEN = pygame.display.set_mode(res)
 screen_rect = SCREEN.get_rect()
 
+#Load sounds
+forward_sound = mixer.Sound("music/forward_click.wav")
+back_sound = mixer.Sound("music/back_click.wav")
+
 def get_font(size): # Returns Press-Start-2P in the desired size
 	return pygame.font.Font("assets/font.ttf", size)
 
-def language_select():
+def language_select(play):
     gameLoop = True
     while gameLoop:
         SCREEN.blit(BG, (0, 0))
@@ -46,24 +52,33 @@ def language_select():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if french_button.checkForInput(mouse_pos):
+                    forward_sound.play()
                     with open(r"vocab.py", 'r') as f:
                         data = f.readlines()
                         data[0] = "language = 'french'\n"
                     with open(r"vocab.py", 'w') as f:
                         for number, line in enumerate(data):
                             f.write(line)
-                    game.space_invaders()
+                    if play == True:
+                        game_sel_menu.game_hub()
+                    else:
+                        gameLoop = False
 
                 if spanish_button.checkForInput(mouse_pos):
+                    forward_sound.play()
                     with open(r"vocab.py", 'r') as f:
                         data = f.readlines()
                         data[0] = "language = 'spanish'\n"
                     with open(r"vocab.py", 'w') as f:
                         for number, line in enumerate(data):
                             f.write(line)
-                    game.space_invaders()
+                    if play == True:       
+                        game_sel_menu.game_hub()
+                    else:
+                        gameLoop = False
 
                 if back_button.checkForInput(mouse_pos):
+                    back_sound.play()
                     gameLoop = False
 
         pygame.display.update()

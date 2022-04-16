@@ -1,5 +1,6 @@
 # Import the pygame module
 import pygame
+from pygame import mixer
 from pause_menu import pause_menu
 from ship import Player
 from enemy_spawner import EnemySpawner
@@ -10,7 +11,7 @@ from french_stats import *
 from spanish_stats import *
 from vocab import *
 
-def space_invaders():
+def space_invaders(level):
 
     class PauseButton(Button):
 
@@ -99,9 +100,14 @@ def space_invaders():
                     else:
                         f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(spanish_highest_streak) + "'"))
                     
-    max_streak = 0
     # Initialize pygame
     pygame.init()
+
+    max_streak = 0
+
+    #Background music
+    mixer.music.load("music/background.wav")
+    mixer.music.play(-1)
 
     pressed_keys = pygame.key.get_pressed()
 
@@ -113,7 +119,7 @@ def space_invaders():
     player = Player()
     all_sprites = pygame.sprite.Group()
     all_sprites.add(player)
-    enemy_spawner = EnemySpawner()
+    enemy_spawner = EnemySpawner(level)
     alert_box_group = pygame.sprite.Group()
 
     #Create Pause Game Button
@@ -136,7 +142,7 @@ def space_invaders():
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
-    background_image = pygame.image.load("Sprites/cloud_sky_bg.png").convert()
+    background_image = pygame.image.load("Sprites/new_bg.png").convert()
 
     # Variable to keep the main loop gameLoop
     gameLoop = True
@@ -154,17 +160,24 @@ def space_invaders():
                 # If the Esc key is pressed, then exit the main loop
                 if event.key == pygame.K_ESCAPE:
                     screen.fill((0,0,0))
-                    gameLoop = False
-                    break
+                    pygame.mixer.music.pause()
+                    pause_sound = mixer.Sound("music/pause.wav")
+                    pause_sound.play()
+                    option = pause_menu()
+
 
             # Check for QUIT event. If QUIT, then set gameLoop to false.
             elif event.type == pygame.QUIT:
                 screen.fill((0,0,0))
+                pygame.mixer.music.stop()
                 gameLoop = False
                 break
 
         #Pause Game
         if pause_button.draw() == False:
+            pygame.mixer.music.pause()
+            pause_sound = mixer.Sound("music/pause.wav")
+            pause_sound.play()
             option = pause_menu()
         
         if option == "End Game":
@@ -185,6 +198,8 @@ def space_invaders():
                 else:
                     player.hud.streak_object.reset_streak()
             enemy[0].get_hit()
+            incorrect_sound = mixer.Sound("music/incorrect enemy.wav")
+            incorrect_sound.play()
 
         #bullet and imposter
         bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
@@ -198,13 +213,22 @@ def space_invaders():
                     if key == enemy_spawner.enemy_imposter_name:
                         temp_word_stats_dict[key] = (int(value) + 1)
             enemy[0].get_hit()
+            correct_sound = mixer.Sound("music/correct enemy.wav")
+            correct_sound.play()
 
-        #bullet and enemy
+        #bullet and player
         player_enemy_collision = pygame.sprite.groupcollide(all_sprites, enemy_spawner.enemy_group, False, False)
         for player, enemy in player_enemy_collision.items():
             player.get_hit()
+            #Sound from Zapsplat.com
+            player_hit_sound = mixer.Sound("music/character hit.wav")
+            player_hit_sound.play()
+
             enemy[0].get_hit()
             if player.health <= 0:
+                #Sound from Zapsplat.com
+                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound.play()
                 player.kill()
                 break
 
@@ -230,6 +254,7 @@ def space_invaders():
         
         #check for game over
         if player.health == 0:
+            pygame.mixer.music.stop()
             game_over_alert(alert_box_group, max_streak)
             if back_to_main_menu_button.draw() == False:
                 gameLoop = False
