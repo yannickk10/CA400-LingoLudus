@@ -171,16 +171,15 @@ def space_invaders(level):
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
-    background_image = pygame.image.load("Sprites/space_bg2.png").convert()
+    background_image = pygame.image.load("Sprites/bg_stars1.png").convert()
+    x = 0
 
     partical1 = ParticlesShip()
     PARTICAL_EVENT = pygame.USEREVENT + 1
     pygame.time.set_timer(PARTICAL_EVENT,40)
 
-
     # Variable to keep the main loop gameLoop
     gameLoop = True
-
     # Main loop
     while gameLoop:
         option = ""
@@ -300,8 +299,12 @@ def space_invaders(level):
         # Update the display
         pygame.display.update()
 
-        # Fill the screen with black for when game ends
-        screen.blit(background_image, [0, 0])
+        # creating a scrolling effect with background to give the illusion the ship is flying through space
+        rel_x = x % background_image.get_rect().width
+        screen.blit(background_image, (rel_x - background_image.get_rect().width, 0))
+        if rel_x < SCREEN_WIDTH:
+            screen.blit(background_image, (rel_x, 0))
+        x -= 1
             
         # Ensure program maintains a rate of 30 frames per second
         clock.tick(30)
