@@ -32,4 +32,8 @@ before_script:
 test pygame setup:
   script:
     - python3 -m pip install -U pygame
-    - cd src 
+    - cd src
+
+test achievments stats setup:
+  script:
+  - python -c 'import achievments; from french stats import *; print achievments.calc_best_three_words(dict)'
