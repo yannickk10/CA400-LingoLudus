@@ -44,9 +44,8 @@ def game_hub():
                                 text_input="Fruit Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
         back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
-                            text_input="<-", font=get_font(30), base_color="White", hovering_color="Red")
+                            text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
-        # fills the screen with a color
         SCREEN.blit(title_heading, title_rec)
 
         for button in [vehicle_invaders, number_invaders, fruit_invaders, back_button]:
