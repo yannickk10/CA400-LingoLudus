@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 from button import *
 from french_stats import *
 from spanish_stats import *
@@ -129,6 +130,10 @@ def achievments_display_french():
 
     background = pygame.image.load("images/background.png")
 
+    #Load sounds
+    forward_sound = mixer.Sound("music/forward_click.wav")
+    back_sound = mixer.Sound("music/back_click.wav")
+
     gameLoop = True
 
     while gameLoop:
@@ -172,9 +177,11 @@ def achievments_display_french():
         screen.blit(highest_streak_text, (((SCREEN_WIDTH // 5 * 4) - streak_box.width / 2), (SCREEN_HEIGHT / 2) + 55))
 
         if go_right_button.draw() == False:
+            forward_sound.play()
             achievments_display_spanish()
         
         if go_back_button.draw() == False:
+            back_sound.play()
             gameLoop = False
         
         pygame.display.update()
@@ -251,6 +258,10 @@ def achievments_display_spanish():
 
     background = pygame.image.load("images/background.png")
 
+    #Load sounds 
+    forward_sound = mixer.Sound("music/forward_click.wav")
+    back_sound = mixer.Sound("music/back_click.wav")
+
     gameLoop = True
 
     while gameLoop:
@@ -295,9 +306,11 @@ def achievments_display_spanish():
         
 
         if go_left_button.draw() == False:
+            forward_sound.play()
             gameLoop = False
         
         if go_back_button.draw() == False:
+            back_sound.play()
             gameLoop = False
         
         pygame.display.update()
