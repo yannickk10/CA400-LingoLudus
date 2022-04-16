@@ -104,6 +104,7 @@ def space_invaders(level):
         def __init__(self):
             self.particles = []
 
+        # function to move and draw the particles onto the screen
         def emit(self):
             if self.particles:
                 self.delete_particles()
@@ -113,15 +114,17 @@ def space_invaders(level):
                     particle[1] -= 0.2
                     pygame.draw.circle(screen,pygame.Color('White'),particle[0], int(particle[1]))
 
+        # function to add the particles
         def add_particles(self):
             pos_x = player.rect.x
-            pos_y = player.rect.y
-            radius = 10
+            pos_y = player.rect.y + 50
+            radius = 8
             direction_x = random.randint(-3,3)
             direction_y = random.randint(-3,3)
             particle_circle = [[pos_x,pos_y],radius,[direction_x,direction_y]]
             self.particles.append(particle_circle)
 
+        # deletes particles after a certain time
         def delete_particles(self):
             particle_copy = [particle for particle in self.particles if particle[1] > 0]
             self.particles = particle_copy
@@ -168,7 +171,7 @@ def space_invaders(level):
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
-    background_image = pygame.image.load("Sprites/new_bg.png").convert()
+    background_image = pygame.image.load("Sprites/space_bg2.png").convert()
 
     partical1 = ParticlesShip()
     PARTICAL_EVENT = pygame.USEREVENT + 1
