@@ -36,4 +36,4 @@ test pygame setup:
 
 test achievments stats setup:
   script:
-  - python -c 'import achievments; from french_stats import *; print achievments.calc_best_three_words(dict)'
+  - python -c 'import achievments; from french_stats import *; print(achievments.calc_best_three_words(dict)')
