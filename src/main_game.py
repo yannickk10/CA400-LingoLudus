@@ -259,9 +259,25 @@ def space_invaders(level):
             correct_sound = mixer.Sound("music/correct enemy.wav")
             correct_sound.play()
 
-        #bullet and player
+        #enmy and player
         player_enemy_collision = pygame.sprite.groupcollide(all_sprites, enemy_spawner.enemy_group, False, False)
         for player, enemy in player_enemy_collision.items():
+            player.get_hit()
+            #Sound from Zapsplat.com
+            player_hit_sound = mixer.Sound("music/character hit.wav")
+            player_hit_sound.play()
+
+            enemy[0].get_hit()
+            if player.health <= 0:
+                #Sound from Zapsplat.com
+                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound.play()
+                player.kill()
+                break
+
+        # Player and imposter collision
+        player_imposter_collision = pygame.sprite.groupcollide(all_sprites, enemy_spawner.enemy_imposter, False, False)
+        for player, enemy in player_imposter_collision.items():
             player.get_hit()
             #Sound from Zapsplat.com
             player_hit_sound = mixer.Sound("music/character hit.wav")
