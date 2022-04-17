@@ -117,7 +117,7 @@ def space_invaders(level):
         # function to add the particles
         def add_particles(self):
             pos_x = player.rect.x
-            pos_y = player.rect.y + 50
+            pos_y = player.rect.y + 30
             radius = 8
             direction_x = random.randint(-3,3)
             direction_y = random.randint(-3,3)
