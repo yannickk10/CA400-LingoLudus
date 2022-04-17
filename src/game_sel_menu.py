@@ -34,8 +34,8 @@ def game_hub():
         title_rec = title_heading.get_rect(center=(640, 100))
 
         #Create Buttons
-        vehicle_invaders = Button(image=pygame.image.load("images/play_rect.png"), pos=(256, 540), 
-                            text_input="Vehicle Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
+        clothing_invaders = Button(image=pygame.image.load("images/play_rect.png"), pos=(256, 540), 
+                            text_input="Wardrobe Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
         number_invaders = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 360), 
                                 text_input="Number Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
@@ -48,7 +48,7 @@ def game_hub():
 
         SCREEN.blit(title_heading, title_rec)
 
-        for button in [vehicle_invaders, number_invaders, fruit_invaders, back_button]:
+        for button in [clothing_invaders, number_invaders, fruit_invaders, back_button]:
             button.changeColor(mouse_pos)
             button.update(SCREEN)
         
@@ -58,9 +58,9 @@ def game_hub():
 
             #Check button input
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if vehicle_invaders.checkForInput(mouse_pos):
+                if clothing_invaders.checkForInput(mouse_pos):
                     forward_sound.play()
-                    game.space_invaders("vehicles")
+                    game.space_invaders("clothing")
                 if number_invaders.checkForInput(mouse_pos):
                     forward_sound.play()
                     game.space_invaders("numbers")
