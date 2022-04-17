@@ -1,5 +1,5 @@
 # Import the pygame module
-import pygame
+import pygame, sys, random
 from pygame import mixer
 from pause_menu import pause_menu
 from ship import Player
@@ -99,6 +99,35 @@ def space_invaders(level):
                         f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(max_streak) + "'"))
                     else:
                         f.write(("\n\n" + "spanish_highest_streak = "+ "'" + str(spanish_highest_streak) + "'"))
+
+    class ParticlesShip:
+        def __init__(self):
+            self.particles = []
+
+        # function to move and draw the particles onto the screen
+        def emit(self):
+            if self.particles:
+                self.delete_particles()
+                for particle in self.particles:
+                    particle[0][1] += particle[2][0]
+                    particle[0][0] += particle[2][1]
+                    particle[1] -= 0.2
+                    pygame.draw.circle(screen,pygame.Color('White'),particle[0], int(particle[1]))
+
+        # function to add the particles
+        def add_particles(self):
+            pos_x = player.rect.x
+            pos_y = player.rect.y + 50
+            radius = 8
+            direction_x = random.randint(-3,3)
+            direction_y = random.randint(-3,3)
+            particle_circle = [[pos_x,pos_y],radius,[direction_x,direction_y]]
+            self.particles.append(particle_circle)
+
+        # deletes particles after a certain time
+        def delete_particles(self):
+            particle_copy = [particle for particle in self.particles if particle[1] > 0]
+            self.particles = particle_copy
                     
     # Initialize pygame
     pygame.init()
@@ -142,11 +171,15 @@ def space_invaders(level):
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
-    background_image = pygame.image.load("Sprites/new_bg.png").convert()
+    background_image = pygame.image.load("Sprites/bg_stars1.png").convert()
+    x = 0
+
+    partical1 = ParticlesShip()
+    PARTICAL_EVENT = pygame.USEREVENT + 1
+    pygame.time.set_timer(PARTICAL_EVENT,40)
 
     # Variable to keep the main loop gameLoop
     gameLoop = True
-
     # Main loop
     while gameLoop:
         option = ""
@@ -165,6 +198,8 @@ def space_invaders(level):
                     pause_sound.play()
                     option = pause_menu()
 
+            if event.type == PARTICAL_EVENT:
+                partical1.add_particles()
 
             # Check for QUIT event. If QUIT, then set gameLoop to false.
             elif event.type == pygame.QUIT:
@@ -268,11 +303,16 @@ def space_invaders(level):
                 gameLoop = False
 
 
+        partical1.emit()
         # Update the display
         pygame.display.update()
 
-        # Fill the screen with black for when game ends
-        screen.blit(background_image, [0, 0])
+        # creating a scrolling effect with background to give the illusion the ship is flying through space
+        rel_x = x % background_image.get_rect().width
+        screen.blit(background_image, (rel_x - background_image.get_rect().width, 0))
+        if rel_x < SCREEN_WIDTH:
+            screen.blit(background_image, (rel_x, 0))
+        x -= 1
             
         # Ensure program maintains a rate of 30 frames per second
         clock.tick(30)

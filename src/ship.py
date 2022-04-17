@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
 
     #Create the player image
         super(Player, self).__init__()
-        self.image = pygame.image.load("Sprites/jet.png").convert()
+        self.image = pygame.image.load("Sprites/pixel_ship.png").convert_alpha()
         self.image.set_colorkey((255,255,255), pygame.RLEACCEL)
         self.rect = self.image.get_rect()
         self.rect.y = SCREEN_HEIGHT // 2 - self.rect.height
@@ -70,7 +70,7 @@ class Player(pygame.sprite.Sprite):
         #self.bullet_sound.play()
         new_bullet = Bullet()
         new_bullet.rect.x = self.rect.x + (self.rect.width)
-        new_bullet.rect.y = self.rect.y + 13
+        new_bullet.rect.y = self.rect.y + 2
         self.bullets.add(new_bullet)
 
     def get_hit(self):

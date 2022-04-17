@@ -19,7 +19,7 @@ screen_rect = SCREEN.get_rect()
 forward_sound = mixer.Sound("music/forward_click.wav")
 back_sound = mixer.Sound("music/back_click.wav")
 
-def get_font(size): # Returns Press-Start-2P in the desired size
+def get_font(size):
 	return pygame.font.Font("assets/font.ttf", size)
 
 def language_select(play):
@@ -29,15 +29,15 @@ def language_select(play):
 
         mouse_pos = pygame.mouse.get_pos()
 
-        menu_text = get_font(45).render("SELECT A LANGUAGE TO LEARN", True, "Orange")
+        menu_text = get_font(45).render("LANGUAGE TO LEARN", True, "Orange")
         menu_rect = menu_text.get_rect(center=(640, 100))
 
         french_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
                                 text_input="FRENCH", font=get_font(60), base_color="White", hovering_color="Orange")
         spanish_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
                                 text_input="SPANISH", font=get_font(60), base_color="White", hovering_color="Orange")
-        back_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 550), 
-                            text_input="GO BACK", font=get_font(60), base_color="White", hovering_color="Red")
+        back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+                            text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
         SCREEN.blit(menu_text, menu_rect)
 
