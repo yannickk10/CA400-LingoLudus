@@ -1,38 +1,53 @@
 language = 'spanish'
-spanish_vehicles ={
-    "projectile":  ("Sprites/projectile.gif", (0,0,0),),
-    "el coche": ("Sprites/Car.png", (0,0,0),),
-    "entrenar": ("Sprites/Train.png", (0,0,0),),
-    "la manzana": ("Sprites/blueberry.png", (0,0,0),),
-    "arandano": ("Sprites/red_apple.png", (0,0,0),),
-    "uva": ("Sprites/purple_grapes.png", (0,0,0),)
+
+
+language = 'spanish'
+spanish_clothing ={
+    "un chaqueta":  ("Sprites/jacket.png", (255,255,255),"music/spanish clothes/jacket.wav"),
+    "un pijama": ("Sprites/pyjamas.png", (255,255,255),"music/spanish clothes/pyjamas.wav"),
+    "unos pantalones": ("Sprites/trousers.png", (255,255,255),"music/spanish clothes/trousers.wav"),
+    "unos calcetines": ("Sprites/socks.png", (255,255,255),"music/spanish clothes/socks.wav"),
+    "una camiseta": ("Sprites/t-shirt.png", (255,255,255),"music/spanish clothes/t-shirt.wav"),
+    "una vestido": ("Sprites/dress.png", (255,255,255),"music/spanish clothes/dress.wav"),
+    "una sombrero": ("Sprites/hat.png", (255,255,255),"music/spanish clothes/hat.wav"),
+    "una corbata": ("Sprites/tie.png", (255,255,255),"music/spanish clothes/tie.wav"),
+    "zapatos": ("Sprites/shoes.png", (255,255,255),"music/spanish clothes/shoes.wav")
 	}
 
-french_vehicles ={
-    "projectile":  ("Sprites/projectile.gif", (0,0,0),),
-    "la voiturer": ("Sprites/Car.png", (0,0,0),),
-    "le train": ("Sprites/Train.png", (0,0,0),),
-    "Pomme": ("Sprites/blueberry.png", (0,0,0),),
-    "myrtille": ("Sprites/red_apple.png", (0,0,0),),
-    "les raisins": ("Sprites/purple_grapes.png", (0,0,0),)
+french_clothing ={
+    "la veste":  ("Sprites/jacket.png", (255,255,255),),
+    "les pyjamas": ("Sprites/pyjamas.png", (255,255,255),),
+    "des pantalons": ("Sprites/trousers.png", (255,255,255),),
+    "des chaussettes": ("Sprites/socks.png", (255,255,255),),
+    "un t-shirt": ("Sprites/t-shirt.png", (255,255,255),),
+    "la robe": ("Sprites/dress.png", (255,255,255),),
+    "chapeau": ("Sprites/hat.png", (255,255,255),),
+    "la cravate": ("Sprites/tie.png", (255,255,255),),
+    "des chaussures": ("Sprites/shoes.png", (255,255,255),)
 	}
 
 french_fruits ={
-    "projectile":  ("Sprites/projectile.gif", (0,0,0),),
-    "la voiturer": ("Sprites/Car.png", (0,0,0),),
-    "le train": ("Sprites/Train.png", (0,0,0),),
-    "Pomme": ("Sprites/blueberry.png", (0,0,0),),
-    "myrtille": ("Sprites/red_apple.png", (0,0,0),),
+    "banane":  ("Sprites/banana.png", (255,255,255),),
+    "orange": ("Sprites/Orange.png", (255,255,255),),
+    "citron": ("Sprites/lemon.png", (0,0,0),),
+    "fraise": ("Sprites/strawberry.png", (255,255,255),),
+    "melon": ("Sprites/melon.png", (255,255,255),),
+    "myrtille": ("Sprites/blueberry.png", (0,0,0),),
+    "Pomme": ("Sprites/red_apple.png", (0,0,0),),
+    "tomate": ("Sprites/tomato.png", (255,255,255),),
     "les raisins": ("Sprites/purple_grapes.png", (0,0,0),)
 	}
 
 spanish_fruits ={
-    "projectile":  ("Sprites/projectile.gif", (0,0,0)),
-    "el coche": ("Sprites/Car.png", (0,0,0)),
-    "entrenar": ("Sprites/Train.png", (0,0,0)),
-    "la manzana": ("Sprites/blueberry.png", (0,0,0)),
-    "arandano": ("Sprites/red_apple.png", (0,0,0)),
-    "uva": ("Sprites/purple_grapes.png", (0,0,0))
+    "el platano": ("Sprites/banana.png", (255,255,255),"music/spanish fruits/banana.wav"),
+    "la naranja": ("Sprites/Orange.png", (255,255,255),"music/spanish fruits/orange.wav"),
+    "el limon": ("Sprites/lemon.png", (0,0,0),"music/spanish fruits/lemon.wav"),
+    "la fresa": ("Sprites/strawberry.png", (255,255,255),"music/spanish fruits/strawberry.wav"),
+    "el melon": ("Sprites/melon.png", (255,255,255),"music/spanish fruits/melon.wav"),
+    "la manzana": ("Sprites/red_apple.png", (0,0,0),"music/spanish fruits/apple.wav"),
+    "arandano": ("Sprites/blueberry.png", (0,0,0),"music/spanish fruits/blueberry.wav"),
+    "el tomate": ("Sprites/tomato.png", (255,255,255),"music/spanish fruits/tomato.wav"),
+    "uva": ("Sprites/purple_grapes.png", (0,0,0),"music/spanish fruits/grapes.wav")
 	}
 
 spanish_numbers ={
