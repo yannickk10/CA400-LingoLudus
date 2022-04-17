@@ -1,5 +1,4 @@
 language = 'spanish'
-<<<<<<< HEAD
 spanish_vehicles ={
     "projectile":  ("Sprites/projectile.gif", (0,0,0)),
     "el coche": ("Sprites/Car.png", (0,0,0)),
@@ -7,8 +6,7 @@ spanish_vehicles ={
     "la manzana": ("Sprites/blueberry.png", (0,0,0)),
     "arandano": ("Sprites/red_apple.png", (0,0,0)),
     "uva": ("Sprites/purple_grapes.png", (0,0,0))
-=======
-
+}
 
 language = 'spanish'
 spanish_clothing ={
@@ -21,7 +19,6 @@ spanish_clothing ={
     "una sombrero": ("Sprites/hat.png", (255,255,255),"music/spanish clothes/hat.wav"),
     "una corbata": ("Sprites/tie.png", (255,255,255),"music/spanish clothes/tie.wav"),
     "zapatos": ("Sprites/shoes.png", (255,255,255),"music/spanish clothes/shoes.wav")
->>>>>>> c45b01ad57ff7c6842c3e8167609dbd6a406ea55
 	}
 
 french_clothing ={
