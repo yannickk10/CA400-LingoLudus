@@ -33,7 +33,3 @@ test pygame setup:
   script:
     - python3 -m pip install -U pygame
     - cd src
-
-test achievments stats setup:
-  script:
-  - python -c 'import achievments; import french_stats; print(achievments.calc_best_three_words(french_stats.word_stats_french))'

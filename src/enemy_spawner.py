@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 from settings import *
 from enemy import Enemy
 import vocab as sv
@@ -31,8 +32,8 @@ class EnemySpawner:
             if language == "spanish":
                 if self.level == "numbers":
                     spanish_vehicles_lis = list(sv.spanish_numbers.items())
-                elif self.level == "vehicles":
-                    spanish_vehicles_lis = list(sv.spanish_vehicles.items())
+                elif self.level == "clothing":
+                    spanish_vehicles_lis = list(sv.spanish_clothing.items())
                 elif self.level == "fruits":
                     spanish_vehicles_lis = list(sv.spanish_fruits.items())
                 random.shuffle(spanish_vehicles_lis)
@@ -45,6 +46,8 @@ class EnemySpawner:
                 imposter_sprite = spanish_vehicles_list[len(spanish_vehicles_list)-1]
                 new_enemy_imposter = Enemy(imposter_sprite[0], imposter_sprite[1])
                 self.enemy_imposter.add(new_enemy_imposter)
+                imposter_sound = mixer.Sound(imposter_sprite[2])
+                imposter_sound.play()
 
                 #Get imposter name
                 self.enemy_imposter_name_pos = spanish_vehicles_list.index(imposter_sprite)
@@ -65,8 +68,8 @@ class EnemySpawner:
             elif language  == "french":
                 if self.level == "numbers":
                     french_vehicles_lis = list(sv.french_numbers.items())
-                elif self.level == "vehicles":
-                    french_vehicles_lis = list(sv.french_vehicles.items())
+                elif self.level == "clothing":
+                    french_vehicles_lis = list(sv.french_clothing.items())
                 elif self.level == "fruits":
                     french_vehicles_lis = list(sv.french_fruits.items())
                 random.shuffle(french_vehicles_lis)
@@ -79,6 +82,8 @@ class EnemySpawner:
                 imposter_sprite = french_vehicles_list[len(french_vehicles_list)-1]
                 new_enemy_imposter = Enemy(imposter_sprite[0], imposter_sprite[1])
                 self.enemy_imposter.add(new_enemy_imposter)
+                #imposter_sound = mixer.Sound(imposter_sprite[2])
+                #imposter_sound.play()
 
                 #Get imposter name
                 self.enemy_imposter_name_pos = french_vehicles_list.index(imposter_sprite)

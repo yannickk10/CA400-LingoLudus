@@ -117,7 +117,7 @@ def space_invaders(level):
         # function to add the particles
         def add_particles(self):
             pos_x = player.rect.x
-            pos_y = player.rect.y + 50
+            pos_y = player.rect.y + 30
             radius = 8
             direction_x = random.randint(-3,3)
             direction_y = random.randint(-3,3)
@@ -233,8 +233,16 @@ def space_invaders(level):
                 else:
                     player.hud.streak_object.reset_streak()
             enemy[0].get_hit()
+            player.get_hit()
+            enemy[0].get_hit()
             incorrect_sound = mixer.Sound("music/incorrect enemy.wav")
             incorrect_sound.play()
+            if player.health <= 0:
+                #Sound from Zapsplat.com
+                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound.play()
+                player.kill()
+                break
 
         #bullet and imposter
         bullet_imposter_collision = pygame.sprite.groupcollide(player.bullets, enemy_spawner.enemy_imposter, True, False)
@@ -251,9 +259,25 @@ def space_invaders(level):
             correct_sound = mixer.Sound("music/correct enemy.wav")
             correct_sound.play()
 
-        #bullet and player
+        #enmy and player
         player_enemy_collision = pygame.sprite.groupcollide(all_sprites, enemy_spawner.enemy_group, False, False)
         for player, enemy in player_enemy_collision.items():
+            player.get_hit()
+            #Sound from Zapsplat.com
+            player_hit_sound = mixer.Sound("music/character hit.wav")
+            player_hit_sound.play()
+
+            enemy[0].get_hit()
+            if player.health <= 0:
+                #Sound from Zapsplat.com
+                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound.play()
+                player.kill()
+                break
+
+        # Player and imposter collision
+        player_imposter_collision = pygame.sprite.groupcollide(all_sprites, enemy_spawner.enemy_imposter, False, False)
+        for player, enemy in player_imposter_collision.items():
             player.get_hit()
             #Sound from Zapsplat.com
             player_hit_sound = mixer.Sound("music/character hit.wav")

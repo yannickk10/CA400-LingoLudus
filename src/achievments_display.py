@@ -69,7 +69,6 @@ def achievments_display_french():
     worst_word, second_worst_word, third_worst_word = calc_worst_three_words(word_stats_french)
 
     pygame.init()
-    clock = pygame.time.Clock()
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -209,7 +208,6 @@ def achievments_display_spanish():
     worst_word, second_worst_word, third_worst_word = calc_worst_three_words(word_stats_spanish)
     
     pygame.init()
-    clock = pygame.time.Clock()
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
