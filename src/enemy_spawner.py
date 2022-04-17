@@ -82,8 +82,8 @@ class EnemySpawner:
                 imposter_sprite = french_vehicles_list[len(french_vehicles_list)-1]
                 new_enemy_imposter = Enemy(imposter_sprite[0], imposter_sprite[1])
                 self.enemy_imposter.add(new_enemy_imposter)
-                imposter_sound = mixer.Sound(imposter_sprite[2])
-                imposter_sound.play()
+                #imposter_sound = mixer.Sound(imposter_sprite[2])
+                #imposter_sound.play()
 
                 #Get imposter name
                 self.enemy_imposter_name_pos = french_vehicles_list.index(imposter_sprite)
