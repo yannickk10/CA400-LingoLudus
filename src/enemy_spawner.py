@@ -1,10 +1,10 @@
 import pygame
+import importlib
 from pygame import mixer
 from settings import *
 from enemy import Enemy
-import vocab as sv
+import vocab
 import random
-
 
 class EnemySpawner:
         def __init__(self, level):
@@ -26,16 +26,21 @@ class EnemySpawner:
 
 
         def spawn_enemy(self):
-            #create and shuffle list
-            language = sv.language
+
+            # Get Language
+            importlib.reload(vocab)
+            print(vocab.language)
+            language = vocab.language
+
+            # Create and shuffle list
 
             if language == "spanish":
                 if self.level == "numbers":
-                    spanish_vehicles_lis = list(sv.spanish_numbers.items())
+                    spanish_vehicles_lis = list(vocab.spanish_numbers.items())
                 elif self.level == "clothing":
-                    spanish_vehicles_lis = list(sv.spanish_clothing.items())
+                    spanish_vehicles_lis = list(vocab.spanish_clothing.items())
                 elif self.level == "fruits":
-                    spanish_vehicles_lis = list(sv.spanish_fruits.items())
+                    spanish_vehicles_lis = list(vocab.spanish_fruits.items())
                 random.shuffle(spanish_vehicles_lis)
                 shuffled_spanish_vehicles = dict(spanish_vehicles_lis)
 
@@ -67,11 +72,11 @@ class EnemySpawner:
                     
             elif language  == "french":
                 if self.level == "numbers":
-                    french_vehicles_lis = list(sv.french_numbers.items())
+                    french_vehicles_lis = list(vocab.french_numbers.items())
                 elif self.level == "clothing":
-                    french_vehicles_lis = list(sv.french_clothing.items())
+                    french_vehicles_lis = list(vocab.french_clothing.items())
                 elif self.level == "fruits":
-                    french_vehicles_lis = list(sv.french_fruits.items())
+                    french_vehicles_lis = list(vocab.french_fruits.items())
                 random.shuffle(french_vehicles_lis)
                 shuffled_french_vehicles = dict(french_vehicles_lis)
 
