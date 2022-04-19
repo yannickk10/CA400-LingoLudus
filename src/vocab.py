@@ -1,7 +1,5 @@
 language = 'spanish'
 
-
-language = 'spanish'
 spanish_clothing ={
     "un chaqueta":  ("Sprites/jacket.png", (255,255,255),"music/spanish clothes/jacket.wav"),
     "un pijama": ("Sprites/pyjamas.png", (255,255,255),"music/spanish clothes/pyjamas.wav"),
