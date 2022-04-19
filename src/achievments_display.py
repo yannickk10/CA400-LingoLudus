@@ -1,14 +1,19 @@
 import pygame
+import importlib
 from pygame import mixer
 from button2 import Button
-from french_stats import *
-from spanish_stats import *
+import french_stats
+import spanish_stats
 from settings import *
 
 def get_font(size):
 	return pygame.font.Font("assets/font.ttf", size)
 
 def calc_best_three_words(dict):
+
+    importlib.reload(french_stats)
+    importlib.reload(spanish_stats)
+    
     highest = "None 0"
     scnd_highest = "None 0"
     third_highest = "None 0"
@@ -33,6 +38,10 @@ def calc_best_three_words(dict):
     return highest, scnd_highest, third_highest
 
 def calc_worst_three_words(dict):
+
+    importlib.reload(french_stats)
+    importlib.reload(spanish_stats)
+
     lowest = "None 1000000"
     scnd_lowest = "None 1000000"
     third_lowest = "None 1000000"
@@ -64,9 +73,9 @@ def calc_worst_three_words(dict):
 
 def achievments_display_french():
 
-    best_word, second_best_word, third_best_word = calc_best_three_words(word_stats_french)
+    best_word, second_best_word, third_best_word = calc_best_three_words(french_stats.word_stats_french)
 
-    worst_word, second_worst_word, third_worst_word = calc_worst_three_words(word_stats_french)
+    worst_word, second_worst_word, third_worst_word = calc_worst_three_words(french_stats.word_stats_french)
 
     pygame.init()
 
@@ -124,11 +133,11 @@ def achievments_display_french():
     third_worst_word_box = third_worst_word.get_rect()
 
     #HighScore Text
-    highest_score = body_font.render(french_highscore, False, (255,255,255))
+    highest_score = body_font.render(french_stats.french_highscore, False, (255,255,255))
     highest_score_text_box = highest_score.get_rect()
 
     #HighStreak Text
-    highest_streak_text = body_font.render(french_highest_streak, False, (255,255,255))
+    highest_streak_text = body_font.render(french_stats.french_highest_streak, False, (255,255,255))
     streak_box = highest_streak_text.get_rect()
 
     background = pygame.image.load("images/background.png")
@@ -203,9 +212,9 @@ def achievments_display_french():
 
 def achievments_display_spanish():
 
-    best_word, second_best_word, third_best_word = calc_best_three_words(word_stats_spanish)
+    best_word, second_best_word, third_best_word = calc_best_three_words(spanish_stats.word_stats_spanish)
 
-    worst_word, second_worst_word, third_worst_word = calc_worst_three_words(word_stats_spanish)
+    worst_word, second_worst_word, third_worst_word = calc_worst_three_words(spanish_stats.word_stats_spanish)
     
     pygame.init()
 
@@ -264,11 +273,11 @@ def achievments_display_spanish():
     third_worst_word_box = third_worst_word.get_rect()
 
     #HighScore Text
-    highest_score = body_font.render(spanish_highscore, False, (255,255,255))
+    highest_score = body_font.render(spanish_stats.spanish_highscore, False, (255,255,255))
     highest_score_box = highest_score.get_rect()
 
     #HighStreak Text
-    highest_streak_text = body_font.render(spanish_highest_streak, False, (255,255,255))
+    highest_streak_text = body_font.render(spanish_stats.spanish_highest_streak, False, (255,255,255))
     streak_box = highest_streak_text.get_rect()
 
     background = pygame.image.load("images/background.png")
