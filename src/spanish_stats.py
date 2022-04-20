@@ -14,7 +14,13 @@ word_stats_spanish = {'cuatro' : '5',
 'nueve' : '3',
 'uno' : '2',
 'dos' : '5',
-'seis' : '2'
+'seis' : '2',
+'un' : '2',
+'deux' : '1',
+'nuef' : '2',
+'quatre' : '1',
+'cinq' : '2',
+'huit' : '2'
 }
 
 spanish_highscore = '1000'

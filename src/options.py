@@ -91,3 +91,4 @@ for locale in locales:
     translations[locale] = gettext.translation('messages', localedir='locale', languages=[locale])
 translations[active_locale].install()
 
+options()
