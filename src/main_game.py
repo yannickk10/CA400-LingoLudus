@@ -9,6 +9,7 @@ from button import *
 from settings import *
 from french_stats import *
 from spanish_stats import *
+import time
 from vocab import *
 
 def space_invaders(level):
@@ -155,7 +156,7 @@ def space_invaders(level):
     pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
 
     #Create Back to main menu Button
-    back_to_main_menu_button = Button('Back to Main Menu',pygame.font.Font("assets/font.ttf", 30), 600, 40, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + 40), 6, screen)
+    back_to_game_menu_button = Button('Back to Level Select',pygame.font.Font("assets/font.ttf", 30), 600, 40, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + 40), 6, screen)
 
     #Create duplicate word stats dict
     if language == "french":
@@ -199,7 +200,8 @@ def space_invaders(level):
                     option = pause_menu()
 
             if event.type == PARTICAL_EVENT:
-                partical1.add_particles()
+                if player.health != 0:
+                    partical1.add_particles()
 
             # Check for QUIT event. If QUIT, then set gameLoop to false.
             elif event.type == pygame.QUIT:
@@ -315,7 +317,7 @@ def space_invaders(level):
         if player.health == 0:
             pygame.mixer.music.stop()
             game_over_alert(alert_box_group, max_streak)
-            if back_to_main_menu_button.draw() == False:
+            if back_to_game_menu_button.draw() == False:
                 gameLoop = False
 
 
