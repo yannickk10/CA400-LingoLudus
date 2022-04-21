@@ -9,7 +9,6 @@ from button import *
 from settings import *
 from french_stats import *
 from spanish_stats import *
-import time
 from vocab import *
 
 def space_invaders(level):
@@ -78,15 +77,15 @@ def space_invaders(level):
                 # Update the highscore
                 f.write("\n}")
                 if language == "french":
-                    if temp_highscore > french_highscore:
-                        f.write("\n\n" + str(player.hud.score_object.score))
+                    if player.hud.score_object.score > int(french_highscore):
+                        f.write("\n\n" + "french_highscore = "+ "'" + str(player.hud.score_object.score) + "'")
                     else:
-                        f.write(("\n\n" + "french_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
+                        f.write(("\n\n" + "french_highscore = "+ "'" + str(french_highscore) + "'"))
                 else:
-                    if temp_highscore > spanish_highscore:
-                        f.write("\n\n" + str(player.hud.score_object.score))
+                    if player.hud.player_score.score > int(spanish_highscore):
+                        f.write("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score))
                     else:
-                        f.write(("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
+                        f.write(("\n\n" + "spanish_highscore = "+ "'" + str(spanish_highscore) + "'"))
                 
 
                 # Update the highest streak
@@ -161,10 +160,8 @@ def space_invaders(level):
     #Create duplicate word stats dict
     if language == "french":
         temp_word_stats_dict = word_stats_french
-        temp_highscore = french_highscore
     else:
         temp_word_stats_dict = word_stats_spanish
-        temp_highscore = spanish_highscore
 
 
     #Create duplicate best w
