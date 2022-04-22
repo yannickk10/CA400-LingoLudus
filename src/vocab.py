@@ -12,27 +12,27 @@ spanish_clothing ={
 	}
 
 french_clothing ={
-    "le mentau":  ("Sprites/jacket.png", (255,255,255),),
-    "les pyjamas": ("Sprites/pyjamas.png", (255,255,255),),
-    "un pantalon": ("Sprites/trousers.png", (255,255,255),),
-    "des chaussettes": ("Sprites/socks.png", (255,255,255),),
-    "un t-shirt": ("Sprites/t-shirt.png", (255,255,255),),
-    "la robe": ("Sprites/dress.png", (255,255,255),),
-    "un chapeau": ("Sprites/hat.png", (255,255,255),),
-    "la cravate": ("Sprites/tie.png", (255,255,255),),
-    "les chaussures": ("Sprites/shoes.png", (255,255,255),)
+    "le mentau":  ("Sprites/jacket.png", (255,255,255),"music/french_clothes/le_mentau.wav"),
+    "les pyjamas": ("Sprites/pyjamas.png", (255,255,255),"music/french_clothes/les_pyjamas.wav"),
+    "un pantalon": ("Sprites/trousers.png", (255,255,255),"music/french_clothes/un_pantalon.wav"),
+    "des chaussettes": ("Sprites/socks.png", (255,255,255),"music/french_clothes/des_chausettes.wav"),
+    "un t-shirt": ("Sprites/t-shirt.png", (255,255,255),"music/french_clothes/un_tshirt.wav"),
+    "la robe": ("Sprites/dress.png", (255,255,255),"music/french_clothes/la_robe.wav"),
+    "un chapeau": ("Sprites/hat.png", (255,255,255),"music/french_clothes/un_chapeau.wav"),
+    "la cravate": ("Sprites/tie.png", (255,255,255),"music/french_clothes/la_cravate.wav"),
+    "les chaussures": ("Sprites/shoes.png", (255,255,255),"music/french_clothes/les_chaussures.wav")
 	}
 
 french_fruits ={
-    "une banane":  ("Sprites/banana.png", (255,255,255),),
-    "un orange": ("Sprites/Orange.png", (255,255,255),),
-    "un citron": ("Sprites/lemon.png", (0,0,0),),
-    "une fraise": ("Sprites/strawberry.png", (255,255,255),),
-    "un melon": ("Sprites/melon.png", (255,255,255),),
-    "une myrtille": ("Sprites/blueberry.png", (0,0,0),),
-    "une pomme": ("Sprites/red_apple.png", (0,0,0),),
-    "une tomate": ("Sprites/tomato.png", (255,255,255),),
-    "les raisins": ("Sprites/purple_grapes.png", (0,0,0),)
+    "une banane":  ("Sprites/banana.png", (255,255,255), "music/french_fruits/une_banane.wav"),
+    "un orange": ("Sprites/Orange.png", (255,255,255),"music/french_fruits/un_orange.wav"),
+    "un citron": ("Sprites/lemon.png", (0,0,0),"music/french_fruits/un_citron.wav"),
+    "une fraise": ("Sprites/strawberry.png", (255,255,255),"music/french_fruits/une_fraise.wav"),
+    "un melon": ("Sprites/melon.png", (255,255,255),"music/french_fruits/un_melon.wav"),
+    "une myrtille": ("Sprites/blueberry.png", (0,0,0),"music/french_fruits/une_myrtille.wav"),
+    "une pomme": ("Sprites/red_apple.png", (0,0,0),"music/french_fruits/une_pomme.wav"),
+    "une tomate": ("Sprites/tomato.png", (255,255,255),"music/french_fruits/une_tomate.wav"),
+    "les raisins": ("Sprites/purple_grapes.png", (0,0,0),"music/french_fruits/les_raisins.wav")
 	}
 
 spanish_fruits ={
@@ -60,13 +60,13 @@ spanish_numbers ={
 	}
 
 french_numbers ={
-    "un":  ("Sprites/one_img.png", (0,0,0),),
-    "deux": ("Sprites/two_img.png", (0,0,0),),
-    "trois": ("Sprites/three_img.png", (0,0,0),),
-    "quatre": ("Sprites/four_img.png", (0,0,0),),
-    "cinq": ("Sprites/five_img.png", (0,0,0),),
-    "six": ("Sprites/six_img.png", (0,0,0),),
-    "sept": ("Sprites/seven_img.png", (0,0,0),),
-    "huit": ("Sprites/eight_img.png", (0,0,0),),
-    "nuef": ("Sprites/nine_img.png", (0,0,0),),
+    "un":  ("Sprites/one_img.png", (0,0,0),"music/french_numbers/un.wav"),
+    "deux": ("Sprites/two_img.png", (0,0,0),"music/french_numbers/deux.wav"),
+    "trois": ("Sprites/three_img.png", (0,0,0),"music/french_numbers/trois.wav"),
+    "quatre": ("Sprites/four_img.png", (0,0,0),"music/french_numbers/quatre.wav"),
+    "cinq": ("Sprites/five_img.png", (0,0,0),"music/french_numbers/cinq.wav"),
+    "six": ("Sprites/six_img.png", (0,0,0),"music/french_numbers/six.wav"),
+    "sept": ("Sprites/seven_img.png", (0,0,0),"music/french_numbers/sept.wav"),
+    "huit": ("Sprites/eight_img.png", (0,0,0),"music/french_numbers/huit.wav"),
+    "neuf": ("Sprites/nine_img.png", (0,0,0),"music/french_numbers/neuf.wav"),
 	}
