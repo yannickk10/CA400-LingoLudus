@@ -22,26 +22,26 @@ spanish_clothing ={
 	}
 
 french_clothing ={
-    "la veste":  ("Sprites/jacket.png", (255,255,255),),
+    "le mentau":  ("Sprites/jacket.png", (255,255,255),),
     "les pyjamas": ("Sprites/pyjamas.png", (255,255,255),),
-    "des pantalons": ("Sprites/trousers.png", (255,255,255),),
+    "un pantalon": ("Sprites/trousers.png", (255,255,255),),
     "des chaussettes": ("Sprites/socks.png", (255,255,255),),
     "un t-shirt": ("Sprites/t-shirt.png", (255,255,255),),
     "la robe": ("Sprites/dress.png", (255,255,255),),
-    "chapeau": ("Sprites/hat.png", (255,255,255),),
+    "un chapeau": ("Sprites/hat.png", (255,255,255),),
     "la cravate": ("Sprites/tie.png", (255,255,255),),
-    "des chaussures": ("Sprites/shoes.png", (255,255,255),)
+    "les chaussures": ("Sprites/shoes.png", (255,255,255),)
 	}
 
 french_fruits ={
-    "banane":  ("Sprites/banana.png", (255,255,255),),
-    "orange": ("Sprites/Orange.png", (255,255,255),),
-    "citron": ("Sprites/lemon.png", (0,0,0),),
-    "fraise": ("Sprites/strawberry.png", (255,255,255),),
-    "melon": ("Sprites/melon.png", (255,255,255),),
-    "myrtille": ("Sprites/blueberry.png", (0,0,0),),
-    "Pomme": ("Sprites/red_apple.png", (0,0,0),),
-    "tomate": ("Sprites/tomato.png", (255,255,255),),
+    "une banane":  ("Sprites/banana.png", (255,255,255),),
+    "un orange": ("Sprites/Orange.png", (255,255,255),),
+    "un citron": ("Sprites/lemon.png", (0,0,0),),
+    "une fraise": ("Sprites/strawberry.png", (255,255,255),),
+    "un melon": ("Sprites/melon.png", (255,255,255),),
+    "une myrtille": ("Sprites/blueberry.png", (0,0,0),),
+    "une pomme": ("Sprites/red_apple.png", (0,0,0),),
+    "une tomate": ("Sprites/tomato.png", (255,255,255),),
     "les raisins": ("Sprites/purple_grapes.png", (0,0,0),)
 	}
 
