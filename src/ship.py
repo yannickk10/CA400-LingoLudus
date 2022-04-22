@@ -29,13 +29,13 @@ class Player(pygame.sprite.Sprite):
     def update(self, pressed_keys):
         #update the players movements based on inputs
 
-        if pressed_keys[pygame.K_UP]:
+        if pressed_keys[pygame.K_w]:
             self.rect.move_ip(0, -10)
-        if pressed_keys[pygame.K_DOWN]:
+        if pressed_keys[pygame.K_s]:
             self.rect.move_ip(0, 10)
-        if pressed_keys[pygame.K_LEFT]:
+        if pressed_keys[pygame.K_a]:
             self.rect.move_ip(-10, 0)
-        if pressed_keys[pygame.K_RIGHT]:
+        if pressed_keys[pygame.K_d]:
             self.rect.move_ip(10, 0)
 
         # Keep player on the screen

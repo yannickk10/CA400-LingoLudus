@@ -8,8 +8,8 @@ class Enemy(pygame.sprite.Sprite):
         self.image = pygame.image.load(sprite).convert_alpha()
         self.image.set_colorkey(backing_colour)
         self.rect = self.image.get_rect(center=(
-                random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 100),
-                random.randint(10, SCREEN_HEIGHT- 120),))
+                random.randint(SCREEN_WIDTH + 20, SCREEN_WIDTH + 200),
+                random.randint(60, SCREEN_HEIGHT- 120),))
 
         self.speed = random.randint(6,7)
 

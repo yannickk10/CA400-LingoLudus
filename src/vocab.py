@@ -1,14 +1,4 @@
-language = 'spanish'
-spanish_vehicles ={
-    "projectile":  ("Sprites/projectile.gif", (0,0,0)),
-    "el coche": ("Sprites/Car.png", (0,0,0)),
-    "entrenar": ("Sprites/Train.png", (0,0,0)),
-    "la manzana": ("Sprites/blueberry.png", (0,0,0)),
-    "arandano": ("Sprites/red_apple.png", (0,0,0)),
-    "uva": ("Sprites/purple_grapes.png", (0,0,0))
-}
-
-language = 'spanish'
+language = 'french'
 spanish_clothing ={
     "un chaqueta":  ("Sprites/jacket.png", (255,255,255),"music/spanish clothes/jacket.wav"),
     "un pijama": ("Sprites/pyjamas.png", (255,255,255),"music/spanish clothes/pyjamas.wav"),

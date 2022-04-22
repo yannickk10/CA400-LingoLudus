@@ -6,7 +6,7 @@ class Target(pygame.sprite.Sprite):
         super(Target, self).__init__()
         self.target = ""
         self.font = pygame.font.Font('freesansbold.ttf', 32)
-        self.image = self.font.render("Target:" + self.target, False, (255,255,255))
+        self.image = self.font.render("Target:" + self.target, False, "Orange")
         self.rect = self.image.get_rect()
         self.rect.x = SCREEN_WIDTH / 2 - self.rect.width + 20
         self.rect.y = SCREEN_HEIGHT - self.rect.height - 30
@@ -16,7 +16,7 @@ class Target(pygame.sprite.Sprite):
         if new_target != None:
             self.target = new_target
             self.font = pygame.font.Font('freesansbold.ttf', 32)
-            self.image = self.font.render("Target: " + str(self.target), False, (255,255,255))
+            self.image = self.font.render("Target: " + str(self.target), False, "Orange")
             self.rect = self.image.get_rect()
             self.rect.x = SCREEN_WIDTH / 2 - self.rect.width + 20
             self.rect.y = SCREEN_HEIGHT - self.rect.height - 30
