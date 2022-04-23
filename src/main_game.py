@@ -135,7 +135,7 @@ def space_invaders(level):
     max_streak = 0
 
     #Background music
-    mixer.music.load("music/background.wav")
+    mixer.music.load("assets/music/background.wav")
     mixer.music.play(-1)
 
     pressed_keys = pygame.key.get_pressed()
@@ -171,7 +171,7 @@ def space_invaders(level):
 
     # Setup the clock for a decent framerate
     clock = pygame.time.Clock()
-    background_image = pygame.image.load("Sprites/bg_stars1.png").convert()
+    background_image = pygame.image.load("assets/Sprites/bg_stars1.png").convert()
     x = 0
 
     partical1 = ParticlesShip()
@@ -194,7 +194,7 @@ def space_invaders(level):
                 if event.key == pygame.K_ESCAPE:
                     screen.fill((0,0,0))
                     pygame.mixer.music.pause()
-                    pause_sound = mixer.Sound("music/pause.wav")
+                    pause_sound = mixer.Sound("assets/music/pause.wav")
                     pause_sound.play()
                     option = pause_menu()
 
@@ -211,7 +211,7 @@ def space_invaders(level):
         #Pause Game
         if pause_button.draw() == False:
             pygame.mixer.music.pause()
-            pause_sound = mixer.Sound("music/pause.wav")
+            pause_sound = mixer.Sound("assets/music/pause.wav")
             pause_sound.play()
             option = pause_menu()
         
@@ -235,11 +235,11 @@ def space_invaders(level):
             enemy[0].get_hit()
             player.get_hit()
             enemy[0].get_hit()
-            incorrect_sound = mixer.Sound("music/incorrect enemy.wav")
+            incorrect_sound = mixer.Sound("assets/music/incorrect enemy.wav")
             incorrect_sound.play()
             if player.health <= 0:
                 #Sound from Zapsplat.com
-                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound = mixer.Sound("assets/music/player_death.wav")
                 player_death_sound.play()
                 player.kill()
                 break
@@ -256,7 +256,7 @@ def space_invaders(level):
                     if key == enemy_spawner.enemy_imposter_name:
                         temp_word_stats_dict[key] = (int(value) + 1)
             enemy[0].get_hit()
-            correct_sound = mixer.Sound("music/correct enemy.wav")
+            correct_sound = mixer.Sound("assets/music/correct enemy.wav")
             correct_sound.play()
 
         #enmy and player
@@ -264,13 +264,13 @@ def space_invaders(level):
         for player, enemy in player_enemy_collision.items():
             player.get_hit()
             #Sound from Zapsplat.com
-            player_hit_sound = mixer.Sound("music/character hit.wav")
+            player_hit_sound = mixer.Sound("assets/music/character hit.wav")
             player_hit_sound.play()
 
             enemy[0].get_hit()
             if player.health <= 0:
                 #Sound from Zapsplat.com
-                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound = mixer.Sound("assets/music/player_death.wav")
                 player_death_sound.play()
                 player.kill()
                 break
@@ -280,13 +280,13 @@ def space_invaders(level):
         for player, enemy in player_imposter_collision.items():
             player.get_hit()
             #Sound from Zapsplat.com
-            player_hit_sound = mixer.Sound("music/character hit.wav")
+            player_hit_sound = mixer.Sound("assets/music/character hit.wav")
             player_hit_sound.play()
 
             enemy[0].get_hit()
             if player.health <= 0:
                 #Sound from Zapsplat.com
-                player_death_sound = mixer.Sound("music/player_death.wav")
+                player_death_sound = mixer.Sound("assets/music/player_death.wav")
                 player_death_sound.play()
                 player.kill()
                 break

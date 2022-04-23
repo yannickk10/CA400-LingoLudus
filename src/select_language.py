@@ -1,6 +1,6 @@
 import pygame, sys
 from pygame import mixer
-from button2 import Button
+from button import Button2
 import game_sel_menu
 from settings import *
 
@@ -9,15 +9,15 @@ pygame.init()
 res = (1280, 720)
 pygame.display.set_caption("Lingo Ludus")
 
-BG = pygame.image.load("images/background.png")
+BG = pygame.image.load("assets/images/background.png")
 
 # opens up a window
 SCREEN = pygame.display.set_mode(res)
 screen_rect = SCREEN.get_rect()
 
 #Load sounds
-forward_sound = mixer.Sound("music/forward_click.wav")
-back_sound = mixer.Sound("music/back_click.wav")
+forward_sound = mixer.Sound("assets/music/forward_click.wav")
+back_sound = mixer.Sound("assets/music/back_click.wav")
 
 def get_font(size):
 	return pygame.font.Font("assets/font.ttf", size)
@@ -32,11 +32,11 @@ def language_select(play):
         menu_text = get_font(45).render("LANGUAGE TO LEARN", True, "Orange")
         menu_rect = menu_text.get_rect(center=(640, 100))
 
-        french_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 250), 
+        french_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 250), 
                                 text_input="FRENCH", font=get_font(60), base_color="White", hovering_color="Orange")
-        spanish_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 400), 
+        spanish_button = Button2(image=pygame.image.load("assets/images/lang_rect.png"), pos=(640, 400), 
                                 text_input="SPANISH", font=get_font(60), base_color="White", hovering_color="Orange")
-        back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+        back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
                             text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
         SCREEN.blit(menu_text, menu_rect)

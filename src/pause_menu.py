@@ -1,12 +1,12 @@
 import pygame
 from pygame import mixer
 from settings import *
-from button2 import Button
+from button import Button2
 
 pygame.init()
 clock = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-BG = pygame.image.load("images/background.png")
+BG = pygame.image.load("assets/images/background.png")
 
 def get_font(size): # Returns Press-Start-2P in the desired size
 	return pygame.font.Font("assets/font.ttf", size)
@@ -21,9 +21,9 @@ def pause_menu():
         menu_text = get_font(45).render("PAUSE MENU", True, "Orange")
         menu_rect = menu_text.get_rect(center=(640, 100))
 
-        resume_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 250), 
+        resume_button = Button2(image=pygame.image.load("assets/images/lang_rect.png"), pos=(640, 250), 
 							text_input="RESUME", font=get_font(60), base_color="White", hovering_color="Orange")
-        quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 400), 
+        quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(640, 400), 
 							text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Orange")
 
         SCREEN.blit(menu_text, menu_rect)
@@ -38,7 +38,7 @@ def pause_menu():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if resume_button.checkForInput(mouse_pos):
-                    pause_sound = mixer.Sound("music/unpause.wav")
+                    pause_sound = mixer.Sound("assets/music/unpause.wav")
                     pause_sound.play()
                     pygame.mixer.music.unpause()
                     pauseloop = False

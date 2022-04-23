@@ -2,21 +2,21 @@ import pygame
 from pygame import mixer
 import main_game as game
 from settings import *
-from button2 import *
+from button import *
 
 
 pygame.init()
 # screen resolution
 res = (1280, 720)
-BG = pygame.image.load("images/background.png")
+BG = pygame.image.load("assets/images/background.png")
 
 # opens up a window
 SCREEN = pygame.display.set_mode(res)
 screen_rect = SCREEN.get_rect()
 
 #Load sounds
-forward_sound = mixer.Sound("music/forward_click.wav")
-back_sound = mixer.Sound("music/back_click.wav")
+forward_sound = mixer.Sound("assets/music/forward_click.wav")
+back_sound = mixer.Sound("assets/music/back_click.wav")
 
 def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
@@ -34,16 +34,16 @@ def game_hub():
         title_rec = title_heading.get_rect(center=(640, 100))
 
         #Create Buttons
-        clothing_invaders = Button(image=pygame.image.load("images/play_rect.png"), pos=(256, 540), 
+        clothing_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(256, 540), 
                             text_input="Wardrobe Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-        number_invaders = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 360), 
+        number_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 360), 
                                 text_input="Number Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-        fruit_invaders = Button(image=pygame.image.load("images/play_rect.png"), pos=(1024, 540), 
+        fruit_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(1024, 540), 
                                 text_input="Fruit Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-        back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+        back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
                             text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
         SCREEN.blit(title_heading, title_rec)

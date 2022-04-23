@@ -8,7 +8,7 @@ from health import Health
 class HUD (pygame.sprite.Sprite):
     def __init__(self):
         super(HUD, self).__init__()
-        self.image = pygame.image.load("Sprites/hud.png").convert()
+        self.image = pygame.image.load("assets/Sprites/hud.png").convert()
         self.rect = self.image.get_rect()
         self.rect.y = SCREEN_HEIGHT - self.rect.height
 
