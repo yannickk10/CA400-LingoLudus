@@ -1,106 +1,76 @@
 import pygame
-import test as gt
-import sys
-
-def draw_button(button_colour, screen, width, height, mouse_pos, alt):
-	if width/2-540 <= mouse[0] <= width/2+540 and height <= mouse[1] <= height+40:
-		pygame.draw.rect(screen,grey,[width/2-150,height,alt,40])
-		
-	else:
-		pygame.draw.rect(screen,black,[width/2-150,height,alt,40])
+from pygame import mixer
+import main_game as game
+from settings import *
+from button import *
 
 
-# initializing the constructor
 pygame.init()
-
 # screen resolution
-res = (720,720)
+res = (1280, 720)
+BG = pygame.image.load("assets/images/background.png")
 
 # opens up a window
-screen = pygame.display.set_mode(res)
+SCREEN = pygame.display.set_mode(res)
+screen_rect = SCREEN.get_rect()
 
-# white color
-white = (255,255,255)
+#Load sounds
+forward_sound = mixer.Sound("assets/music/forward_click.wav")
+back_sound = mixer.Sound("assets/music/back_click.wav")
 
-# light shade of the button
-grey = (170,170,170)
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/font.ttf", size)
 
-# dark shade of the button
-black = (100,100,100)
+def game_hub():
+    gameLoop = True
+    # Main loop
+    while gameLoop:
+        SCREEN.blit(BG, (0, 0))
 
-# stores the width of the
-# screen into a variable
-width = screen.get_width()
+        mouse_pos = pygame.mouse.get_pos()
 
-# stores the height of the
-# screen into a variable
-height = screen.get_height()
+        #Create Title for screen
+        title_heading = get_font(45).render("CHOOSE A TOPIC", True, "Orange")
+        title_rec = title_heading.get_rect(center=(640, 100))
 
-pressed_keys = pygame.key.get_pressed()
+        #Create Buttons
+        clothing_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(256, 540), 
+                            text_input="Wardrobe Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-background_image = pygame.image.load("images/LiLu_Logo.png").convert()
+        number_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 360), 
+                                text_input="Number Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-# defining a font
-smallfont = pygame.font.SysFont('Corbel',35)
+        fruit_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(1024, 540), 
+                                text_input="Fruit Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-# rendering a text written in
-# this font
+        back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
+                            text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
-sel_lang = smallfont.render('Select Language' , True , white)
-new_game = smallfont.render('New Game' , True , white)
-load_game = smallfont.render('Load Game' , True , white)
-view_stats = smallfont.render('Select Language' , True , white)
-quit_game = smallfont.render('Quit Game' , True , white)
+        SCREEN.blit(title_heading, title_rec)
 
+        for button in [clothing_invaders, number_invaders, fruit_invaders, back_button]:
+            button.changeColor(mouse_pos)
+            button.update(SCREEN)
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
 
-while True:
-	
-	for ev in pygame.event.get():
-		
-		if ev.type == pygame.QUIT:
-			pygame.quit()
-			
-		#checks if a mouse is clicked
-		if ev.type == pygame.MOUSEBUTTONDOWN:
-			
-			#if the mouse is clicked on the
-			# button the game is terminated
+            #Check button input
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if clothing_invaders.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    game.space_invaders("clothing")
+                if number_invaders.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    game.space_invaders("numbers")
+                if fruit_invaders.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    game.space_invaders("fruits")
 
-			if 0 <= mouse[0] <= width/2+150 and 645 <= mouse[1] <= 645+40:
-				pygame.quit()
+                if back_button.checkForInput(mouse_pos):
+                    back_sound.play()
+                    gameLoop = False
 
-			else:
-				if 0 <= mouse[0] <= width/2+150 and 285 <= mouse[1] <= 285+40:
-					gt.space_invaders()
-				
-	# fills the screen with a color
-	screen.blit(background_image, [0,0])
-	
-	# stores the (x,y) coordinates into
-	# the variable as a tuple
-	mouse = pygame.mouse.get_pos()
-	
-	# if mouse is hovered on a button it
-	# changes to lighter shade
-
-	# Draw Buttons
-	button_height = 280
-	i = 0
-	while i <= 4:
-		if (i % 2) == 0:
-			draw_button(grey, screen, width, button_height, mouse,540)
-			button_height += 120
-		else:
-			draw_button(grey, screen, width-480 , button_height, mouse,540)
-			button_height += 120
-		i += 1
-	
-	# superimposing the text onto our button
-	screen.blit(load_game , (width/2-150,285))
-	screen.blit(new_game , (width/2-150,405))
-	screen.blit(sel_lang , (width/2-150,525))
-	screen.blit(quit_game , (width/2-150,645))
-
-	
-	# updates the frames of the game
-	pygame.display.update()
+        # updates the frames of the game
+        pygame.display.update()

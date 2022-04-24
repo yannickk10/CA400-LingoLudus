@@ -1,110 +1,67 @@
-import pygame
-import test as gt
+import pygame, select_language, achievments_display, game_sel_menu
+from pygame import mixer
+from settings import *
+from button import Button2
 import sys
 
-def draw_button(button_colour, screen, width, height, mouse_pos, alt):
-	if width/2-540 <= mouse[0] <= width/2+540 and height <= mouse[1] <= height+40:
-		pygame.draw.rect(screen,grey,[width/2-150,height,alt,40])
-		
-	else:
-		pygame.draw.rect(screen,black,[width/2-150,height,alt,40])
-
-
-# initializing the constructor
 pygame.init()
-
 # screen resolution
-res = (720,720)
+res = (1280, 720)
+pygame.display.set_caption("Lingo Ludus")
 
+BG = pygame.image.load("assets/images/background.png")
 # opens up a window
-screen = pygame.display.set_mode(res)
+SCREEN = pygame.display.set_mode(res)
+screen_rect = SCREEN.get_rect()
 
-# white color
-white = (255,255,255)
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/font.ttf", size)
 
-red = (255,0,0)
+logo = pygame.image.load("assets/images/lingoludus_logo.png").convert_alpha()
+lingo_logo = pygame.transform.scale(logo, (630,250))
+menu_rect = lingo_logo.get_rect(center=(640, 100))
 
-# light shade of the button
-grey = (170,170,170)
+play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 260), 
+                    text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
+achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(640, 420), 
+                    text_input="ACHIEVMENTS", font=get_font(60), base_color="White", hovering_color="Orange")
 
-# dark shade of the button
-black = (100,100,100)
+quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(640, 560), 
+                    text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Red")
 
-# stores the width of the
-# screen into a variable
-width = screen.get_width()
-
-# stores the height of the
-# screen into a variable
-height = screen.get_height()
-
-pressed_keys = pygame.key.get_pressed()
-
-background_image = pygame.image.load("images/LiLu_Logo.png").convert()
-
-# defining a font
-smallfont = pygame.font.SysFont('twcencondensedextra',30)
-bigfont = pygame.font.SysFont('lucidafax',40)
-
-# rendering a text written in
-# this font
-main_menu = bigfont.render('Main menu' , True , red)
-sel_lang = smallfont.render('Select Language' , True , white)
-Game_sel = smallfont.render('Game Selection' , True , white)
-new_game = smallfont.render('New Game' , True , white)
-load_game = smallfont.render('Load Game' , True , white)
-view_stats = smallfont.render('View Stats' , True , white)
-quit_game = smallfont.render('Quit Game' , True , white)
+#Load sound
+forward_sound = mixer.Sound("assets/music/forward_click.wav")
+back_sound = mixer.Sound("assets/music/back_click.wav")
 
 
-while True:
-	
-	for ev in pygame.event.get():
-		
-		if ev.type == pygame.QUIT:
-			pygame.quit()
-			
-		#checks if a mouse is clicked
-		if ev.type == pygame.MOUSEBUTTONDOWN:
-			
-			#if the mouse is clicked on the
-			# button the game is terminated
+def main_menu():
+    while True:
+        SCREEN.blit(BG, (0, 0))
 
-			if width/2+150 <= mouse[0] <= 0 and 640 <= mouse[1] <= 640+40:
-				pygame.quit()
+        mouse_pos = pygame.mouse.get_pos()
 
-			else:
-				if width/2+150 <= mouse[0] <= 0 and 320 <= mouse[1] <= 320+40:
-					gt.space_invaders()
-				
-	# fills the screen with a color
-	screen.blit(background_image, [0,0])
-	
-	# stores the (x,y) coordinates into
-	# the variable as a tuple
-	mouse = pygame.mouse.get_pos()
-	
-	# if mouse is hovered on a button it
-	# changes to lighter shade
+        SCREEN.blit(lingo_logo, menu_rect)
 
-	# Draw Buttons
-	button_height = 320
-	i = 0
-	while i <= 4:
-		if (i % 2) == 0:
-			draw_button(grey, screen, width, button_height, mouse,540)
-			button_height += 160
-		else:
-			draw_button(grey, screen, width-480 , button_height, mouse,540)
-			button_height += 160
-		i += 1
-	
-	# superimposing the text onto our button
-	screen.blit(main_menu , (width/2-110,250))
-	screen.blit(new_game , (width/2-75,320))
-	screen.blit(sel_lang , (width/2-105,480))
-	screen.blit(quit_game , (width/2-75,640))
+        for button in [play_button, achievments_button, quit_button]:
+            button.changeColor(mouse_pos)
+            button.update(SCREEN)
 
-	
-	# updates the frames of the game
-	pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if play_button.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    select_language.language_select(True)
+                if achievments_button.checkForInput(mouse_pos):
+                    forward_sound.play()
+                    achievments_display.achievments_display_french()
+                if quit_button.checkForInput(mouse_pos):
+                    back_sound.play()
+                    pygame.quit()
+                    sys.exit()
+
+        pygame.display.update()
+
+main_menu()
