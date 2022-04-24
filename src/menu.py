@@ -21,15 +21,12 @@ logo = pygame.image.load("assets/images/lingoludus_logo.png").convert_alpha()
 lingo_logo = pygame.transform.scale(logo, (630,250))
 menu_rect = lingo_logo.get_rect(center=(640, 100))
 
-play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 230), 
+play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 2), 
                     text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
-lang_button = Button2(image=pygame.image.load("assets/images/lang_rect.png"), pos=(640, 360), 
-                    text_input="LANGUAGE", font=get_font(60), base_color="White", hovering_color="Orange")
-
-achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(640, 490), 
+achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(640, 420), 
                     text_input="ACHIEVMENTS", font=get_font(60), base_color="White", hovering_color="Orange")
 
-quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(640, 630), 
+quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(640, 560), 
                     text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Red")
 
 #Load sound
@@ -45,7 +42,7 @@ def main_menu():
 
         SCREEN.blit(lingo_logo, menu_rect)
 
-        for button in [play_button, lang_button, achievments_button, quit_button]:
+        for button in [play_button, achievments_button, quit_button]:
             button.changeColor(mouse_pos)
             button.update(SCREEN)
 
@@ -57,9 +54,6 @@ def main_menu():
                 if play_button.checkForInput(mouse_pos):
                     forward_sound.play()
                     select_language.language_select(True)
-                if lang_button.checkForInput(mouse_pos):
-                    forward_sound.play()
-                    select_language.language_select(False)
                 if achievments_button.checkForInput(mouse_pos):
                     forward_sound.play()
                     achievments_display.achievments_display_french()

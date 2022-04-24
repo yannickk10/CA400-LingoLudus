@@ -1,4 +1,4 @@
-language = 'spanish'
+language = 'french'
 spanish_clothing ={
     "un chaqueta":  ("assets/Sprites/jacket.png", (255,255,255),"assets/music/spanish clothes/jacket.wav"),
     "un pijama": ("assets/Sprites/pyjamas.png", (255,255,255),"assets/music/spanish clothes/pyjamas.wav"),
