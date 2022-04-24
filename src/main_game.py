@@ -77,15 +77,15 @@ def space_invaders(level):
                 # Update the highscore
                 f.write("\n}")
                 if language == "french":
-                    if temp_highscore > french_highscore:
-                        f.write("\n\n" + str(player.hud.score_object.score))
+                    if player.hud.score_object.score > int(french_highscore):
+                        f.write("\n\n" + "french_highscore = "+ "'" + str(player.hud.score_object.score) + "'")
                     else:
-                        f.write(("\n\n" + "french_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
+                        f.write(("\n\n" + "french_highscore = "+ "'" + str(french_highscore) + "'"))
                 else:
-                    if temp_highscore > spanish_highscore:
-                        f.write("\n\n" + str(player.hud.score_object.score))
+                    if player.hud.score_object.score > int(spanish_highscore):
+                        f.write("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score))
                     else:
-                        f.write(("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score) + "'"))
+                        f.write(("\n\n" + "spanish_highscore = "+ "'" + str(spanish_highscore) + "'"))
                 
 
                 # Update the highest streak
@@ -155,15 +155,13 @@ def space_invaders(level):
     pause_button = PauseButton('ll',pygame.font.Font(None, 30), 60, 40, (15, 15), 6, screen)
 
     #Create Back to main menu Button
-    back_to_main_menu_button = Button('Back to Main Menu',pygame.font.Font("assets/font.ttf", 30), 600, 40, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + 40), 6, screen)
+    back_to_game_menu_button = Button('Back to Level Select',pygame.font.Font("assets/font.ttf", 30), 600, 40, (SCREEN_WIDTH // 2 - 300, SCREEN_HEIGHT // 2 + 40), 6, screen)
 
     #Create duplicate word stats dict
     if language == "french":
         temp_word_stats_dict = word_stats_french
-        temp_highscore = french_highscore
     else:
         temp_word_stats_dict = word_stats_spanish
-        temp_highscore = spanish_highscore
 
 
     #Create duplicate best w
@@ -199,7 +197,8 @@ def space_invaders(level):
                     option = pause_menu()
 
             if event.type == PARTICAL_EVENT:
-                partical1.add_particles()
+                if player.health != 0:
+                    partical1.add_particles()
 
             # Check for QUIT event. If QUIT, then set gameLoop to false.
             elif event.type == pygame.QUIT:
@@ -315,7 +314,7 @@ def space_invaders(level):
         if player.health == 0:
             pygame.mixer.music.stop()
             game_over_alert(alert_box_group, max_streak)
-            if back_to_main_menu_button.draw() == False:
+            if back_to_game_menu_button.draw() == False:
                 gameLoop = False
 
 

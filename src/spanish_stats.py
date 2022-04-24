@@ -1,4 +1,4 @@
-word_stats_spanish = {'cuatro' : '5',
+word_stats_spanish = {'cuatro' : '6',
 'cinco' : '6',
 'el melon' : '2',
 'arandano' : '1',
@@ -8,19 +8,20 @@ word_stats_spanish = {'cuatro' : '5',
 'un chaqueta' : '2',
 'un pijama' : '2',
 'una corbata' : '1',
-'tres' : '3',
+'tres' : '6',
 'siete' : '4',
-'ocho' : '3',
-'nueve' : '3',
-'uno' : '2',
-'dos' : '5',
-'seis' : '2',
+'ocho' : '4',
+'nueve' : '6',
+'uno' : '3',
+'dos' : '6',
+'seis' : '3',
 'un' : '2',
 'deux' : '1',
 'nuef' : '2',
 'quatre' : '1',
 'cinq' : '2',
-'huit' : '2'
+'huit' : '2',
+'el limon' : '1'
 }
 
 spanish_highscore = '1000'
