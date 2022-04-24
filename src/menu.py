@@ -21,7 +21,7 @@ logo = pygame.image.load("assets/images/lingoludus_logo.png").convert_alpha()
 lingo_logo = pygame.transform.scale(logo, (630,250))
 menu_rect = lingo_logo.get_rect(center=(640, 100))
 
-play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 2), 
+play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 260), 
                     text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
 achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(640, 420), 
                     text_input="ACHIEVMENTS", font=get_font(60), base_color="White", hovering_color="Orange")
