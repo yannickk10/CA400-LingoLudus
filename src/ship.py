@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
 
     #Create the player image
         super(Player, self).__init__()
-        self.image = pygame.image.load("Sprites/pixel_ship.png").convert()
+        self.image = pygame.image.load("assets/Sprites/pixel_ship.png").convert()
         self.image.set_colorkey((255,255,255), pygame.RLEACCEL)
         self.rect = self.image.get_rect()
         self.rect.y = SCREEN_HEIGHT // 2 - self.rect.height
@@ -50,7 +50,7 @@ class Player(pygame.sprite.Sprite):
 
         if pressed_keys[pygame.K_SPACE]:
             if self.shoot_cooldown == 0:
-                bullet_sound = mixer.Sound("music/bullet_sound.wav")
+                bullet_sound = mixer.Sound("assets/music/bullet_sound.wav")
                 bullet_sound.play()
                 self.shoot_bullets()
                 self.shoot_cooldown = 13

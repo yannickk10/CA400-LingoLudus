@@ -1,7 +1,7 @@
 import pygame, select_language, achievments_display, game_sel_menu
 from pygame import mixer
 from settings import *
-from button2 import Button
+from button import Button2
 import sys
 
 pygame.init()
@@ -9,7 +9,7 @@ pygame.init()
 res = (1280, 720)
 pygame.display.set_caption("Lingo Ludus")
 
-BG = pygame.image.load("images/background.png")
+BG = pygame.image.load("assets/images/background.png")
 # opens up a window
 SCREEN = pygame.display.set_mode(res)
 screen_rect = SCREEN.get_rect()
@@ -17,24 +17,24 @@ screen_rect = SCREEN.get_rect()
 def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
 
-logo = pygame.image.load("images/lingoludus_logo.png").convert_alpha()
+logo = pygame.image.load("assets/images/lingoludus_logo.png").convert_alpha()
 lingo_logo = pygame.transform.scale(logo, (630,250))
 menu_rect = lingo_logo.get_rect(center=(640, 100))
 
-play_button = Button(image=pygame.image.load("images/play_rect.png"), pos=(640, 230), 
+play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 230), 
                     text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
-lang_button = Button(image=pygame.image.load("images/lang_rect.png"), pos=(640, 360), 
+lang_button = Button2(image=pygame.image.load("assets/images/lang_rect.png"), pos=(640, 360), 
                     text_input="LANGUAGE", font=get_font(60), base_color="White", hovering_color="Orange")
 
-achievments_button = Button(image=pygame.image.load("images/achievments_rect.png"), pos=(640, 490), 
+achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(640, 490), 
                     text_input="ACHIEVMENTS", font=get_font(60), base_color="White", hovering_color="Orange")
 
-quit_button = Button(image=pygame.image.load("images/quit_rect.png"), pos=(640, 630), 
+quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(640, 630), 
                     text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Red")
 
 #Load sound
-forward_sound = mixer.Sound("music/forward_click.wav")
-back_sound = mixer.Sound("music/back_click.wav")
+forward_sound = mixer.Sound("assets/music/forward_click.wav")
+back_sound = mixer.Sound("assets/music/back_click.wav")
 
 
 def main_menu():

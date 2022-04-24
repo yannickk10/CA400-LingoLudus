@@ -1,72 +1,72 @@
-language = 'french'
+language = 'spanish'
 spanish_clothing ={
-    "un chaqueta":  ("Sprites/jacket.png", (255,255,255),"music/spanish clothes/jacket.wav"),
-    "un pijama": ("Sprites/pyjamas.png", (255,255,255),"music/spanish clothes/pyjamas.wav"),
-    "unos pantalones": ("Sprites/trousers.png", (255,255,255),"music/spanish clothes/trousers.wav"),
-    "unos calcetines": ("Sprites/socks.png", (255,255,255),"music/spanish clothes/socks.wav"),
-    "una camiseta": ("Sprites/t-shirt.png", (255,255,255),"music/spanish clothes/t-shirt.wav"),
-    "una vestido": ("Sprites/dress.png", (255,255,255),"music/spanish clothes/dress.wav"),
-    "una sombrero": ("Sprites/hat.png", (255,255,255),"music/spanish clothes/hat.wav"),
-    "una corbata": ("Sprites/tie.png", (255,255,255),"music/spanish clothes/tie.wav"),
-    "zapatos": ("Sprites/shoes.png", (255,255,255),"music/spanish clothes/shoes.wav")
+    "un chaqueta":  ("assets/Sprites/jacket.png", (255,255,255),"assets/music/spanish clothes/jacket.wav"),
+    "un pijama": ("assets/Sprites/pyjamas.png", (255,255,255),"assets/music/spanish clothes/pyjamas.wav"),
+    "unos pantalones": ("assets/Sprites/trousers.png", (255,255,255),"assets/music/spanish clothes/trousers.wav"),
+    "unos calcetines": ("assets/Sprites/socks.png", (255,255,255),"assets/music/spanish clothes/socks.wav"),
+    "una camiseta": ("assets/Sprites/t-shirt.png", (255,255,255),"assets/music/spanish clothes/t-shirt.wav"),
+    "una vestido": ("assets/Sprites/dress.png", (255,255,255),"assets/music/spanish clothes/dress.wav"),
+    "una sombrero": ("assets/Sprites/hat.png", (255,255,255),"assets/music/spanish clothes/hat.wav"),
+    "una corbata": ("assets/Sprites/tie.png", (255,255,255),"assets/music/spanish clothes/tie.wav"),
+    "zapatos": ("assets/Sprites/shoes.png", (255,255,255),"assets/music/spanish clothes/shoes.wav")
 	}
 
 french_clothing ={
-    "la veste":  ("Sprites/jacket.png", (255,255,255),),
-    "les pyjamas": ("Sprites/pyjamas.png", (255,255,255),),
-    "des pantalons": ("Sprites/trousers.png", (255,255,255),),
-    "des chaussettes": ("Sprites/socks.png", (255,255,255),),
-    "un t-shirt": ("Sprites/t-shirt.png", (255,255,255),),
-    "la robe": ("Sprites/dress.png", (255,255,255),),
-    "chapeau": ("Sprites/hat.png", (255,255,255),),
-    "la cravate": ("Sprites/tie.png", (255,255,255),),
-    "des chaussures": ("Sprites/shoes.png", (255,255,255),)
+    "le mentau":  ("assets/Sprites/jacket.png", (255,255,255),"assets/music/french_clothes/le_mentau.wav"),
+    "les pyjamas": ("assets/Sprites/pyjamas.png", (255,255,255),"assets/music/french_clothes/les_pyjamas.wav"),
+    "un pantalon": ("assets/Sprites/trousers.png", (255,255,255),"assets/music/french_clothes/un_pantalon.wav"),
+    "des chaussettes": ("assets/Sprites/socks.png", (255,255,255),"assets/music/french_clothes/des_chausettes.wav"),
+    "un t-shirt": ("assets/Sprites/t-shirt.png", (255,255,255),"assets/music/french_clothes/un_tshirt.wav"),
+    "la robe": ("assets/Sprites/dress.png", (255,255,255),"assets/music/french_clothes/la_robe.wav"),
+    "un chapeau": ("assets/Sprites/hat.png", (255,255,255),"assets/music/french_clothes/un_chapeau.wav"),
+    "la cravate": ("assets/Sprites/tie.png", (255,255,255),"assets/music/french_clothes/la_cravate.wav"),
+    "les chaussures": ("assets/Sprites/shoes.png", (255,255,255),"assets/music/french_clothes/les_chaussures.wav")
 	}
 
 french_fruits ={
-    "banane":  ("Sprites/banana.png", (255,255,255),),
-    "orange": ("Sprites/Orange.png", (255,255,255),),
-    "citron": ("Sprites/lemon.png", (0,0,0),),
-    "fraise": ("Sprites/strawberry.png", (255,255,255),),
-    "melon": ("Sprites/melon.png", (255,255,255),),
-    "myrtille": ("Sprites/blueberry.png", (0,0,0),),
-    "Pomme": ("Sprites/red_apple.png", (0,0,0),),
-    "tomate": ("Sprites/tomato.png", (255,255,255),),
-    "les raisins": ("Sprites/purple_grapes.png", (0,0,0),)
+    "une banane":  ("assets/Sprites/banana.png", (255,255,255), "assets/music/french_fruits/une_banane.wav"),
+    "un orange": ("assets/Sprites/Orange.png", (255,255,255),"assets/music/french_fruits/un_orange.wav"),
+    "un citron": ("assets/Sprites/lemon.png", (0,0,0),"assets/music/french_fruits/un_citron.wav"),
+    "une fraise": ("assets/Sprites/strawberry.png", (255,255,255),"assets/music/french_fruits/une_fraise.wav"),
+    "un melon": ("assets/Sprites/melon.png", (255,255,255),"assets/music/french_fruits/un_melon.wav"),
+    "une myrtille": ("assets/Sprites/blueberry.png", (0,0,0),"assets/music/french_fruits/une_myrtille.wav"),
+    "une pomme": ("assets/Sprites/red_apple.png", (0,0,0),"assets/music/french_fruits/une_pomme.wav"),
+    "une tomate": ("assets/Sprites/tomato.png", (255,255,255),"assets/music/french_fruits/une_tomate.wav"),
+    "les raisins": ("assets/Sprites/purple_grapes.png", (0,0,0),"assets/music/french_fruits/les_raisins.wav")
 	}
 
 spanish_fruits ={
-    "el platano": ("Sprites/banana.png", (255,255,255),"music/spanish fruits/banana.wav"),
-    "la naranja": ("Sprites/Orange.png", (255,255,255),"music/spanish fruits/orange.wav"),
-    "el limon": ("Sprites/lemon.png", (0,0,0),"music/spanish fruits/lemon.wav"),
-    "la fresa": ("Sprites/strawberry.png", (255,255,255),"music/spanish fruits/strawberry.wav"),
-    "el melon": ("Sprites/melon.png", (255,255,255),"music/spanish fruits/melon.wav"),
-    "la manzana": ("Sprites/red_apple.png", (0,0,0),"music/spanish fruits/apple.wav"),
-    "arandano": ("Sprites/blueberry.png", (0,0,0),"music/spanish fruits/blueberry.wav"),
-    "el tomate": ("Sprites/tomato.png", (255,255,255),"music/spanish fruits/tomato.wav"),
-    "uva": ("Sprites/purple_grapes.png", (0,0,0),"music/spanish fruits/grapes.wav")
+    "el platano": ("assets/Sprites/banana.png", (255,255,255),"assets/music/spanish fruits/banana.wav"),
+    "la naranja": ("assets/Sprites/Orange.png", (255,255,255),"assets/music/spanish fruits/orange.wav"),
+    "el limon": ("assets/Sprites/lemon.png", (0,0,0),"assets/music/spanish fruits/lemon.wav"),
+    "la fresa": ("assets/Sprites/strawberry.png", (255,255,255),"assets/music/spanish fruits/strawberry.wav"),
+    "el melon": ("assets/Sprites/melon.png", (255,255,255),"assets/music/spanish fruits/melon.wav"),
+    "la manzana": ("assets/Sprites/red_apple.png", (0,0,0),"assets/music/spanish fruits/apple.wav"),
+    "arandano": ("assets/Sprites/blueberry.png", (0,0,0),"assets/music/spanish fruits/blueberry.wav"),
+    "el tomate": ("assets/Sprites/tomato.png", (255,255,255),"assets/music/spanish fruits/tomato.wav"),
+    "uva": ("assets/Sprites/purple_grapes.png", (0,0,0),"assets/music/spanish fruits/grapes.wav")
 	}
 
 spanish_numbers ={
-    "uno":  ("Sprites/one_img.png", (0,0,0),"music/spanish numbers/one.wav"),
-    "dos": ("Sprites/two_img.png", (0,0,0),"music/spanish numbers/two.wav"),
-    "tres": ("Sprites/three_img.png", (0,0,0),"music/spanish numbers/three.wav"),
-    "cuatro": ("Sprites/four_img.png", (0,0,0),"music/spanish numbers/four.wav"),
-    "cinco": ("Sprites/five_img.png", (0,0,0),"music/spanish numbers/five.wav"),
-    "seis": ("Sprites/six_img.png", (0,0,0),"music/spanish numbers/six.wav"),
-    "siete": ("Sprites/seven_img.png", (0,0,0),"music/spanish numbers/seven.wav"),
-    "ocho": ("Sprites/eight_img.png", (0,0,0),"music/spanish numbers/eight.wav"),
-    "nueve": ("Sprites/nine_img.png", (0,0,0),"music/spanish numbers/nine.wav")
+    "uno":  ("assets/Sprites/one_img.png", (0,0,0),"assets/music/spanish numbers/one.wav"),
+    "dos": ("assets/Sprites/two_img.png", (0,0,0),"assets/music/spanish numbers/two.wav"),
+    "tres": ("assets/Sprites/three_img.png", (0,0,0),"assets/music/spanish numbers/three.wav"),
+    "cuatro": ("assets/Sprites/four_img.png", (0,0,0),"assets/music/spanish numbers/four.wav"),
+    "cinco": ("assets/Sprites/five_img.png", (0,0,0),"assets/music/spanish numbers/five.wav"),
+    "seis": ("assets/Sprites/six_img.png", (0,0,0),"assets/music/spanish numbers/six.wav"),
+    "siete": ("assets/Sprites/seven_img.png", (0,0,0),"assets/music/spanish numbers/seven.wav"),
+    "ocho": ("assets/Sprites/eight_img.png", (0,0,0),"assets/music/spanish numbers/eight.wav"),
+    "nueve": ("assets/Sprites/nine_img.png", (0,0,0),"assets/music/spanish numbers/nine.wav")
 	}
 
 french_numbers ={
-    "un":  ("Sprites/one_img.png", (0,0,0),),
-    "deux": ("Sprites/two_img.png", (0,0,0),),
-    "trois": ("Sprites/three_img.png", (0,0,0),),
-    "quatre": ("Sprites/four_img.png", (0,0,0),),
-    "cinq": ("Sprites/five_img.png", (0,0,0),),
-    "six": ("Sprites/six_img.png", (0,0,0),),
-    "sept": ("Sprites/seven_img.png", (0,0,0),),
-    "huit": ("Sprites/eight_img.png", (0,0,0),),
-    "nuef": ("Sprites/nine_img.png", (0,0,0),),
+    "un":  ("assets/Sprites/one_img.png", (0,0,0),"assets/music/french_numbers/un.wav"),
+    "deux": ("assets/Sprites/two_img.png", (0,0,0),"assets/music/french_numbers/deux.wav"),
+    "trois": ("assets/Sprites/three_img.png", (0,0,0),"assets/music/french_numbers/trois.wav"),
+    "quatre": ("assets/Sprites/four_img.png", (0,0,0),"assets/music/french_numbers/quatre.wav"),
+    "cinq": ("assets/Sprites/five_img.png", (0,0,0),"assets/music/french_numbers/cinq.wav"),
+    "six": ("assets/Sprites/six_img.png", (0,0,0),"assets/music/french_numbers/six.wav"),
+    "sept": ("assets/Sprites/seven_img.png", (0,0,0),"assets/music/french_numbers/sept.wav"),
+    "huit": ("assets/Sprites/eight_img.png", (0,0,0),"assets/music/french_numbers/huit.wav"),
+    "neuf": ("assets/Sprites/nine_img.png", (0,0,0),"assets/music/french_numbers/neuf.wav"),
 	}

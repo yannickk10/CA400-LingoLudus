@@ -1,7 +1,7 @@
 import pygame
 import importlib
 from pygame import mixer
-from button2 import Button
+from button import Button2
 import french_stats
 import spanish_stats
 from settings import *
@@ -81,9 +81,9 @@ def achievments_display_french():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    go_right_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(SCREEN_WIDTH - 75, (SCREEN_HEIGHT // 2) - 75), 
+    go_right_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(SCREEN_WIDTH - 75, (SCREEN_HEIGHT // 2) - 75), 
                             text_input="->", font=get_font(45), base_color="White", hovering_color="Red")
-    go_back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+    go_back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
                             text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
     #Define fonts
@@ -140,11 +140,11 @@ def achievments_display_french():
     highest_streak_text = body_font.render(french_stats.french_highest_streak, False, (255,255,255))
     streak_box = highest_streak_text.get_rect()
 
-    background = pygame.image.load("images/background.png")
+    background = pygame.image.load("assets/images/background.png")
 
     #Load sounds
-    forward_sound = mixer.Sound("music/forward_click.wav")
-    back_sound = mixer.Sound("music/back_click.wav")
+    forward_sound = mixer.Sound("assets/music/forward_click.wav")
+    back_sound = mixer.Sound("assets/music/back_click.wav")
 
     gameLoop = True
 
@@ -220,10 +220,10 @@ def achievments_display_spanish():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    go_back_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, 75), 
+    go_back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
                             text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
-    go_left_button = Button(image=pygame.image.load("images/go_back_rect.png"), pos=(75, (SCREEN_HEIGHT // 2) - 75), 
+    go_left_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, (SCREEN_HEIGHT // 2) - 75), 
                             text_input="<-", font=get_font(45), base_color="White", hovering_color="Red")
 
     #Define fonts
@@ -280,11 +280,11 @@ def achievments_display_spanish():
     highest_streak_text = body_font.render(spanish_stats.spanish_highest_streak, False, (255,255,255))
     streak_box = highest_streak_text.get_rect()
 
-    background = pygame.image.load("images/background.png")
+    background = pygame.image.load("assets/images/background.png")
 
     #Load sounds 
-    forward_sound = mixer.Sound("music/forward_click.wav")
-    back_sound = mixer.Sound("music/back_click.wav")
+    forward_sound = mixer.Sound("assets/music/forward_click.wav")
+    back_sound = mixer.Sound("assets/music/back_click.wav")
 
     gameLoop = True
 
