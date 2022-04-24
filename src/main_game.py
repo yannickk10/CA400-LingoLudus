@@ -82,7 +82,7 @@ def space_invaders(level):
                     else:
                         f.write(("\n\n" + "french_highscore = "+ "'" + str(french_highscore) + "'"))
                 else:
-                    if player.hud.player_score.score > int(spanish_highscore):
+                    if player.hud.score_object.score > int(spanish_highscore):
                         f.write("\n\n" + "spanish_highscore = "+ "'" + str(player.hud.score_object.score))
                     else:
                         f.write(("\n\n" + "spanish_highscore = "+ "'" + str(spanish_highscore) + "'"))
