@@ -6,7 +6,7 @@ import sys
 
 pygame.init()
 # screen resolution
-res = (1280, 720)
+res = (SCREEN_WIDTH, SCREEN_HEIGHT)
 pygame.display.set_caption("Lingo Ludus")
 
 BG = pygame.image.load("assets/images/background.png")
@@ -18,15 +18,15 @@ def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
 
 logo = pygame.image.load("assets/images/lingoludus_logo.png").convert_alpha()
-lingo_logo = pygame.transform.scale(logo, (630,250))
-menu_rect = lingo_logo.get_rect(center=(640, 100))
+lingo_logo = pygame.transform.scale(logo, (720,250))
+menu_rect = lingo_logo.get_rect(center=(SCREEN_WIDTH / 2, 100))
 
-play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 260), 
+play_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 4) * 1 + 50), 
                     text_input="PLAY", font=get_font(60), base_color="White", hovering_color="Orange")
-achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(640, 420), 
+achievments_button = Button2(image=pygame.image.load("assets/images/achievments_rect.png"), pos=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2+ 50), 
                     text_input="ACHIEVMENTS", font=get_font(60), base_color="White", hovering_color="Orange")
 
-quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(640, 560), 
+quit_button = Button2(image=pygame.image.load("assets/images/quit_rect.png"), pos=(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 4) * 3 + 50), 
                     text_input="QUIT", font=get_font(60), base_color="White", hovering_color="Red")
 
 #Load sound

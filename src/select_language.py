@@ -6,7 +6,7 @@ from settings import *
 
 pygame.init()
 # screen resolution
-res = (1280, 720)
+res = (SCREEN_WIDTH, SCREEN_HEIGHT)
 pygame.display.set_caption("Lingo Ludus")
 
 BG = pygame.image.load("assets/images/background.png")
@@ -30,11 +30,11 @@ def language_select(play):
         mouse_pos = pygame.mouse.get_pos()
 
         menu_text = get_font(45).render("LANGUAGE TO LEARN", True, "Orange")
-        menu_rect = menu_text.get_rect(center=(640, 100))
+        menu_rect = menu_text.get_rect(center=(SCREEN_WIDTH / 2, 100))
 
-        french_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 250), 
+        french_button = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3) * 1 + 50), 
                                 text_input="FRENCH", font=get_font(60), base_color="White", hovering_color="Orange")
-        spanish_button = Button2(image=pygame.image.load("assets/images/lang_rect.png"), pos=(640, 400), 
+        spanish_button = Button2(image=pygame.image.load("assets/images/lang_rect.png"), pos=(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3) * 2 + 50), 
                                 text_input="SPANISH", font=get_font(60), base_color="White", hovering_color="Orange")
         back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
                             text_input="X", font=get_font(45), base_color="White", hovering_color="Red")

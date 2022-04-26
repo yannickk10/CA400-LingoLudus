@@ -87,14 +87,13 @@ def achievments_display_french():
                             text_input="X", font=get_font(45), base_color="White", hovering_color="Red")
 
     #Define fonts
-    title_font = pygame.font.Font("assets/font.ttf", 42)
     header_font = pygame.font.Font("assets/font.ttf", 30)
     body_font = pygame.font.Font("assets/font.ttf", 20)
 
 
     #title text
     title_heading = get_font(45).render("FRENCH ACHIEVEMENTS", True, "Orange")
-    title_rec = title_heading.get_rect(center=(640, 100))
+    title_rec = title_heading.get_rect(center=(SCREEN_WIDTH / 2, 100))
 
     #High Score Text
     high_score_sub_heading = header_font.render("High Score:", False, (255,255,255))
@@ -227,7 +226,6 @@ def achievments_display_spanish():
                             text_input="<-", font=get_font(45), base_color="White", hovering_color="Red")
 
     #Define fonts
-    title_font = pygame.font.Font("assets/font.ttf", 42)
     header_font = pygame.font.Font("assets/font.ttf", 30)
     body_font = pygame.font.Font("assets/font.ttf", 20)
 

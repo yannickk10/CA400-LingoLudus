@@ -7,7 +7,7 @@ from button import *
 
 pygame.init()
 # screen resolution
-res = (1280, 720)
+res = (SCREEN_WIDTH, SCREEN_HEIGHT)
 BG = pygame.image.load("assets/images/background.png")
 
 # opens up a window
@@ -34,13 +34,13 @@ def game_hub():
         title_rec = title_heading.get_rect(center=(640, 100))
 
         #Create Buttons
-        clothing_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(256, 540), 
+        clothing_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=((SCREEN_WIDTH / 4) * 1 , (SCREEN_HEIGHT / 4) * 3), 
                             text_input="Wardrobe Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-        number_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(640, 360), 
+        number_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 
                                 text_input="Number Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
-        fruit_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=(1024, 540), 
+        fruit_invaders = Button2(image=pygame.image.load("assets/images/play_rect.png"), pos=((SCREEN_WIDTH / 4) * 3 , (SCREEN_HEIGHT / 4) * 3), 
                                 text_input="Fruit Invaders", font=get_font(20), base_color="White", hovering_color="Orange")
 
         back_button = Button2(image=pygame.image.load("assets/images/go_back_rect.png"), pos=(75, 75), 
