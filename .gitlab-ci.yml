@@ -28,4 +28,8 @@ before_script:
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
-  - python3 -m pip install -U pygame
+
+test pygame setup:
+  script:
+    - python3 -m pip install -U pygame
+    - cd src
