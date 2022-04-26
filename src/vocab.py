@@ -15,7 +15,7 @@ french_clothing ={
     "le mentau":  ("assets/Sprites/jacket.png", (255,255,255),"assets/music/french_clothes/le_mentau.wav"),
     "les pyjamas": ("assets/Sprites/pyjamas.png", (255,255,255),"assets/music/french_clothes/les_pyjamas.wav"),
     "un pantalon": ("assets/Sprites/trousers.png", (255,255,255),"assets/music/french_clothes/un_pantalon.wav"),
-    "des chaussettes": ("assets/Sprites/socks.png", (255,255,255),"assets/music/french_clothes/des_chausettes.wav"),
+    "le chaussettes": ("assets/Sprites/socks.png", (255,255,255),"assets/music/french_clothes/des_chaussettes.wav"),
     "un t-shirt": ("assets/Sprites/t-shirt.png", (255,255,255),"assets/music/french_clothes/un_tshirt.wav"),
     "la robe": ("assets/Sprites/dress.png", (255,255,255),"assets/music/french_clothes/la_robe.wav"),
     "un chapeau": ("assets/Sprites/hat.png", (255,255,255),"assets/music/french_clothes/un_chapeau.wav"),
